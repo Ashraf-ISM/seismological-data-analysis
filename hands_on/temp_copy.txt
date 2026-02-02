@@ -1,0 +1,4 @@
+This is the test file which is created using the cmd vi.
+This is the vi editor.
+After write the content for saving the file just press the Shift+zz.
+

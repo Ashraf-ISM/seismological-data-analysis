@@ -1,0 +1,4 @@
+This text file is made by using the cmd echo.Where user can write the content of the file after cnd echo and then all the content written is saved by the file name.
+In the next step now i want to append some more lines in the created echo_file.txt.So for that we have to use double >> sign.Which is used like in this content, as i am saving these written content in my orvious echo_file.txt
+For the renaming the files which i already created we have to use cmd  previous_name new_name
+In the next step I want to rename the file name but make a copy of the existing file and renamed so that our original file should be safe

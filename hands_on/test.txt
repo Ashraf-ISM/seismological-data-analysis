@@ -1,0 +1,3 @@
+This is the script written by using cmd nano.
+There are lots of technique to write script like these.
+Some of that are like vi editor and gedit cmd,

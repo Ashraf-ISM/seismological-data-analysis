@@ -1,0 +1,21 @@
+# Large seismic data
+*.mseed
+*.seed
+*.sac
+*.SAC
+*.sgy
+*.segy
+
+# Processed outputs
+data/processed/
+figures/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
