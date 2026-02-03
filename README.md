@@ -1,44 +1,39 @@
 <div align="center">
 
-<!-- Animated Header -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=220&section=header&text=Seismological%20Data%20Analysis&fontSize=52&fontColor=fff&animation=twinkling&fontAlignY=38&fontFamily=Open+Sans"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=210&section=header&text=Seismological%20Data%20Analysis&fontSize=52&fontColor=fff&animation=twinkling&fontAlignY=38&fontFamily=Open+Sans"/>
 
-<!-- Typing Animation -->
-<img src="https://readme-typing-svg.demolab.com?font=Outfit&weight=600&size=28&duration=2800&pause=600&color=a78bfa&center=true&vCenter=true&multiline=true&repeat=true&random=false&width=850&height=95&lines=🌍+Exploring+Earth%27s+Seismic+Waves;📡+NGPD510+%7C+Spring+2026+%7C+DE+Course;🔬+Research-Grade+Terminal+Workflows" alt="Typing" />
+<img src="https://readme-typing-svg.demolab.com?font=Outfit&weight=600&size=30&duration=2600&pause=500&color=a78bfa&center=true&vCenter=true&multiline=true&repeat=true&random=false&width=800&height=100&lines=🌍+Decoding+Earth%27s+Seismic+Signals;📡+Real+Data+·+Real+Workflows;🔬+From+Raw+Waveform+to+Research+Output" alt="Typing Animation" />
 
 <br/>
 
-<!-- Core Badges Row -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Course-NGPD510-7c3aed?style=for-the-badge&logo=bookopen&logoColor=white&labelColor=1e1b4b" />
-  <img src="https://img.shields.io/badge/Type-Elective%20(DE)-6366f1?style=for-the-badge&labelColor=312e81" />
-  <img src="https://img.shields.io/badge/Credits-3-a78bfa?style=for-the-badge&labelColor=312e81" />
-  <img src="https://img.shields.io/badge/Semester-Spring%202026-c4b5fd?style=for-the-badge&labelColor=312e81" />
-  <img src="https://img.shields.io/badge/Hours-42%20Lectures-ddd6fe?style=for-the-badge&labelColor=312e81" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black&labelColor=000000" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=000000" />
+  <img src="https://img.shields.io/badge/ObsPy-e11d48?style=for-the-badge&logoColor=white&labelColor=000000" />
+  <img src="https://img.shields.io/badge/SAC-0891b2?style=for-the-badge&logoColor=white&labelColor=000000" />
+  <img src="https://img.shields.io/badge/MATLAB-A2211B?style=for-the-badge&logoColor=white&labelColor=000000" />
+  <img src="https://img.shields.io/badge/TauP-7c3aed?style=for-the-badge&logoColor=white&labelColor=000000" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white&labelColor=000000" />
 </p>
 
-<!-- Tech Stack Badges -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=000&labelColor=000" />
-  <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white" />
-  <img src="https://img.shields.io/badge/ObsPy-e11d48?style=for-the-badge&logoColor=white" />
-  <img src="https://img.shields.io/badge/SAC-0891b2?style=for-the-badge&logoColor=white" />
-  <img src="https://img.shields.io/badge/MATLAB-A2211B?style=for-the-badge&logoColor=white" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/Semester-Spring%202026-7c3aed?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/Course-NGPD510-6366f1?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/Platform-Ubuntu%2022.04+-a78bfa?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/Workflow-Terminal%20Based-c4b5fd?style=flat-square&logoColor=white" />
 </p>
 
-<!-- Animated Divider -->
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 
-</div>
+### 🎓 Hands-on Codes, Workflows & Assignments
+*Everything from pulling waveforms off IRIS to ray-tracing through the mantle — done right in the terminal.*
 
----
+<br/>
 
-<div align="center">
-
-> **NGPD510 — Seismological Data Analysis**
-> A hands-on, terminal-driven course for seismic signal processing, data acquisition, spectral analysis, and advanced geophysical techniques — built for reproducible research workflows.
+[![Objectives](https://img.shields.io/badge/🎯-Objectives-7c3aed?style=for-the-badge)](#-objectives)
+[![Tools](https://img.shields.io/badge/🛠-Tools-6366f1?style=for-the-badge)](#-tools--tech-stack)
+[![Modules](https://img.shields.io/badge/📚-Modules-a78bfa?style=for-the-badge)](#-modules)
+[![Getting Started](https://img.shields.io/badge/🚀-Get%20Started-c4b5fd?style=for-the-badge)](#-getting-started)
 
 </div>
 
@@ -46,47 +41,31 @@
 
 <br/>
 
-## 📍 Quick Navigation
-
-<div align="center">
-
-| Section | Jump |
-|:--|:--|
-| 🎯 Course Objectives | [`→ Objectives`](#-course-objectives) |
-| 🛠️ Tools & Stack | [`→ Tools`](#-tools--tech-stack) |
-| 📚 9-Unit Curriculum | [`→ Curriculum`](#-semester-curriculum) |
-| 📊 Workflow Pipeline | [`→ Workflow`](#-workflow-pipeline) |
-| 🚀 Setup Guide | [`→ Getting Started`](#-getting-started) |
-| 📖 References | [`→ References`](#-references--textbooks) |
-
-</div>
-
----
-
-<br/>
-
-## 🎯 Course Objectives
+## 🎯 Objectives
 
 <div align="center">
 
 <table>
 <tr>
 <td align="center" width="33%">
+<img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif" width="100">
 
-### 🖥️ Master Terminal Environments
-Command-line seismic data handling on **Ubuntu Linux** — from file system navigation to full Bash scripting pipelines
-
-</td>
-<td align="center" width="33%">
-
-### 📡 Handle Digital Seismic Data
-Acquire, edit, manipulate & filter real-world seismograms using **professional-grade tools** like SAC, ObsPy & PQLX
+### 🖥️ Own the Terminal
+No GUIs, no hand-holding. Learn to do everything — fetching data, processing waveforms, generating figures — straight from the command line.
 
 </td>
 <td align="center" width="33%">
+<img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" width="100">
 
-### 📝 Build Research Workflows
-Reproducible, publication-ready analysis pipelines with **Git version control**, structured scripts & documented outputs
+### 🌊 Process Real Waveforms
+Not toy data. Work with actual seismograms — filter them, pull out instrument effects, dig into their spectral structure.
+
+</td>
+<td align="center" width="33%">
+<img src="https://user-images.githubusercontent.com/74038190/212257465-7ce8d493-cac5-494e-982a-5a9deb852c4b.gif" width="100">
+
+### 🔁 Write It Once, Run It Forever
+Scripts that actually work next time you run them. Reproducible pipelines, version-controlled, properly documented.
 
 </td>
 </tr>
@@ -94,8 +73,9 @@ Reproducible, publication-ready analysis pipelines with **Git version control**,
 
 </div>
 
-> **Course Statement:** *(from official syllabus)*
-> This course offers hands-on experience with a variety of seismological analysis techniques using Linux / Bash / Fortran / MATLAB / Python. The goal is to give each student a working knowledge of techniques and programs commonly used in seismology — helpful for both carrying out research and using the products of these analyses (earthquake locations, receiver functions, tomographic models).
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+</div>
 
 ---
 
@@ -105,266 +85,249 @@ Reproducible, publication-ready analysis pipelines with **Git version control**,
 
 <div align="center">
 
-### 💻 Core Environments & Languages
+### 💻 Core Stack
 
 <table>
 <tr>
-<td align="center" width="20%">
-<img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python" width="60" height="60" />
-<br><b>Python 3.8+</b>
-<br><sub>ObsPy · NumPy · SciPy · Matplotlib</sub>
+<td align="center" width="16%">
+<img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python" width="65" height="65" />
+<br><b>Python</b>
+<br><sub>ObsPy · NumPy · SciPy</sub>
 </td>
-<td align="center" width="20%">
-<img src="https://cdn.worldvectorlogo.com/logos/ubuntu.svg" alt="Ubuntu" width="60" height="60" />
-<br><b>Ubuntu 22.04+</b>
-<br><sub>Terminal-Based Workflow</sub>
+<td align="center" width="16%">
+<img src="https://cdn.worldvectorlogo.com/logos/ubuntu.svg" alt="Ubuntu" width="65" height="65" />
+<br><b>Ubuntu Linux</b>
+<br><sub>Terminal Workflow</sub>
 </td>
-<td align="center" width="20%">
-<img src="https://cdn.worldvectorlogo.com/logos/matlab.svg" alt="MATLAB" width="60" height="60" />
+<td align="center" width="16%">
+<img src="https://cdn.worldvectorlogo.com/logos/matlab.svg" alt="MATLAB" width="65" height="65" />
 <br><b>MATLAB</b>
 <br><sub>Signal Processing</sub>
 </td>
-<td align="center" width="20%">
-<img src="https://cdn.worldvectorlogo.com/logos/fortran.svg" alt="Fortran" width="60" height="60" />
+<td align="center" width="16%">
+<img src="https://cdn.worldvectorlogo.com/logos/fortran.svg" alt="Fortran" width="65" height="65" />
 <br><b>Fortran</b>
 <br><sub>CPS Codes</sub>
 </td>
-<td align="center" width="20%">
-<img src="https://cdn.worldvectorlogo.com/logos/git.svg" alt="Git" width="60" height="60" />
+<td align="center" width="16%">
+<img src="https://techstack-generator.vercel.app/github-icon.svg" alt="Git" width="65" height="65" />
 <br><b>Git & GitHub</b>
 <br><sub>Version Control</sub>
+</td>
+<td align="center" width="16%">
+<img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="65" height="65" />
+<br><b>Bash</b>
+<br><sub>Shell Scripting</sub>
 </td>
 </tr>
 </table>
 
-### 🔬 Seismology-Specific Tools
+### 🔬 Seismology Tools We Actually Use
 
-| Tool | Purpose |
-|:--|:--|
-| **SAC** (Seismic Analysis Code) | Core waveform processing & visualization |
-| **ObsPy** | Python-based seismic data I/O & processing |
-| **PQLX** | Station noise characterization & data quality |
-| **TauP** | Ray tracing & seismic phase arrival computation |
-| **CPS** (Computer Programs in Seismology) | Dispersion, receiver functions, velocity models |
-| **GMT** (Generic Mapping Tools) | Publication-quality seismological maps |
-| **IRIS FDSN** | Global seismic data acquisition & archival |
+<table>
+<tr>
+<td align="center" width="25%">
+<b>SAC</b>
+<br><sub>Seismic Analysis Code — bread & butter for waveform work</sub>
+</td>
+<td align="center" width="25%">
+<b>TauP</b>
+<br><sub>Ray tracing, phase arrivals, travel times</sub>
+</td>
+<td align="center" width="25%">
+<b>PQLX</b>
+<br><sub>Station noise & data quality checks</sub>
+</td>
+<td align="center" width="25%">
+<b>GMT</b>
+<br><sub>Maps that actually look good</sub>
+</td>
+</tr>
+</table>
 
-### 📦 Python Ecosystem
+### 📦 Python Imports You'll See Everywhere
 
 ```python
-import obspy          # Seismic I/O, processing, visualization
-import numpy          # Numerical arrays & linear algebra
-import scipy          # Signal processing & spectral analysis
-import matplotlib     # 2D plotting & figure creation
+import obspy          # Seismic data — read, process, plot
+import numpy          # The numerical backbone
+import scipy          # Filtering, FFTs, signal magic
+import matplotlib     # Visualization (when GMT is overkill)
 ```
 
+<img src="https://skillicons.dev/icons?i=py,linux,git,github,bash,vim,vscode,jupyter&theme=dark" />
+
+</div>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 </div>
 
 ---
 
 <br/>
 
-## 📚 Semester Curriculum
+## 📚 Modules
 
-> **42 lecture hours · 9 active units + revision**
-> Each unit below maps directly to the official NGPD510 syllabus.
+> How I've structured the work in this repo. Each folder maps to a chunk of the actual pipeline — start to finish.
 
----
-
-<details>
-<summary><h3>🟣 Unit 1 &nbsp;— &nbsp;Foundations: Linux, Bash & MATLAB &nbsp;<code>04 hrs</code></h3></summary>
 <br/>
 
-**Learning Outcome:** Build fluency in Linux/Unix environments, shell scripting, and MATLAB basics.
+<details>
+<summary><h3>🟣 Module 1 — Foundations & Environment Setup</h3></summary>
+<br/>
 
-- 🖥️ **Introduction to Unix / Linux** — OS architecture, terminal navigation, file permissions
-- ⚙️ **Bash Shell Scripting** — variables, loops, conditionals, automation scripts
-- 📊 **Introduction to MATLAB** — workspace, arrays, basic plotting, script vs. function files
+This is where everything begins. No seismology yet — just getting comfortable with the tools we'll use for the rest of the semester.
+
+- 🖥️ **Linux & Terminal Basics** — navigation, permissions, file handling, the stuff you actually use daily
+- ⚙️ **Bash Scripting** — loops, variables, automating repetitive tasks so you stop doing them by hand
+- 📊 **MATLAB Kickstart** — workspace, arrays, writing quick scripts for signal tasks
+- 🔀 **Git Workflow** — branching, committing, keeping this repo sane as it grows
 
 </details>
 
----
-
-<details>
-<summary><h3>🔵 Unit 2 &nbsp;— &nbsp;Seismic Data Formats & Digital Seismograms &nbsp;<code>04 hrs</code></h3></summary>
 <br/>
 
-**Learning Outcome:** Understand and handle standard seismic data formats professionally.
+<details>
+<summary><h3>🔵 Module 2 — Getting Seismic Data</h3></summary>
+<br/>
 
-- 📦 **Seismic Data Formats** — SEED, miniSEED, SEGY, SAC — structure & conversion
-- 🌐 **Digital Seismogram Processing** — reading, parsing & writing waveform files
-- 🔄 **Format Interoperability** — tools for format conversion and metadata extraction
+Can't process what you don't have. This module is all about pulling real data from the archives and understanding what you're actually looking at.
+
+- 🌐 **IRIS Data Management Center** — how to actually request data, what the station codes mean, FDSN services
+- 📦 **Seismic Data Formats** — SEED, miniSEED, SEGY, SAC — what's different, when to use which, how to convert
+- 🐍 **ObsPy Data Clients** — scripting your downloads instead of clicking buttons
+- ✅ **Quick Quality Checks** — making sure what you downloaded is actually usable before you spend an hour processing garbage
 
 </details>
 
----
-
-<details>
-<summary><h3>🟢 Unit 3 &nbsp;— &nbsp;Instrument Response Removal &nbsp;<code>04 hrs</code></h3></summary>
 <br/>
 
-**Learning Outcome:** Understand and computationally remove instrument effects from raw seismograms.
+<details>
+<summary><h3>🟢 Module 3 — Signal Processing</h3></summary>
+<br/>
 
-- 📐 **Theory of Instrument Response** — transfer functions, poles & zeros
-- 🔧 **Deconvolution Methods** — spectral division, water-level stabilization
-- 📄 **RESP & dataless SEED** — parsing and applying response metadata
-- ✅ **Calibration & Validation** — ground motion units (displacement, velocity, acceleration)
+Raw seismograms are messy. This is where we clean them up and make them actually useful.
+
+- 🧹 **Preprocessing** — detrend, demean, taper — the stuff everyone skips and then wonders why their results look wrong
+- 🔧 **Instrument Response Removal** — the seismometer's fingerprint on your data, and how to take it off using RESP files & deconvolution
+- 🎛️ **Filtering** — bandpass, highpass, lowpass. Butterworth, Chebyshev. Know when to use which
+- 📐 **Transfer Functions** — what RESP files and dataless SEED actually contain, and why they matter
 
 </details>
 
----
-
-<details>
-<summary><h3>🟡 Unit 4 &nbsp;— &nbsp;Spectral Analysis & Filtering &nbsp;<code>04 hrs</code></h3></summary>
 <br/>
 
-**Learning Outcome:** Apply frequency-domain analysis and design digital filters for seismograms.
+<details>
+<summary><h3>🟡 Module 4 — Spectral & Frequency Analysis</h3></summary>
+<br/>
 
-- 🌊 **Spectral Analysis** — FFT, power spectral density, windowing functions
-- 🎛️ **Filtering Techniques** — bandpass, highpass, lowpass, Butterworth, Chebyshev
-- 📂 **Seismograph Transfer Functions** — working with RESP files and dataless SEED
-- 📈 **Signal-to-Noise Ratio** — noise floor estimation & SNR optimization
+Time domain is great, but a lot of the interesting stuff lives in frequency space.
+
+- 🌊 **Fourier Analysis** — FFT, windowing, why it matters for seismic signals
+- 📈 **Power Spectral Density** — noise floors, signal-to-noise, station characterization with PQLX
+- 🎼 **Time-Frequency Analysis** — spectrograms, wavelet transforms — watching frequency content evolve over time
+- 📊 **Noise vs Signal** — what's actually noise, what's signal, and how to tell them apart
 
 </details>
 
----
-
-<details>
-<summary><h3>🟠 Unit 5 &nbsp;— &nbsp;IRIS Data Center & SAC &nbsp;<code>05 hrs</code></h3></summary>
 <br/>
 
-**Learning Outcome:** Retrieve real seismic data from global archives and process with SAC.
+<details>
+<summary><h3>🔴 Module 5 — Advanced Seismology</h3></summary>
+<br/>
 
-- 🌐 **IRIS DMC Access** — FDSN web services, data request formats, network/station codes
-- 🔍 **Intro to SAC** — interactive mode, macro scripting, waveform display
-- 📥 **Automated Data Downloads** — ObsPy FDSN Client, quality-controlled retrieval
-- 🗄️ **Data Management** — organizing, naming conventions, reproducible pipelines
+The big stuff. Locating earthquakes, imaging the crust, tracing rays through velocity models — this is where it all comes together.
+
+- 📍 **Earthquake Locations & Focal Mechanisms** — hypocenter determination, moment tensors, beach balls
+- 🌊 **Surface Wave Dispersion** — extracting phase & group velocity from earthquakes and ambient noise cross-correlations
+- 🛰️ **Receiver Functions & Stacking** — H-κ stacking for crustal thickness, CCP stacking to image the Moho
+- 🚀 **Ray Tracing with TauP** — predicting arrivals, plotting ray paths, velocity models
+- 💻 **CPS (Computer Programs in Seismology)** — Herrmann's suite for dispersion inversion, velocity analysis, and more
+- 🗺️ **Mapping & Visualization** — GMT for publication-quality seismological maps
 
 </details>
 
----
-
-<details>
-<summary><h3>🔴 Unit 6 &nbsp;— &nbsp;Data Quality, Locations & Focal Mechanisms &nbsp;<code>05 hrs</code></h3></summary>
-<br/>
-
-**Learning Outcome:** Assess data quality, locate earthquakes, and determine source characteristics.
-
-- 📊 **Data Quality Assessment** — PQLX noise characterization, station performance metrics
-- 📍 **Earthquake Locations** — hypocenter determination, velocity models, residual minimization
-- 🎯 **Focal Mechanism Determination** — moment tensors, beach ball diagrams, fault plane solutions
-
-</details>
-
----
-
-<details>
-<summary><h3>🟤 Unit 7 &nbsp;— &nbsp;Surface Wave Dispersion &nbsp;<code>04 hrs</code></h3></summary>
-<br/>
-
-**Learning Outcome:** Extract dispersion curves from both ambient noise and earthquake records.
-
-- 🌊 **Ambient Noise Surface Waves** — cross-correlation, noise-based Green's functions
-- 📈 **Phase Velocity Dispersion** — frequency-time analysis, phase picking
-- 📉 **Group Velocity Dispersion** — group delay estimation from earthquake seismograms
-- 🗺️ **Tomographic Imaging** — lateral velocity variation mapping
-
-</details>
-
----
-
-<details>
-<summary><h3>⚫ Unit 8 &nbsp;— &nbsp;Tomography, Receiver Functions & Stacking &nbsp;<code>04 hrs</code></h3></summary>
-<br/>
-
-**Learning Outcome:** Compute receiver functions and image subsurface structure via stacking techniques.
-
-- 🔬 **Seismic Tomography** — travel-time inversions, crustal & mantle velocity models
-- 🛰️ **Receiver Function Computation** — iterative time-domain deconvolution
-- 📐 **H-κ Stacking** — crustal thickness & Poisson's ratio estimation
-- 🗻️ **CCP Stacking** — common conversion point imaging, Moho mapping
-
-</details>
-
----
-
-<details>
-<summary><h3>💜 Unit 9 &nbsp;— &nbsp;Velocity Analysis, Ray Tracing & CPS &nbsp;<code>06 hrs</code></h3></summary>
-<br/>
-
-**Learning Outcome:** Perform ray tracing, measure exotic arrivals, and use Herrmann's CPS codes.
-
-- 🚀 **Ray Tracing with TauP** — arrival time prediction, phase identification, ray geometry
-- 📏 **Velocity Analysis** — Vp/Vs estimation, velocity structure refinement
-- 🎯 **SsPmP Arrivals** — processing & measuring post-critical reflections
-- 💻 **Computer Programs in Seismology (CPS)** — Herrmann's suite for dispersion & RF analysis
-
-</details>
-
----
-
-<details>
-<summary><h3>🔁 Unit 10 &nbsp;— &nbsp;Course Revision &nbsp;<code>02 hrs</code></h3></summary>
-<br/>
-
-**Learning Outcome:** Consolidate all topics and prepare for comprehensive assessment.
-
-- 📝 Full-course topic review & Q&A
-- 🧩 Integration exercises combining Units 1–9
-
-</details>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+</div>
 
 ---
 
 <br/>
 
-## 📊 Workflow Pipeline
+## 💡 What You'll Walk Away With
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="25%">
+<img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" alt="Fire" width="70" />
+
+### 🔥 Real Workflows
+Not toy examples. Pipelines that work on actual IRIS data.
+
+</td>
+<td align="center" width="25%">
+<img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" alt="Rocket" width="70" />
+
+### 🚀 Reproducible
+Run it again six months later. It still works. That's the point.
+
+</td>
+<td align="center" width="25%">
+<img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" alt="Learn" width="70" />
+
+### 📚 Terminal Native
+Everything in the command line. No black boxes, no mystery buttons.
+
+</td>
+<td align="center" width="25%">
+<img src="https://user-images.githubusercontent.com/74038190/216122069-5b8169d7-1d8e-4a13-b245-a8e4176c99f8.png" alt="Open" width="70" />
+
+### 🌐 Open & Shareable
+MIT licensed. Fork it, use it, build on it.
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+</div>
+
+---
+
+<br/>
+
+## 📊 The Pipeline at a Glance
 
 <div align="center">
 
 ```mermaid
 %%{init: {'theme':'dark', 'themeVariables': {'primaryColor':'#7c3aed','primaryTextColor':'#fff','primaryBorderColor':'#a78bfa','lineColor':'#a78bfa','secondaryColor':'#6366f1','tertiaryColor':'#312e81'}}}%%
 
-graph LR
-    subgraph ACQ ["📡 Acquisition"]
-        A[IRIS / FDSN\nData Request]
-    end
+graph TD
+    A["📡 Pull Data\nIRIS · FDSN Client"] --> B["📦 Parse & Convert\nSEED → SAC · SEGY"]
+    B --> C["🧹 Clean Up\nDetrend · Remove Instrument Response"]
+    C --> D["🎛️ Filter & Analyze\nBandpass · FFT · PSD"]
+    D --> E["🔬 Go Deep\nDispersion · Receiver Functions · Ray Tracing"]
+    E --> F["🗺️ Show Your Results\nGMT Maps · Publication Figures"]
 
-    subgraph FMT ["📦 Formats"]
-        B[SEED · SEGY · SAC\nConversion & Parsing]
-    end
-
-    subgraph PRE ["🧹 Preprocessing"]
-        C[Detrend · Demean\nInstrument Response Removal]
-    end
-
-    subgraph SIG ["🎛️ Signal Processing"]
-        D[Bandpass · Highpass\nLowpass Filtering]
-    end
-
-    subgraph SPEC ["📈 Spectral Analysis"]
-        E[FFT · PSD\nTime-Freq Analysis]
-    end
-
-    subgraph ADV ["🔬 Advanced"]
-        F[Receiver Functions\nDispersion · Tomography\nTauP Ray Tracing]
-    end
-
-    subgraph OUT ["📝 Output"]
-        G[Publication Figures\nGMT Maps · Reports]
-    end
-
-    ACQ --> FMT --> PRE --> SIG --> SPEC --> ADV --> OUT
-
-    style ACQ fill:#312e81,stroke:#7c3aed,color:#fff
-    style FMT fill:#1e1b4b,stroke:#6366f1,color:#fff
-    style PRE fill:#312e81,stroke:#a78bfa,color:#fff
-    style SIG fill:#1e1b4b,stroke:#7c3aed,color:#fff
-    style SPEC fill:#312e81,stroke:#a78bfa,color:#fff
-    style ADV fill:#1e1b4b,stroke:#c4b5fd,color:#fff
-    style OUT fill:#312e81,stroke:#ddd6fe,color:#fff
+    style A fill:#312e81,stroke:#7c3aed,stroke-width:2px,color:#e0e7ff
+    style B fill:#1e1b4b,stroke:#6366f1,stroke-width:2px,color:#e0e7ff
+    style C fill:#312e81,stroke:#a78bfa,stroke-width:2px,color:#e0e7ff
+    style D fill:#1e1b4b,stroke:#7c3aed,stroke-width:2px,color:#e0e7ff
+    style E fill:#312e81,stroke:#c4b5fd,stroke-width:2px,color:#e0e7ff
+    style F fill:#1e1b4b,stroke:#ddd6fe,stroke-width:2px,color:#e0e7ff
 ```
 
+</div>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
 </div>
 
 ---
@@ -373,87 +336,79 @@ graph LR
 
 ## 🚀 Getting Started
 
-### ⚡ 1. Clone the Repository
+### 1️⃣ Clone
 
 ```bash
 git clone https://github.com/yourusername/seismological-data-analysis.git
 cd seismological-data-analysis
 ```
 
-### 📦 2. Install Python Dependencies
+### 2️⃣ Python Dependencies
 
 ```bash
 pip install obspy numpy scipy matplotlib
 ```
 
-### ✅ 3. Verify ObsPy
+### 3️⃣ Verify
 
 ```bash
-python3 -c "import obspy; print(f'ObsPy {obspy.__version__} — ready')"
+python3 -c "import obspy; print(f'ObsPy {obspy.__version__} — good to go')"
 ```
 
-### 🔧 4. Install SAC
+### 4️⃣ Install SAC
 
-Download & install from the official IRIS page:
-> 👉 [https://ds.iris.edu/ds/nodes/dmc/software/downloads/sac/](https://ds.iris.edu/ds/nodes/dmc/software/downloads/sac/)
-
-Set up your environment variable:
+Grab it from IRIS, then point your shell at it:
 
 ```bash
+# After downloading from https://ds.iris.edu/ds/nodes/dmc/software/downloads/sac/
 export SACAUX=/path/to/sac/aux
 source /path/to/sac/bin/sacenv.sh
 ```
 
-### 🛰️ 5. Install TauP
+### 5️⃣ You're In 🎉
 
 ```bash
-pip install obspy   # TauP is bundled with ObsPy
-python3 -c "from obspy.taup import TauP_travel_time; print('TauP ready')"
+sac                                    # open SAC interactively
+python3 scripts/your_first_script.py   # or run a script
 ```
 
-### 📋 Prerequisites Summary
+<div align="center">
 
-| Requirement | Minimum Version |
-|:--|:--|
-| OS | Ubuntu 22.04+ |
+| What you need | Version |
+|:--|:--:|
+| Ubuntu | 22.04+ |
 | Python | 3.8+ |
 | Git | 2.0+ |
-| SAC | Latest (2023+) |
-| MATLAB | R2021a+ *(optional)* |
+| SAC | Latest |
+
+</div>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+</div>
 
 ---
 
 <br/>
 
-## 📖 References & Textbooks
+## 📖 Reading List
 
-### 📘 Primary Textbooks
+Not everything here is cover-to-cover reading — but keep these handy while you work through the modules.
 
-| # | Authors | Title | Year | Publisher |
-|:--:|:--|:--|:--:|:--|
-| 1 | R. B. Herrmann | Computer Programs in Seismology: An Evolving Tool for Instruction and Research | 2013 | *Seism. Res. Lett.* 84, 1081–1088 |
-| 2 | U. Agustin | Principles of Seismology | 2000 | Cambridge University Press |
+<div align="center">
 
-### 📗 Reference Books
+| 📘 Book | Why it's useful |
+|:--|:--|
+| Shearer — *Introduction to Seismology* | The go-to reference. Clear, no fluff |
+| Lowrie — *Fundamentals of Geophysics* | Broader context when you need the bigger picture |
+| Herrmann — *Computer Programs in Seismology* (2013) | The paper behind CPS — worth reading before Module 5 |
+| Gubbins — *Seismology and Plate Tectonics* | Good for understanding the tectonic setting |
 
-| # | Authors | Title | Year | Publisher |
-|:--:|:--|:--|:--:|:--|
-| 1 | P. Shearer | Introduction to Seismology | 1999 | Cambridge University Press |
-| 2 | W. Lowrie | Fundamentals of Geophysics | 2007 | Cambridge University Press |
-| 3 | D. Gubbins | Seismology and Plate Tectonics | 1990 | Cambridge University Press |
+</div>
 
-### 🌐 Online Resources
-
-<p align="center">
-
-[![IRIS DMC](https://img.shields.io/badge/IRIS-Data%20Management%20Center-3b82f6?style=flat-square&logo=globex)](https://ds.iris.edu/ds/nodes/dmc/)
-[![ObsPy](https://img.shields.io/badge/ObsPy-Documentation-e11d48?style=flat-square&logo=python)](https://docs.obspy.org/)
-[![SAC Manual](https://img.shields.io/badge/SAC-User%20Manual-f59e0b?style=flat-square&logo=bookopen)](https://ds.iris.edu/files/sac-manual/)
-[![GMT](https://img.shields.io/badge/GMT-Documentation-10b981?style=flat-square&logo=mapbox)](https://docs.generic-mapping-tools.org/)
-[![TauP](https://img.shields.io/badge/TauP-ObsPy%20Module-7c3aed?style=flat-square&logo=python)](https://docs.obspy.org/packages/autodoc/taup.html)
-[![CPS](https://img.shields.io/badge/CPS-Herrmann%20Suite-6366f1?style=flat-square&logo=bookopen)](http://www.cps.mtu.edu/cgi-bin/livewin/cps.cgi)
-
-</p>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+</div>
 
 ---
 
@@ -461,22 +416,73 @@ python3 -c "from obspy.taup import TauP_travel_time; print('TauP ready')"
 
 ## 🤝 Contributing
 
-Contributions, bug fixes, and new notebooks are welcome!
+Found a bug in one of the scripts? Got a better way to do something? Open a PR.
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="33%">
+<img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="80">
+
+### 🍴 Fork It
+
+</td>
+<td align="center" width="33%">
+<img src="https://user-images.githubusercontent.com/74038190/212257460-738ff738-247f-4445-a718-cdd0ca76e2db.gif" width="80">
+
+### ✏️ Make Your Change
+
+</td>
+<td align="center" width="33%">
+<img src="https://user-images.githubusercontent.com/74038190/212257463-4d082cb4-7483-4eaf-bc25-6dde2628aabd.gif" width="80">
+
+### 📤 Push It Back
+
+</td>
+</tr>
+</table>
+
+</div>
 
 ```bash
-# 1. Fork & clone
-git clone https://github.com/yourusername/seismological-data-analysis.git
-
-# 2. Create a feature branch
-git checkout -b feature/your-feature-name
-
-# 3. Commit with a clear message
-git add .
-git commit -m "feat: add Unit-X exercise on [topic]"
-
-# 4. Push & open a Pull Request
-git push origin feature/your-feature-name
+git checkout -b fix/your-thing
+git commit -m "fix: describe what you changed"
+git push origin fix/your-thing
+# → open a PR
 ```
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+</div>
+
+---
+
+<br/>
+
+## 📫 Resources & Links
+
+<div align="center">
+
+<p>
+<a href="https://ds.iris.edu/ds/nodes/dmc/">
+<img src="https://img.shields.io/badge/IRIS-DMC-3b82f6?style=for-the-badge&logoColor=white" />
+</a>
+<a href="https://docs.obspy.org/">
+<img src="https://img.shields.io/badge/ObsPy-Docs-e11d48?style=for-the-badge&logoColor=white" />
+</a>
+<a href="https://ds.iris.edu/files/sac-manual/">
+<img src="https://img.shields.io/badge/SAC-Manual-0891b2?style=for-the-badge&logoColor=white" />
+</a>
+<a href="https://docs.generic-mapping-tools.org/">
+<img src="https://img.shields.io/badge/GMT-Docs-10b981?style=for-the-badge&logoColor=white" />
+</a>
+<a href="https://docs.obspy.org/packages/autodoc/taup.html">
+<img src="https://img.shields.io/badge/TauP-Docs-7c3aed?style=for-the-badge&logoColor=white" />
+</a>
+</p>
+
+</div>
 
 ---
 
@@ -484,7 +490,7 @@ git push origin feature/your-feature-name
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — see [`LICENSE`](LICENSE) for details.
+MIT — see [`LICENSE`](LICENSE)
 
 ---
 
@@ -492,23 +498,24 @@ This project is licensed under the **MIT License** — see [`LICENSE`](LICENSE) 
 
 <br/>
 
-<!-- Stats -->
-<img src="https://img.shields.io/github/stars/yourusername/seismological-data-analysis?style=social" alt="Stars"/>
-&nbsp;
-<img src="https://img.shields.io/github/forks/yourusername/seismological-data-analysis?style=social" alt="Forks"/>
-&nbsp;
-<img src="https://img.shields.io/github/watchers/yourusername/seismological-data-analysis?style=social" alt="Watchers"/>
+<img src="https://img.shields.io/github/stars/yourusername/seismological-data-analysis?style=social" />
+&nbsp;&nbsp;
+<img src="https://img.shields.io/github/forks/yourusername/seismological-data-analysis?style=social" />
+&nbsp;&nbsp;
+<img src="https://img.shields.io/github/watchers/yourusername/seismological-data-analysis?style=social" />
 
 <br/><br/>
 
-<!-- Visitor Badge -->
 <img src="https://visitor-badge.laobi.icu/badge?page_id=yourusername.seismological-data-analysis" alt="Visitors"/>
 
 <br/><br/>
 
-<!-- Footer -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=120&section=footer" width="100%"/>
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
 
-<sub>💜 Built for the Seismology Community · NGPD510 Spring 2026</sub>
+<br/>
+
+### 💜 Made with passion for the Seismology Community
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=120&section=footer" width="100%"/>
 
 </div>
