@@ -488,14 +488,14 @@ See [LICENSE](LICENSE) for more information
 <br/>
 
 <!-- Stats -->
-<img src="https://img.shields.io/github/stars/yourusername/seismological-data-analysis?style=social" alt="Stars"/>
+<img src="https://github.com/Ashraf-ISM/seismological-data-analysis/tree/main)?style=social" alt="Stars"/>
 <img src="https://img.shields.io/github/forks/yourusername/seismological-data-analysis?style=social" alt="Forks"/>
 <img src="https://img.shields.io/github/watchers/yourusername/seismological-data-analysis?style=social" alt="Watchers"/>
 
 <br/><br/>
 
 <!-- Visitor Badge -->
-<img src="https://visitor-badge.laobi.icu/badge?page_id=yourusername.seismological-data-analysis" alt="Visitors"/>
+<img src="https://visitor-badge.laobi.icu/badge?page_id=Ashraf=ISM.seismological-data-analysis" alt="Visitors"/>
 
 <br/><br/>
 
