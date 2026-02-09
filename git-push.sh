@@ -1,3 +1,4 @@
+git pull --rebase origin main
 git status
 git add .
 git commit -m "All class and self script has been added"
