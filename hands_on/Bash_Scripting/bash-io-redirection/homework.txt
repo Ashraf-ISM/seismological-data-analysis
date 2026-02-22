@@ -1,0 +1,8 @@
+1.) Write Bash script that will add the current date to the end of the file name. So, if your bash
+script is called Schutt_hw3.bash, the filename is called my_file.txt, and the date is Dec. 25, 2010,
+then you would type
+>> Schutt_hw3.bash my_file.txt
+and the file name would be changed to my_file.txt.20101225.
+You may want to have a look at the man page for date.
+Call the bash script yourlastname_yourfirstname_hw3.bash and put it in our class assignment
+dropbox.

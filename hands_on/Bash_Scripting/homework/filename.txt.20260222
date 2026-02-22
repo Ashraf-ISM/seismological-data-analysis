@@ -1,0 +1,7 @@
+# THis is the file which we will use for the homework.
+Where after running the script code ./script.sh myfile.txt the current file is
+renamed to the new name myfile.txt+today date.
+
+For example: Let us consider the file name is my_file.txt and when we run the script then our new name of the file will be-
+
+my_file.txt20260222 : As bcz today date is 22 Februry 2026.

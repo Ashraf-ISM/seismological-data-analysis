@@ -1,0 +1,11 @@
+#!/bin/bash 
+# This text file is written for the purpose of the stdin and stdout examples.
+This file can be used for both stdin and stdout.
+When a bash script starts it's automatically open three communication channel.
+These channels are as followa-
+
+1. stdin - channel no.=0; purpose: Input to the program.
+
+2. stdout- channel no.=1; purpose: Normal output
+
+3. stderr - channel no.= 2; purpose: Error messages.
