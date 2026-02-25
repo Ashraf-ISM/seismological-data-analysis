@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - stationPointDistance</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="stationPointDistance">stationPointDistance</a>
+				</h3>
+					<p>
+			 True if the station is within the given distance range of the given
+                    lat and lon. 
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;stationPointDistance&gt;
+  &lt;latitude&gt;35&lt;/latitude&gt;
+  &lt;longitude&gt;-80&lt;/longitude&gt;
+  &lt;unit&gt;KILOMETER&lt;/unit&gt;
+  &lt;min&gt;0&lt;/min&gt;
+  &lt;max&gt;36&lt;/max&gt;
+&lt;/stationPointDistance&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="stationPointDistance.html" title=" Distance range from a fixed point">stationPointDistance</a>&gt; <div>
+<a href="latLonUnitRange.html" >latLonUnitRange</a> <i><a href="../../ingredients/abstractStructure.html#interleave">interleave</a></i>
+<div id="inter">
+&lt;<a href="lat.html" >latitude</a>&gt; <br />&lt;<a href="lon.html" title="A longitude value from -180 to 180">longitude</a>&gt; <br /><a href="range.html" title="A range of lengths">range</a> <br />
+</div> 
+</div>
+&lt;/<a href="stationPointDistance.html" title=" Distance range from a fixed point">stationPointDistance</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="fdsnStation">
+                                <p><a href="fdsnStation.html">fdsnStation</a>
+ contains this directly</p>
+                </section>
+            <section name="station">
+                                            <p>In <a href="station.html">station</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="stationCode.html">stationCode</a>
+</li>
+                            <li><a href="regExp.html">stationRegularExpression</a>
+</li>
+                            <li><a href="stationName.html">stationName</a>
+</li>
+                            <li><a href="operator.html">stationOperator</a>
+</li>
+                            <li><a href="depthRange.html">stationDepthRange</a>
+</li>
+                            <li><a href="stationEffectiveTimeOverlap.html">stationEffectiveTimeOverlap</a>
+</li>
+                            <li><a href="stationArea.html">stationArea</a>
+</li>
+                            <li><a href="stationBoxArea.html">stationBoxArea</a>
+</li>
+                            <li><a href="stationPolygonFile.html">stationPolygonFile</a>
+</li>
+                            <li><a href="stationPointDistance.html">stationPointDistance</a>
+</li>
+                            <li><a href="stationPointAzimuth.html">stationPointAzimuth</a>
+</li>
+                            <li><a href="printlineStationProcess.html">printlineStationProcess</a>
+</li>
+                            <li><a href="stationPointBackAzimuth.html">stationPointBackAzimuth</a>
+</li>
+                            <li><a href="stationAND.html">stationAND</a>
+</li>
+                            <li><a href="stationOR.html">stationOR</a>
+</li>
+                            <li><a href="stationNOT.html">stationNOT</a>
+</li>
+                            <li><a href="externalStationSubsetter.html">externalStationSubsetter</a>
+</li>
+                            <li><a href="belongsToVirtual.html">belongsToVirtual</a>
+</li>
+                            <li><a href="stationScript.html">stationScript</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - waveformVectorAlwaysSuccess</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="waveformVectorAlwaysSuccess">waveformVectorAlwaysSuccess</a>
+				</h3>
+					<p>
+			This executes the enclosed processor, but always returns a success regardless of whether
+                    the enclosed processor succeeded or failed. 
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;waveformVectorAlwaysSuccess&gt;
+    &lt;waveformVectorFork&gt;
+        &lt;rMean /&gt;
+        &lt;sacWriter&gt;
+        &lt;workingDir&gt;rTrendData&lt;/workingDir&gt;
+        &lt;location&gt;${network.code}.${station.code}/${event.filizedTime}/${site.code}.${channel.code}.sac&lt;/location&gt;
+    &lt;/sacWriter&gt;
+    &lt;/waveformVectorFork&gt;
+&lt;/waveformVectorAlwaysSuccess&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="waveformVectorAlwaysSuccess.html" title="Executes a subprocessor, but always returns true.">waveformVectorAlwaysSuccess</a>&gt; <div>
+<a href="waveformVectorProcessPlus.html" >waveformVectorProcessPlus</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<a href="vectorAvailableDataPlus.html" >vectorAvailableDataPlus</a> <br />
+<a href="waveformVectorProcess.html" title="Tactics for processing vectors of waveforms">waveformVectorProcess</a> <br />
+</div> 
+<br /></div>
+&lt;/<a href="waveformVectorAlwaysSuccess.html" title="Executes a subprocessor, but always returns true.">waveformVectorAlwaysSuccess</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="waveformVectorProcess">
+                                            <p>In <a href="waveformVectorProcess.html">waveformVectorProcess</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="threeComponentData.html">threeComponentData</a>
+</li>
+                            <li><a href="ANDWaveformProcessWrapper.html">ANDWaveformProcessWrapper</a>
+</li>
+                            <li><a href="ORWaveformProcessWrapper.html">ORWaveformProcessWrapper</a>
+</li>
+                            <li><a href="legacyVectorExecute.html">legacyVectorExecute</a>
+</li>
+                            <li><a href="waveformVectorFork.html">waveformVectorFork</a>
+</li>
+                            <li><a href="waveformVectorAND.html">waveformVectorAND</a>
+</li>
+                            <li><a href="waveformVectorOR.html">waveformVectorOR</a>
+</li>
+                            <li><a href="waveformVectorNOT.html">waveformVectorNOT</a>
+</li>
+                            <li><a href="waveformVectorAlwaysSuccess.html">waveformVectorAlwaysSuccess</a>
+</li>
+                            <li><a href="seismogramProcess.html">seismogramProcess</a>
+</li>
+                            <li><a href="externalVectorProcess.html">externalWaveformVectorProcess</a>
+</li>
+                            <li><a href="vectorImageProcess.html">vectorImageProcess</a>
+</li>
+                            <li><a href="particleMotionPlot.html">particleMotionPlot</a>
+</li>
+                            <li><a href="sampleSyncronize.html">sampleSyncronize</a>
+</li>
+                            <li><a href="rotateGCP.html">rotateGCP</a>
+</li>
+                            <li><a href="vectorTrim.html">vectorTrim</a>
+</li>
+                            <li><a href="vectorScript.html">vectorScript</a>
+</li>
+                            <li><a href="iterDeconReceiverFunction.html">iterDeconReceiverFunction</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

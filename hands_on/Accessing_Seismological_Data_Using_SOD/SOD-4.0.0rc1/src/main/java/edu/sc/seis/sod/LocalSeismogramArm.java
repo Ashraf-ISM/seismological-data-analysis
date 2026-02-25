@@ -1,0 +1,440 @@
+package edu.sc.seis.sod;
+
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Element;
+
+import edu.iris.dmc.seedcodec.CodecException;
+import edu.sc.seis.seisFile.fdsnws.stationxml.Channel;
+import edu.sc.seis.sod.hibernate.SodDB;
+import edu.sc.seis.sod.hibernate.eventpair.MeasurementStorage;
+import edu.sc.seis.sod.hibernate.eventpair.EventChannelPair;
+import edu.sc.seis.sod.model.common.FissuresException;
+import edu.sc.seis.sod.model.event.CacheEvent;
+import edu.sc.seis.sod.model.seismogram.LocalSeismogramImpl;
+import edu.sc.seis.sod.model.seismogram.RequestFilter;
+import edu.sc.seis.sod.model.seismogram.RequestFilterUtil;
+import edu.sc.seis.sod.model.station.ChannelId;
+import edu.sc.seis.sod.model.station.ChannelIdUtil;
+import edu.sc.seis.sod.model.status.Stage;
+import edu.sc.seis.sod.model.status.Standing;
+import edu.sc.seis.sod.model.status.Status;
+import edu.sc.seis.sod.process.waveform.WaveformAsAvailableData;
+import edu.sc.seis.sod.process.waveform.WaveformProcess;
+import edu.sc.seis.sod.process.waveform.WaveformResult;
+import edu.sc.seis.sod.source.seismogram.BatchDataRequest;
+import edu.sc.seis.sod.source.seismogram.ConstantSeismogramSourceLocator;
+import edu.sc.seis.sod.source.seismogram.SeismogramSource;
+import edu.sc.seis.sod.source.seismogram.SeismogramSourceException;
+import edu.sc.seis.sod.source.seismogram.SeismogramSourceLocator;
+import edu.sc.seis.sod.status.Fail;
+import edu.sc.seis.sod.status.Pass;
+import edu.sc.seis.sod.status.StringTree;
+import edu.sc.seis.sod.status.waveformArm.WaveformMonitor;
+import edu.sc.seis.sod.subsetter.Subsetter;
+import edu.sc.seis.sod.subsetter.availableData.AvailableDataSubsetter;
+import edu.sc.seis.sod.subsetter.channel.ChannelEffectiveTimeOverlap;
+import edu.sc.seis.sod.subsetter.eventChannel.EventChannelSubsetter;
+import edu.sc.seis.sod.subsetter.eventChannel.PassEventChannel;
+import edu.sc.seis.sod.subsetter.eventStation.EventStationSubsetter;
+import edu.sc.seis.sod.subsetter.request.AtLeastOneRequest;
+import edu.sc.seis.sod.subsetter.request.RequestSubsetter;
+import edu.sc.seis.sod.subsetter.requestGenerator.RequestGenerator;
+import edu.sc.seis.sod.util.time.ClockUtil;
+import edu.sc.seis.sod.util.time.ReduceTool;
+import edu.sc.seis.sod.util.time.SortTool;
+
+public class LocalSeismogramArm extends AbstractWaveformRecipe implements Subsetter {
+
+    public LocalSeismogramArm(Element config) throws ConfigurationException {
+        processConfig(config);
+        logger.info("EventStation: "+getEventStationSubsetter().getClass().getName());
+        logger.info("EventChannel: "+getEventChannelSubsetter().getClass().getName());
+        logger.info("RequestGenerator: "+getRequestGenerator().getClass().getName());
+        logger.info("RequestSubsetter: "+getRequestSubsetter().getClass().getName());
+        logger.info("SeismogramSourceLocator: "+getSeismogramDCLocator().getClass().getName());
+        logger.info("AvailableDataSubsetter: "+getAvailableDataSubsetter().getClass().getName());
+        WaveformProcess[] p = getProcesses();
+        for (WaveformProcess process : p) {
+            logger.info("WaveformProcess: "+process.getClass().getName());
+        }
+    }
+
+    public void handle(Element el) throws ConfigurationException {
+        Object sodObject = SodUtil.load(el, PACKAGES);
+        if(sodObject instanceof EventStationSubsetter) {
+            eventStation = (EventStationSubsetter)sodObject;
+        } else if(sodObject instanceof WaveformMonitor) {
+            addStatusMonitor((WaveformMonitor)sodObject);
+        } else if(sodObject instanceof EventChannelSubsetter) {
+            eventChannel = (EventChannelSubsetter)sodObject;
+        } else if(sodObject instanceof RequestGenerator) {
+            requestGenerator = (RequestGenerator)sodObject;
+        } else if(sodObject instanceof RequestSubsetter) {
+            request = (RequestSubsetter)sodObject;
+        } else if(sodObject instanceof SeismogramSourceLocator) {
+            dcLocator = (SeismogramSourceLocator)sodObject;
+            if (dcLocator instanceof ConstantSeismogramSourceLocator) {
+                //
+                // multithread disabled
+                //
+                if (false && Start.getRunProps().getNumWaveformWorkerThreads() == RunProperties.DEFAULT_NUM_WORKER_THREADS) {
+                    logger.info("Wrapping "+dcLocator+" to batch requests for speed. Using 6 threads.");
+                    Start.getRunProps().setNumWaveformWorkerThreads(6);
+                }    
+                dcLocator = new BatchDataRequest(dcLocator);
+            }
+        } else if(sodObject instanceof AvailableDataSubsetter) {
+            availData = (AvailableDataSubsetter)sodObject;
+        } else if(sodObject instanceof WaveformProcess) {
+            add((WaveformProcess)sodObject);
+        } else {
+            throw new ConfigurationException("Unknown tag in LocalSeismogramArm config. " + el.getLocalName());
+        } // end of else
+    }
+
+    public EventChannelSubsetter getEventChannelSubsetter() {
+        return eventChannel;
+    }
+
+    public RequestGenerator getRequestGenerator() {
+        return requestGenerator;
+    }
+
+    public RequestSubsetter getRequestSubsetter() {
+        return request;
+    }
+
+    public AvailableDataSubsetter getAvailableDataSubsetter() {
+        return availData;
+    }
+
+    public SeismogramSourceLocator getSeismogramDCLocator() {
+        return dcLocator;
+    }
+
+    public WaveformProcess[] getProcesses() {
+        return (WaveformProcess[])processes.toArray(new WaveformProcess[0]);
+    }
+
+    public void add(WaveformProcess proc) {
+        if(proc == null) {
+            throw new IllegalArgumentException("WaveformProcess cannot be null");
+        }
+        synchronized(this) {
+            if(processes == null) {
+                processes = new LinkedList<WaveformProcess>();
+            }
+        }
+        processes.add(proc);
+    }
+
+    public void processLocalSeismogramArm(EventChannelPair ecp) {
+        logger.debug("Begin ECP: " + ecp.toString());
+        logger.debug("      ESP: " + ecp.getEsp().toString());
+        ecp.update(Status.get(Stage.EVENT_CHANNEL_SUBSETTER, Standing.IN_PROG));
+        StringTree passed;
+        CacheEvent eventAccess = ecp.getEvent();
+        Channel channel = ecp.getChannel();
+        synchronized(eventChannel) {
+            try {
+                passed = eventChannel.accept(eventAccess,
+                                             channel,
+                                             ecp.getMeasurements());
+            } catch(Throwable e) {
+                MotionVectorArm.handle(ecp, Stage.EVENT_CHANNEL_SUBSETTER, e, null, "");
+                return;
+            }
+        }
+        if(passed.isSuccess()) {
+            processRequestGeneratorSubsetter(ecp);
+        } else {
+            ecp.update(Status.get(Stage.EVENT_CHANNEL_SUBSETTER, Standing.REJECT));
+            failLogger.info(ecp + ": " + passed.toString());
+        }
+    }
+
+    public void processRequestGeneratorSubsetter(EventChannelPair ecp) {
+        RequestFilter[] infilters;
+        synchronized(requestGenerator) {
+            try {
+                infilters = requestGenerator.generateRequest(ecp.getEvent(), ecp.getChannel(), ecp.getCookieJar());
+            } catch(Throwable e) {
+                MotionVectorArm.handle(ecp, Stage.REQUEST_SUBSETTER, e, null, "");
+                return;
+            }
+        }
+        if (infilters.length == 0) {
+            ecp.update(Status.get(Stage.REQUEST_SUBSETTER, Standing.REJECT));
+            failLogger.info("No request generated: "+ecp.toString());
+        } else {
+            processRequestSubsetter(ecp, SortTool.byBeginTimeAscending(infilters));
+        }
+    }
+
+    private boolean firstRequest;
+
+    public void processRequestSubsetter(EventChannelPair ecp, RequestFilter[] infilters) {
+        StringTree passed;
+        // check channel overlaps request
+        RequestFilter coveringRequest = ReduceTool.cover(infilters);
+        ChannelEffectiveTimeOverlap chanOverlap = new ChannelEffectiveTimeOverlap(coveringRequest.startTime,
+                                                                                  coveringRequest.endTime);
+        passed = chanOverlap.accept(ecp.getChannel(), null); // net source not needed by chanOverlap
+        if ( ! passed.isSuccess()) {
+            ecp.update(Status.get(Stage.REQUEST_SUBSETTER, Standing.REJECT));
+            failLogger.info(ecp.toString()+" channel doesn't overlap request.");
+            return;
+        }
+        synchronized(request) {
+            try {
+                passed = request.accept(ecp.getEvent(), ecp.getChannel(), infilters, ecp.getCookieJar());
+            } catch(Throwable e) {
+                MotionVectorArm.handle(ecp, Stage.REQUEST_SUBSETTER, e, null, requestToString(infilters, null));
+                return;
+            }
+        }
+        if(getProcesses().length == 0 
+                && getAvailableDataSubsetter().equals(defaultAvailableDataSubsetter)) {
+            if(firstRequest) {
+                firstRequest = false;
+                logger.info("No seismogram processors have been set, so no data is being requested.  If you're only generating BreqFast requests, this is fine.  Otherwise, it's probably an error.");
+            }
+            ecp.update(Status.get(Stage.PROCESSOR, Standing.SUCCESS));
+            return;
+        }
+        if(passed.isSuccess()) {
+            SeismogramSource dataCenter = null;
+            synchronized(dcLocator) {
+                try {
+                    dataCenter = dcLocator.getSeismogramSource(ecp.getEvent(),
+                                                           ecp.getChannel(),
+                                                           infilters,
+                                                           ecp.getCookieJar());
+                } catch(Throwable e) {
+                    MotionVectorArm.handle(ecp, Stage.AVAILABLE_DATA_SUBSETTER, e, dataCenter, requestToString(infilters, null));
+                    return;
+                }
+            }
+            processAvailableDataSubsetter(ecp, dataCenter, infilters);
+        } else {
+            ecp.update(Status.get(Stage.REQUEST_SUBSETTER, Standing.REJECT));
+            failLogger.info(ecp.toString());
+        }
+    }
+
+    public void processAvailableDataSubsetter(EventChannelPair ecp,
+                                              SeismogramSource seismogramSource,
+                                              RequestFilter[] infilters) {
+        LinkedList<WaveformProcess> processList = new LinkedList<WaveformProcess>();
+        processList.addAll(processes);
+        RequestFilter[] outfilters = null;
+        if(infilters.length > 0) {
+            logger.debug("Trying available_data for " + ChannelIdUtil.toString(infilters[0].channelId) + " from "
+                    + infilters[0].startTime.toString() + " to " + infilters[0].endTime.toString());
+        } else {
+            logger.debug("Empty request generated for " + ChannelIdUtil.toString(ecp.getChannel()));
+        }
+        boolean noImplAvailableData = true;
+            outfilters = infilters;
+            // wrap availData as a WaveformProcess
+            processList.addFirst(new WaveformAsAvailableData(availData));
+
+          //TODO eliminate available data step, create availability web service subsetter, but part of request subsetters???
+                  
+                  
+        outfilters = SortTool.byBeginTimeAscending(outfilters);
+        StringTree passed = new Pass(availData); // init just for noImplAvailableData case
+        if (!noImplAvailableData) {
+        synchronized(availData) {
+            try {
+                passed = availData.accept(ecp.getEvent(), ecp.getChannel(), infilters, outfilters, ecp.getCookieJar());
+            } catch(Throwable e) {
+                MotionVectorArm.handle(ecp, Stage.AVAILABLE_DATA_SUBSETTER, e, seismogramSource, requestToString(infilters, outfilters));
+                return;
+            }
+        }
+        }
+        if(noImplAvailableData || passed.isSuccess()) {
+            for(int i = 0; i < infilters.length; i++) {
+                logger.debug("Getting seismograms " + ChannelIdUtil.toString(infilters[i].channelId) + " from "
+                        + infilters[i].startTime.toString() + " to " + infilters[i].endTime.toString());
+            } // end of for (int i=0; i<outFilters.length; i++)
+            // Using infilters as asking for extra should not hurt
+            Instant before = ClockUtil.now();
+            LocalSeismogramImpl[] localSeismograms = new LocalSeismogramImpl[0];
+            if(outfilters.length != 0) {
+                
+                
+                
+                
+                try {
+                    localSeismograms = seismogramSource.retrieveData(Arrays.asList(infilters)).toArray(new LocalSeismogramImpl[0]);
+                } catch(SeismogramSourceException e) {
+                    MotionVectorArm.handle(ecp, Stage.DATA_RETRIEVAL, e, seismogramSource, requestToString(infilters, outfilters));
+                    return;
+                }
+                logger.debug("after successful retrieve_seismograms");
+                if(localSeismograms.length > 0
+                        && !ChannelIdUtil.areEqual(localSeismograms[0].channel_id, infilters[0].channelId)) {
+                    // must be server error
+                    logger.warn("X Channel id in returned seismogram doesn not match channelid in request. req="
+                            + ChannelIdUtil.toString(infilters[0].channelId)
+                            + " seis="
+                            + ChannelIdUtil.toString(localSeismograms[0].channel_id));
+                }
+            } else {
+                failLogger.info(ecp + " retrieve data returned no seismograms: ");
+                localSeismograms = new LocalSeismogramImpl[0];
+            } // end of else
+            Instant after = ClockUtil.now();
+            logger.info("After getting "+localSeismograms.length+" seismograms, time taken=" + 
+                    ClockUtil.formatDuration(before, after));
+            LinkedList tempForCast = new LinkedList();
+            for(int i = 0; i < localSeismograms.length; i++) {
+                if(localSeismograms[i] == null) {
+                    ecp.update(Status.get(Stage.DATA_RETRIEVAL, Standing.REJECT));
+                    logger.error("Got null in seismogram array " + ChannelIdUtil.toString(ecp.getChannel()));
+                    return;
+                }
+                Channel ecpChan = ecp.getChannel();
+                if(!ChannelIdUtil.areEqual(localSeismograms[i].channel_id, infilters[0].channelId)) {
+                    // must be server error
+                    logger.warn("Channel id in returned seismogram doesn not match channelid in request. req="
+                            + ChannelIdUtil.toStringFormatDates(infilters[0].channelId) + " seis="
+                            + ChannelIdUtil.toStringFormatDates(localSeismograms[i].channel_id));
+                    // fix seis with original id
+                    localSeismograms[i].channel_id = ChannelId.of(ecpChan);
+                } // end of if ()
+                tempForCast.add(localSeismograms[i]);
+            } // end of for (int i=0; i<localSeismograms.length; i++)
+            LocalSeismogramImpl[] tempLocalSeismograms = (LocalSeismogramImpl[])tempForCast.toArray(new LocalSeismogramImpl[0]);
+            processSeismograms(ecp, seismogramSource, infilters, outfilters, 
+                               SortTool.byBeginTimeAscending(tempLocalSeismograms),
+                               processList);
+        } else {
+            if(ClockUtil.now().minus(Start.getRunProps().getSeismogramLatency()).isAfter(ecp.getEvent()
+                    .getOrigin()
+                    .getOriginTime())) {
+                logger.info("Retry Reject, older than acceptible latency: "+Start.getRunProps().getSeismogramLatency()+" "+ecp);
+                ecp.update(Status.get(Stage.AVAILABLE_DATA_SUBSETTER, Standing.REJECT));
+            } else if (ecp.getNumRetries() >= SodDB.getSingleton().getMaxRetries()){
+                logger.info("Retry Reject, at max retries: "+SodDB.getSingleton().getMaxRetries()+" "+ecp);
+                ecp.update(Status.get(Stage.AVAILABLE_DATA_SUBSETTER, Standing.REJECT));
+            } else {
+                logger.info("Retry Retry, within acceptible latency: "+Start.getRunProps().getSeismogramLatency()+" "+ecp);
+                ecp.update(Status.get(Stage.AVAILABLE_DATA_SUBSETTER, Standing.RETRY));
+            }
+            failLogger.info(ecp + ": " + passed.toString());
+        }
+    }
+
+    public void processSeismograms(EventChannelPair ecp,
+                                   SeismogramSource dataCenter,
+                                   RequestFilter[] infilters,
+                                   RequestFilter[] outfilters,
+                                   LocalSeismogramImpl[] localSeismograms,
+                                   List<WaveformProcess> processList) {
+        WaveformProcess processor = null;
+        Iterator<WaveformProcess> it = processList.iterator();
+        WaveformResult result = new WaveformResult(true, localSeismograms, this);
+        try {
+            while (it.hasNext() && result.isSuccess()) {
+                processor = it.next();
+                result = runProcessorThreadCheck(processor,
+                                                 ecp.getEvent(),
+                                                 ecp.getChannel(),
+                                                 infilters,
+                                                 outfilters,
+                                                 result.getSeismograms(),
+                                                 ecp.getCookieJar());
+            } // end of while (it.hasNext())
+            logger.debug("finished with " + ChannelIdUtil.toStringNoDates(ecp.getChannel()) + " success="
+                    + result.isSuccess());
+            if (result.isSuccess()) {
+                ecp.update(Status.get(Stage.PROCESSOR, Standing.SUCCESS));
+            } else {
+                ecp.update(Status.get(Stage.PROCESSOR, Standing.REJECT));
+                failLogger.info(ecp + " " + result.getReason());
+            }
+        } catch(Throwable e) {
+            MotionVectorArm.handle(ecp, Stage.PROCESSOR, e, dataCenter, requestToString(infilters, outfilters));
+            ecp.update(Status.get(Stage.PROCESSOR, Standing.SYSTEM_FAILURE));
+            failLogger.info(ecp + " " + e);
+        }
+        logger.debug("finished with " + ChannelIdUtil.toStringNoDates(ecp.getChannel()));
+    }
+
+    public static WaveformResult runProcessorThreadCheck(WaveformProcess processor,
+                                                               CacheEvent event,
+                                                               Channel channel,
+                                                               RequestFilter[] original,
+                                                               RequestFilter[] available,
+                                                               LocalSeismogramImpl[] seismograms,
+                                                               MeasurementStorage cookieJar) throws Exception {
+        WaveformResult out;
+        if (processor instanceof Threadable && ((Threadable)processor).isThreadSafe()) {
+            out = internalRunProcessor(processor, event, channel, original, available, seismograms, cookieJar);
+        } else {
+            synchronized(processor) {
+                out = internalRunProcessor(processor, event, channel, original, available, seismograms, cookieJar);
+            }
+        }
+        if (out == null) {
+            // badly behaved processor, assume success???
+            logger.warn("Processor "+processor.getClass().getName()+" returned null for WaveformResult: "+processor.getClass());
+            return new WaveformResult(seismograms, new Pass(processor));
+        }
+        return out;
+    }
+    
+    private static WaveformResult internalRunProcessor(WaveformProcess processor,
+                                                       CacheEvent event,
+                                                       Channel channel,
+                                                       RequestFilter[] original,
+                                                       RequestFilter[] available,
+                                                       LocalSeismogramImpl[] seismograms,
+                                                       MeasurementStorage cookieJar) throws Exception {
+        WaveformResult result;
+        try {
+            result = processor.accept(event, channel, original, available, seismograms, cookieJar);
+        } catch(FissuresException e) {
+            if (e.getCause() instanceof CodecException) {
+                result = new WaveformResult(seismograms, new Fail(processor, "Unable to decompress data", e));
+            } else {
+                throw e;
+            }
+        } catch(CodecException e) {
+            result = new WaveformResult(seismograms, new Fail(processor, "Unable to decompress data", e));
+        }
+        return result;
+    }
+
+    protected static String requestToString(RequestFilter[] in, RequestFilter[] avail) {
+        String message = "";
+        message += "\n in=" + RequestFilterUtil.toString(in);
+        message += "\n avail=" + RequestFilterUtil.toString(avail);
+        return message;
+    }
+    
+
+    private EventChannelSubsetter eventChannel = new PassEventChannel();
+
+    private RequestGenerator requestGenerator;
+
+    private RequestSubsetter request = new AtLeastOneRequest();
+    
+    private AvailableDataSubsetter availData = defaultAvailableDataSubsetter;
+
+    private LinkedList<WaveformProcess> processes = new LinkedList<WaveformProcess>();
+
+    private static final Logger logger = LoggerFactory.getLogger(LocalSeismogramArm.class);
+
+    private static final org.slf4j.Logger failLogger = org.slf4j.LoggerFactory.getLogger("Fail.Waveform");
+}// LocalSeismogramArm

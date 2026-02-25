@@ -1,0 +1,43 @@
+package edu.sc.seis.sod.subsetter.channel;
+
+import java.time.Duration;
+
+import org.w3c.dom.Element;
+
+import edu.sc.seis.seisFile.fdsnws.stationxml.Channel;
+import edu.sc.seis.sod.ConfigurationException;
+import edu.sc.seis.sod.SodUtil;
+import edu.sc.seis.sod.model.common.SamplingImpl;
+import edu.sc.seis.sod.model.common.UnitImpl;
+import edu.sc.seis.sod.source.network.NetworkSource;
+import edu.sc.seis.sod.status.StringTree;
+import edu.sc.seis.sod.status.StringTreeLeaf;
+import edu.sc.seis.sod.subsetter.RangeSubsetter;
+
+public class Sampling extends RangeSubsetter implements ChannelSubsetter {
+
+    public Sampling(Element config) throws ConfigurationException {
+        super(config, 0, Integer.MAX_VALUE);
+        Duration interval = SodUtil.loadTimeInterval(SodUtil.getElement(config,
+                                                                            "interval"));
+        min = getHertz((int)getMinValue(), interval);
+        max = getHertz((int)getMaxValue(), interval);
+    }
+
+    public StringTree accept(Channel channel, NetworkSource network)
+            throws Exception {
+        return new StringTreeLeaf(this, accept(channel.getSampleRate().getValue()));
+    }
+
+    public boolean accept(SamplingImpl channelSampling) {
+        return accept(getHertz(channelSampling));
+    }
+
+    double getHertz(int val, Duration interval) {
+        return getHertz(new SamplingImpl(val, interval));
+    }
+
+    double getHertz(SamplingImpl sampling) {
+        return sampling.getFrequency().getValue(UnitImpl.HERTZ);
+    }
+}

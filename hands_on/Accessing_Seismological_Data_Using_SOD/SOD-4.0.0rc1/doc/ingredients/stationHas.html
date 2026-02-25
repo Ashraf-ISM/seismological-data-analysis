@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - stationHas</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="stationHas">stationHas</a>
+				</h3>
+					<p>
+			The output is true if at least one channel in the station matches each of the enclosed
+                    channel subsetters. For example this could be used with a channelNOT to select SH? only if the
+                    station does not have BH?.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;stationHas&gt;
+  &lt;siteCode&gt;00&lt;/siteCode&gt;
+&lt;/stationHas&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="stationHas.html" title="Matches the current channel if the enclosed channel subsetters are satisfied by the channels in the station">stationHas</a>&gt; <div>
+<a href="channel.html" title="Ingredients for selecting channels">channel</a> <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i> <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="alwaysSuccess.html" title="Runs the enclosed subsetters in order until one fails, then passes the channel">alwaysSuccess</a>&gt; <br />&lt;<a href="bandCode.html" title="Matches the band code of a channel">bandCode</a>&gt; <br />&lt;<a href="channelAND.html" title="Matches all enclosed channel subsetters">channelAND</a>&gt; <br />&lt;<a href="channelCode.html" title="Matches the entire channel code">channelCode</a>&gt; <br />&lt;<a href="channelEffectiveTimeOverlap.html" title="Matches if the channel effective time overlaps the given time range">channelEffectiveTimeOverlap</a>&gt; <br />&lt;<a href="channelNOT.html" title="Matches the negated output of the enclosed channel subsetter">channelNOT</a>&gt; <br />&lt;<a href="channelOR.html" title="Matches at least one enclosed channel subsetter">channelOR</a>&gt; <br />&lt;<a href="channelScript.html" title="Runs an script channel subsetter">channelScript</a>&gt; <br />&lt;<a href="clockId.html" title="Matches the clock id of the channel's instrumentation">clockId</a>&gt; <br />&lt;<a href="clockManufacturer.html" title="Matches the clock manufacturer of the channel's instrumentation">clockManufacturer</a>&gt; <br />&lt;<a href="clockModel.html" title="Matches the clock model of the channel's instrumentation">clockModel</a>&gt; <br />&lt;<a href="clockSerial.html" title="Matches the clock's serial number of the channel's instrumentation">clockSerial</a>&gt; <br />&lt;<a href="clockType.html" title="Matches the clock type of the channel's instrumentation">clockType</a>&gt; <br />&lt;<a href="dasId.html" title="Matches the DAS id of the channel's instrumentation">dasId</a>&gt; <br />&lt;<a href="dasManufacturer.html" title="Matches the DAS manufacturer of the channel's instrumentation">dasManufacturer</a>&gt; <br />&lt;<a href="dasModel.html" title="Matches the DAS's model of the channel's instrumentation">dasModel</a>&gt; <br />&lt;<a href="dasSerial.html" title="Matches the DAS's serial number of the channel's instrumentation">dasSerial</a>&gt; <br />&lt;<a href="dasStyle.html" title="Matches the DAS's recording style of the channel's instrumentation">dasStyle</a>&gt; <br />&lt;<a href="externalChannelSubsetter.html" title="Use a channel subsetter external to SOD">externalChannelSubsetter</a>&gt; <br />&lt;<a href="gainCode.html" title="Matches a gain code in a channel code">gainCode</a>&gt; <br />&lt;<a href="hadDataLastWeek.html" title="Checks if a data center has data for a channel for the past week">hadDataLastWeek</a>&gt; <br />&lt;<a href="hasNegativeSensitivity.html" title="Passes channels with a sensitivity less than 0">hasNegativeSensitivity</a>/&gt;
+ <br />&lt;<a href="hasResponse.html" title="Passes a channel if the network server has reponse information for it">hasResponse</a>/&gt;
+ <br />&lt;<a href="hasSensitivity.html" title="Passes a channel if the network server has sensitivity information for it">hasSensitivity</a>/&gt;
+ <br />&lt;<a href="isFlipped.html" title="Passes channels whose orientation code are inverted with regards to their orientation.">isFlipped</a>/&gt;
+ <br />&lt;<a href="isGroupable.html" title="Passes channels that can be grouped with other channels at the site to make 3 components of motion.">isGroupable</a>/&gt;
+ <br />&lt;<a href="orientationAzimuthRange.html" title="Matches the azimuth of a channel">orientationAzimuthRange</a>&gt; <br />&lt;<a href="orientationCode.html" title="Matches a orientation code in a channel code">orientationCode</a>&gt; <br />&lt;<a href="orientationDipRange.html" title="Matches the dip of a channel">orientationDipRange</a>&gt; <br />&lt;<a href="orientationRange.html" title="Checks if a channel's orientation lies within a range">orientationRange</a>&gt; <br />&lt;<a href="printlineChannelProcess.html" title="Prints every successful channel to the console or to the specified file">printlineChannelProcess</a>&gt; <br />&lt;<a href="repairSensitivity.html" title="Corrects sensitivity information for a channel from the response if the sensitivity is incorrect.">repairSensitivity</a>/&gt;
+ <br />&lt;<a href="responseFilterType.html" title="Matches the type of the filter in a stage">responseFilterType</a>&gt; <br />&lt;<a href="responseWriter.html" title="Prints channel responses to file">responseWriter</a>&gt; <br />&lt;<a href="sacPoleZeroWriter.html" title="Prints channel poles and zeros to file">sacPoleZeroWriter</a>&gt; <br />&lt;<a href="sampling.html" title="Matches if the sampling rate of the channel is within the range">sampling</a>&gt; <br />&lt;<a href="sensorId.html" title="Matches the sensor id of the channel's instrumentation">sensorId</a>&gt; <br />&lt;<a href="sensorManufacturer.html" title="Matches the sensor manufacturer of the channel's instrumentation">sensorManufacturer</a>&gt; <br />&lt;<a href="sensorModel.html" title="Matches the sensor's model of the channel's instrumentation">sensorModel</a>&gt; <br />&lt;<a href="sensorNominalHighFreq.html" title="Matches the sensor's nominal high frequency of the channel's instrumentation">sensorNominalHighFreq</a>&gt; <br />&lt;<a href="sensorNominalLowFreq.html" title="Matches the sensor's nominal low frequency of the channel's instrumentation">sensorNominalLowFreq</a>&gt; <br />&lt;<a href="sensorSerial.html" title="Matches the sensor's serial number of the channel's instrumentation">sensorSerial</a>&gt; <br />&lt;<a href="siteArea.html" title="Matches sites that are within a given area">siteArea</a>&gt; <br />&lt;<a href="siteBoxArea.html" title="Accepts sites that occur within a lat lon box ">siteBoxArea</a>&gt; <br />&lt;<a href="siteCode.html" title="Matches a site code">siteCode</a>&gt; <br />&lt;<a href="siteDepthRange.html" title="Matches sites at a range of depths below the surface">siteDepthRange</a>&gt; <br />&lt;<a href="siteEffectiveTimeOverlap.html" title="Matches if the site effective time overlaps the given time range">siteEffectiveTimeOverlap</a>&gt; <br />&lt;<a href="sitePolygonFile.html" title="Reads in a file with lat long points and accepts any site that falls inside the shape they create">sitePolygonFile</a>&gt; <br />&lt;<a href="stageInputUnit.html" title="Matches the input units of a stage">stageInputUnit</a>&gt; <br />&lt;<a href="stageOutputUnit.html" title="Matches the output units of a stage">stageOutputUnit</a>&gt; <br />&lt;<a href="stageTransferType.html" title="Matches the input units of a stage">stageTransferType</a>&gt; <br />&lt;<a href="stationHas.html" title="Matches the current channel if the enclosed channel subsetters are satisfied by the channels in the station">stationHas</a>&gt; <br /></div> 
+<br /></div>
+&lt;/<a href="stationHas.html" title="Matches the current channel if the enclosed channel subsetters are satisfied by the channels in the station">stationHas</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="channel">
+                                            <p>In <a href="channel.html">channel</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="siteCode.html">siteCode</a>
+</li>
+                            <li><a href="siteDepthRange.html">siteDepthRange</a>
+</li>
+                            <li><a href="siteEffectiveTimeOverlap.html">siteEffectiveTimeOverlap</a>
+</li>
+                            <li><a href="siteArea.html">siteArea</a>
+</li>
+                            <li><a href="siteBoxArea.html">siteBoxArea</a>
+</li>
+                            <li><a href="sitePolygonFile.html">sitePolygonFile</a>
+</li>
+                            <li><a href="channelCode.html">channelCode</a>
+</li>
+                            <li><a href="bandCode.html">bandCode</a>
+</li>
+                            <li><a href="gainCode.html">gainCode</a>
+</li>
+                            <li><a href="orientationCode.html">orientationCode</a>
+</li>
+                            <li><a href="sampling.html">sampling</a>
+</li>
+                            <li><a href="channelEffectiveTimeOverlap.html">channelEffectiveTimeOverlap</a>
+</li>
+                            <li><a href="orientationRange.html">orientationRange</a>
+</li>
+                            <li><a href="orientationAzimuthRange.html">orientationAzimuthRange</a>
+</li>
+                            <li><a href="orientationDipRange.html">orientationDipRange</a>
+</li>
+                            <li><a href="channelAND.html">channelAND</a>
+</li>
+                            <li><a href="channelOR.html">channelOR</a>
+</li>
+                            <li><a href="channelNOT.html">channelNOT</a>
+</li>
+                            <li><a href="externalChannelSubsetter.html">externalChannelSubsetter</a>
+</li>
+                            <li><a href="hadDataLastWeek.html">hadDataLastWeek</a>
+</li>
+                            <li><a href="printlineChannelProcess.html">printlineChannelProcess</a>
+</li>
+                            <li><a href="responseWriter.html">responseWriter</a>
+</li>
+                            <li><a href="sacPoleZeroWriter.html">sacPoleZeroWriter</a>
+</li>
+                            <li><a href="stationHas.html">stationHas</a>
+</li>
+                            <li><a href="alwaysSuccess.html">alwaysSuccess</a>
+</li>
+                            <li><a href="hasResponse.html">hasResponse</a>
+</li>
+                            <li><a href="hasSensitivity.html">hasSensitivity</a>
+</li>
+                            <li><a href="repairSensitivity.html">repairSensitivity</a>
+</li>
+                            <li><a href="responseFilterType.html">responseFilterType</a>
+</li>
+                            <li><a href="stageTransferType.html">stageTransferType</a>
+</li>
+                            <li><a href="stageInputUnit.html">stageInputUnit</a>
+</li>
+                            <li><a href="stageOutputUnit.html">stageOutputUnit</a>
+</li>
+                            <li><a href="clockId.html">clockId</a>
+</li>
+                            <li><a href="clockManufacturer.html">clockManufacturer</a>
+</li>
+                            <li><a href="clockModel.html">clockModel</a>
+</li>
+                            <li><a href="clockSerial.html">clockSerial</a>
+</li>
+                            <li><a href="clockType.html">clockType</a>
+</li>
+                            <li><a href="dasId.html">dasId</a>
+</li>
+                            <li><a href="dasManufacturer.html">dasManufacturer</a>
+</li>
+                            <li><a href="dasModel.html">dasModel</a>
+</li>
+                            <li><a href="dasSerial.html">dasSerial</a>
+</li>
+                            <li><a href="dasStyle.html">dasStyle</a>
+</li>
+                            <li><a href="sensorId.html">sensorId</a>
+</li>
+                            <li><a href="sensorManufacturer.html">sensorManufacturer</a>
+</li>
+                            <li><a href="sensorModel.html">sensorModel</a>
+</li>
+                            <li><a href="sensorSerial.html">sensorSerial</a>
+</li>
+                            <li><a href="sensorNominalHighFreq.html">sensorNominalHighFreq</a>
+</li>
+                            <li><a href="sensorNominalLowFreq.html">sensorNominalLowFreq</a>
+</li>
+                            <li><a href="hasNegativeSensitivity.html">hasNegativeSensitivity</a>
+</li>
+                            <li><a href="isFlipped.html">isFlipped</a>
+</li>
+                            <li><a href="isGroupable.html">isGroupable</a>
+</li>
+                            <li><a href="channelScript.html">channelScript</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

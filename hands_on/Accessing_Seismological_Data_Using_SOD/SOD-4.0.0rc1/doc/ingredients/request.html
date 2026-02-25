@@ -1,0 +1,242 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - request</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="open">
+			waveformArm
+    	</li>
+	</a>
+	               <ul> 	<a href="eventStation.html">
+		<li>
+			eventStation
+    	</li>
+	</a>
+                	<a href="eventChannel.html">
+		<li>
+			eventChannel
+    	</li>
+	</a>
+                	<a href="requestGenerator.html">
+		<li>
+			requestGenerator
+    	</li>
+	</a>
+                	<a href="request.html">
+		<li id="selected">
+			request
+    	</li>
+	</a>
+                	<a href="seismogramSource.html">
+		<li>
+			seismogramSource
+    	</li>
+	</a>
+                	<a href="availableData.html">
+		<li>
+			availableData
+    	</li>
+	</a>
+                	<a href="seismogramProcess.html">
+		<li>
+			seismogramProcess
+    	</li>
+	</a>
+            </ul>
+	  	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="request">request</a>
+				</h3>
+		            <p>
+            Ingredients that work based on the generated request
+            </p>
+			</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;requestAND&gt;
+    &lt;requestPrint /&gt;
+    &lt;externalRequest&gt;
+        &lt;classname&gt;edu.somewhere.seis.sodExt.subsetters.SampleExternalRequest&lt;/classname&gt;
+    &lt;/externalRequest&gt;
+&lt;/requestAND&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<a href="request.html" title="Ingredients that work based on the generated request">request</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="atLeastOneRequest.html" title="Only pass if there is at least one request.">atLeastOneRequest</a>/&gt;
+ <br />&lt;<a href="breqFastRequest.html" title="Creates a breqfast request and saves it to a file and returns true">breqFastRequest</a>&gt; <br />&lt;<a href="externalRequestSubsetter.html" title="Use a request subsetter external to SOD">externalRequestSubsetter</a>&gt; <br />&lt;<a href="netDCRequest.html" title="Creates a NetDC request and saves it to a file and returns true">netDCRequest</a>&gt; <br />&lt;<a href="plottableRequest.html" title="Retrieves plottables for the given request.">plottableRequest</a>&gt; <br />&lt;<a href="printlineRequest.html" title="Print out information about the request">printlineRequest</a>&gt; <br />&lt;<a href="requestAND.html" title="Matches all enclosed requests">requestAND</a>&gt; <br />&lt;<a href="requestNOT.html" title="Matches the negated output of the enclosed request">requestNOT</a>&gt; <br />&lt;<a href="requestOR.html" title="Matches at least one enclosed request">requestOR</a>&gt; <br />&lt;<a href="requestPrint.html" title="Prints the Request and returns true">requestPrint</a>/&gt;
+ <br />&lt;<a href="requestScript.html" title="Runs a script request subsetter">requestScript</a>&gt; <br /></div> 
+<br />
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="ANDRequestWrapper">
+                                <p><a href="ANDRequestWrapper.html">ANDRequestWrapper</a>
+ contains this directly</p>
+                </section>
+            <section name="ORRequestWrapper">
+                                <p><a href="ORRequestWrapper.html">ORRequestWrapper</a>
+ contains this directly</p>
+                </section>
+            <section name="availableDataPlus">
+                                            <p>In <a href="availableDataPlus.html">availableDataPlus</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="availableData.html">availableData</a>
+</li>
+                            <li><a href="eventChannel.html">eventChannel</a>
+</li>
+                            <li><a href="eventStation.html">eventStation</a>
+</li>
+                            <li><a href="request.html">request</a>
+</li>
+                            <li><a href="channel.html">channel</a>
+</li>
+                            <li><a href="origin.html">origin</a>
+</li>
+            </ul>
+                            </section>
+            <section name="vectorRequest">
+                                            <p>In <a href="vectorRequest.html">vectorRequest</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="ANDRequestWrapper.html">ANDRequestWrapper</a>
+</li>
+                            <li><a href="ORRequestWrapper.html">ORRequestWrapper</a>
+</li>
+                            <li><a href="vectorRequestAND.html">vectorRequestAND</a>
+</li>
+                            <li><a href="vectorRequestOR.html">vectorRequestOR</a>
+</li>
+                            <li><a href="vectorRequestNOT.html">vectorRequestNOT</a>
+</li>
+                            <li><a href="vectorRequestScript.html">vectorRequestScript</a>
+</li>
+                            <li><a href="externalVectorRequest.html">externalVectorRequest</a>
+</li>
+                            <li><a href="request.html">request</a>
+</li>
+            </ul>
+                            </section>
+            <section name="waveformArm">
+                                <p><a href="waveformArm.html">waveformArm</a>
+ contains this directly</p>
+                </section>
+            </div>
+       			</div>
+    </body>
+</html>

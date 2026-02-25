@@ -1,0 +1,219 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - eventStation</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="open">
+			waveformArm
+    	</li>
+	</a>
+	               <ul> 	<a href="eventStation.html">
+		<li id="selected">
+			eventStation
+    	</li>
+	</a>
+                	<a href="eventChannel.html">
+		<li>
+			eventChannel
+    	</li>
+	</a>
+                	<a href="requestGenerator.html">
+		<li>
+			requestGenerator
+    	</li>
+	</a>
+                	<a href="request.html">
+		<li>
+			request
+    	</li>
+	</a>
+                	<a href="seismogramSource.html">
+		<li>
+			seismogramSource
+    	</li>
+	</a>
+                	<a href="availableData.html">
+		<li>
+			availableData
+    	</li>
+	</a>
+                	<a href="seismogramProcess.html">
+		<li>
+			seismogramProcess
+    	</li>
+	</a>
+            </ul>
+	  	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="eventStation">eventStation</a>
+				</h3>
+					<p>
+			Subsetters that depend on both event and station, such as distance, go here.
+                In addition to the ones directly listed here, any origin, network or station
+                subsetter may also be used here within a logical subsetter. 
+                
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;eventStationOR&gt;
+    &lt;originDepthRange&gt;
+        &lt;min&gt;100&lt;/min&gt;
+        &lt;unit&gt;KILOMETER&lt;/unit&gt;
+    &lt;/originDepthRange&gt;
+    &lt;phaseExists&gt;
+        &lt;phaseName&gt;P&lt;/phaseName&gt;
+    &lt;/phaseExists&gt;
+&lt;/eventStationOR&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<a href="eventStation.html" title="Ingredients for selecting acceptable combinations of stations and events">eventStation</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="azimuthRange.html" title="Subsetter based on the azimuth from the event to station">azimuthRange</a>&gt; <br />&lt;<a href="backAzimuthRange.html" title="Subsetter based on the back azimuth from the station to the event">backAzimuthRange</a>&gt; <br />&lt;<a href="distanceRange.html" title="Subsetter based on the distance from the event to station">distanceRange</a>&gt; <br />&lt;<a href="eventStationAND.html" title="Matches all enclosed EventStation subsetters">eventStationAND</a>&gt; <br />&lt;<a href="eventStationNOT.html" title="Matches the negated output of the enclosed EventStation subsetter">eventStationNOT</a>&gt; <br />&lt;<a href="eventStationOR.html" title="Matches at least one enclosed EventStation subsetter">eventStationOR</a>&gt; <br />&lt;<a href="eventStationScript.html" title="Runs a script eventStation subsetter">eventStationScript</a>&gt; <br />&lt;<a href="externalEventStation.html" title="Use an EventStation subsetter external to SOD">externalEventStationSubsetter</a>&gt; <br />&lt;<a href="linearDistanceMagnitudeRange.html" title="Accepts event stations pairs above a linear threshold of magnitude with distance">linearDistanceMagnitudeRange</a>&gt; <br />&lt;<a href="midPoint.html" title="Accepts an event-station pair if the midPoint is within the area">midPoint</a>&gt; <br />&lt;<a href="phaseExists.html" title="Accepts an event-station pair if the given phase exists">phaseExists</a>&gt; <br />&lt;<a href="phaseWithoutInterference.html" title="Accepts an event-station pair if the given phase is not interfered with by other phases.">phaseWithoutInterference</a>&gt; <br />&lt;<a href="printlineEventStation.html" title="Prints a line to std out for each event-station pair processed">printlineEventStation</a>&gt; <br />&lt;<a href="removeStationDuplicate.html" title="Accepts events that are dissimilar from already accepted events">removeStationDuplicate</a>&gt; <br /></div> 
+<br />
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="availableDataPlus">
+                                            <p>In <a href="availableDataPlus.html">availableDataPlus</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="availableData.html">availableData</a>
+</li>
+                            <li><a href="eventChannel.html">eventChannel</a>
+</li>
+                            <li><a href="eventStation.html">eventStation</a>
+</li>
+                            <li><a href="request.html">request</a>
+</li>
+                            <li><a href="channel.html">channel</a>
+</li>
+                            <li><a href="origin.html">origin</a>
+</li>
+            </ul>
+                            </section>
+            <section name="waveformArm">
+                                <p><a href="waveformArm.html">waveformArm</a>
+ contains this directly</p>
+                </section>
+            <section name="waveformVectorArm">
+                                <p><a href="waveformVectorArm.html">waveformVectorArm</a>
+ contains this directly</p>
+                </section>
+            </div>
+       			</div>
+    </body>
+</html>

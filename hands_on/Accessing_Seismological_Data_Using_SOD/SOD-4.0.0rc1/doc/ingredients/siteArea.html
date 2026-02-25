@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - siteArea</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="siteArea">siteArea</a>
+				</h3>
+		            <p>
+            Matches sites that are within a given area
+            </p>
+			</div>
+					<div class="section">
+			<h3 class="red">This ingredient is deprecated!</h3>
+			<p>While it will continue to be supported by sod, there is now a better way.
+				siteArea can be replaced by a tag for the area inside of it.  
+                    <a href="siteBoxArea.html">siteBoxArea</a> if it contains boxArea or <a href="sitePolygonFile.html">sitePolygonFile</a> if it contains polygonFile.
+			</p>
+			</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;siteArea&gt;
+  &lt;boxArea&gt;
+    &lt;latitudeRange&gt;
+      &lt;min&gt;35&lt;/min&gt;
+      &lt;max&gt;35&lt;/max&gt;
+    &lt;/latitudeRange&gt;
+    &lt;longitudeRange&gt;
+      &lt;min&gt;-80&lt;/min&gt;
+      &lt;max&gt;-80&lt;/max&gt;
+    &lt;/longitudeRange&gt;
+  &lt;/boxArea&gt;
+&lt;/siteArea&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="siteArea.html" title="Matches sites that are within a given area">siteArea</a>&gt; <div>
+<a href="area.html" title="Accepts items that are within a particular area">area</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="boxArea.html" title="Accepts events that occur within a lat lon box ">boxArea</a>&gt; <br />&lt;<a href="globalArea.html" title="Accepts any location in the world ">globalArea</a>/&gt;
+ <br />&lt;<a href="polygonFile.html" title="Reads in a file with lat long points and accepts anything that falls inside the shape they create">polygonFile</a>&gt; <br /></div> 
+<br /></div>
+&lt;/<a href="siteArea.html" title="Matches sites that are within a given area">siteArea</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="channel">
+                                            <p>In <a href="channel.html">channel</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="siteCode.html">siteCode</a>
+</li>
+                            <li><a href="siteDepthRange.html">siteDepthRange</a>
+</li>
+                            <li><a href="siteEffectiveTimeOverlap.html">siteEffectiveTimeOverlap</a>
+</li>
+                            <li><a href="siteArea.html">siteArea</a>
+</li>
+                            <li><a href="siteBoxArea.html">siteBoxArea</a>
+</li>
+                            <li><a href="sitePolygonFile.html">sitePolygonFile</a>
+</li>
+                            <li><a href="channelCode.html">channelCode</a>
+</li>
+                            <li><a href="bandCode.html">bandCode</a>
+</li>
+                            <li><a href="gainCode.html">gainCode</a>
+</li>
+                            <li><a href="orientationCode.html">orientationCode</a>
+</li>
+                            <li><a href="sampling.html">sampling</a>
+</li>
+                            <li><a href="channelEffectiveTimeOverlap.html">channelEffectiveTimeOverlap</a>
+</li>
+                            <li><a href="orientationRange.html">orientationRange</a>
+</li>
+                            <li><a href="orientationAzimuthRange.html">orientationAzimuthRange</a>
+</li>
+                            <li><a href="orientationDipRange.html">orientationDipRange</a>
+</li>
+                            <li><a href="channelAND.html">channelAND</a>
+</li>
+                            <li><a href="channelOR.html">channelOR</a>
+</li>
+                            <li><a href="channelNOT.html">channelNOT</a>
+</li>
+                            <li><a href="externalChannelSubsetter.html">externalChannelSubsetter</a>
+</li>
+                            <li><a href="hadDataLastWeek.html">hadDataLastWeek</a>
+</li>
+                            <li><a href="printlineChannelProcess.html">printlineChannelProcess</a>
+</li>
+                            <li><a href="responseWriter.html">responseWriter</a>
+</li>
+                            <li><a href="sacPoleZeroWriter.html">sacPoleZeroWriter</a>
+</li>
+                            <li><a href="stationHas.html">stationHas</a>
+</li>
+                            <li><a href="alwaysSuccess.html">alwaysSuccess</a>
+</li>
+                            <li><a href="hasResponse.html">hasResponse</a>
+</li>
+                            <li><a href="hasSensitivity.html">hasSensitivity</a>
+</li>
+                            <li><a href="repairSensitivity.html">repairSensitivity</a>
+</li>
+                            <li><a href="responseFilterType.html">responseFilterType</a>
+</li>
+                            <li><a href="stageTransferType.html">stageTransferType</a>
+</li>
+                            <li><a href="stageInputUnit.html">stageInputUnit</a>
+</li>
+                            <li><a href="stageOutputUnit.html">stageOutputUnit</a>
+</li>
+                            <li><a href="clockId.html">clockId</a>
+</li>
+                            <li><a href="clockManufacturer.html">clockManufacturer</a>
+</li>
+                            <li><a href="clockModel.html">clockModel</a>
+</li>
+                            <li><a href="clockSerial.html">clockSerial</a>
+</li>
+                            <li><a href="clockType.html">clockType</a>
+</li>
+                            <li><a href="dasId.html">dasId</a>
+</li>
+                            <li><a href="dasManufacturer.html">dasManufacturer</a>
+</li>
+                            <li><a href="dasModel.html">dasModel</a>
+</li>
+                            <li><a href="dasSerial.html">dasSerial</a>
+</li>
+                            <li><a href="dasStyle.html">dasStyle</a>
+</li>
+                            <li><a href="sensorId.html">sensorId</a>
+</li>
+                            <li><a href="sensorManufacturer.html">sensorManufacturer</a>
+</li>
+                            <li><a href="sensorModel.html">sensorModel</a>
+</li>
+                            <li><a href="sensorSerial.html">sensorSerial</a>
+</li>
+                            <li><a href="sensorNominalHighFreq.html">sensorNominalHighFreq</a>
+</li>
+                            <li><a href="sensorNominalLowFreq.html">sensorNominalLowFreq</a>
+</li>
+                            <li><a href="hasNegativeSensitivity.html">hasNegativeSensitivity</a>
+</li>
+                            <li><a href="isFlipped.html">isFlipped</a>
+</li>
+                            <li><a href="isGroupable.html">isGroupable</a>
+</li>
+                            <li><a href="channelScript.html">channelScript</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - fdsnStation</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="open">
+			networkArm
+    	</li>
+	</a>
+	               <ul>
+                	<a href="networkSource.html">
+		<li>
+			networkSource
+    	</li>
+	</a>
+                	<a href="network.html">
+		<li>
+			network
+    	</li>
+	</a>
+                	<a href="station.html">
+		<li>
+			station
+    	</li>
+	</a>
+                	<a href="channel.html">
+		<li>
+			channel
+    	</li>
+	</a>
+            </ul>
+	  	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="fdsnStation">fdsnStation</a>
+				</h3>
+					<p>
+			A network source that makes the metadata loaded from a FDNSStationXML file available to
+                    SOD. While a local file could be used, the more useful way is to access the fdsnStation web service
+                    at a data center like the default IRIS DMC, http://service.iris.edu/fdsnws/station/1/. 
+                    SOD can download the stationXML automaticially
+                    and reconnect to periodically get updates. For a full SOD run (that retrieves waveforms) 
+                    SOD will automatically set the level in the IRIS url as needed, but adding other qualifiers to
+                    limit the request size will help speed the queries.  By default this does not get restricted channels unless
+                    there is a corresponding fdsnDataSelect that has a username and password specified.
+                    The default is to connect to the IRIS DMC FDSNStation web service. The host should be used
+                    to connecto to an alternative server. The baseurl and port parameters should only be
+                    used to connect to a server that does not follow the FDSN specification on how the
+                    url should be formed.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;fdsnStation&gt;
+    &lt;networkCode&gt;II&lt;/networkCode&gt;
+    &lt;stationCode&gt;AAK&lt;/stationCode&gt;
+    &lt;channelCode&gt;BHZ&lt;/channelCode&gt;
+&lt;/fdsnStation&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="fdsnStation.html" title="Loads network metadata from a FDSN Station web service.">fdsnStation</a>&gt; <div>
+ <i><a href="../../ingredients/abstractStructure.html#interleave">interleave</a></i>
+<div id="inter">
+&lt;name&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/name&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;baseurl&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/baseurl&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+ <i><a href="../../ingredients/abstractStructure.html#interleave">interleave</a></i>
+<div id="inter">
+&lt;host&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/host&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;port&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/port&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;fdsnwsPath&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/fdsnwsPath&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;includeAvailability&gt;<b><a href="../../ingredients/datatypes/BooleanDatatype.html">True or False</a></b>&lt;/includeAvailability&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;validate&gt;<b><a href="../../ingredients/datatypes/BooleanDatatype.html">True or False</a></b>&lt;/validate&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+</div> 
+</div> 
+<br /> <i><a href="../../ingredients/abstractStructure.html#Any number of times">Any number of times</a> </i> <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;networkCode&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/networkCode&gt; <br />
+&lt;stationCode&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/stationCode&gt; <br />
+&lt;siteCode&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/siteCode&gt; <br />
+&lt;channelCode&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/channelCode&gt; <br />
+</div> 
+<br />&lt;includeRestricted&gt;<b><a href="../../ingredients/datatypes/BooleanDatatype.html">True or False</a></b>&lt;/includeRestricted&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+ <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i> <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="stationBoxArea.html" title="Accepts stations that occur within a lat lon box ">stationBoxArea</a>&gt; <br />&lt;<a href="stationPointDistance.html" title=" Distance range from a fixed point">stationPointDistance</a>&gt; <br /></div> 
+<br />&lt;<a href="refreshInterval.html" title="Constrains how often the networks are refreshed">refreshInterval</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br /></div> 
+</div>
+&lt;/<a href="fdsnStation.html" title="Loads network metadata from a FDSN Station web service.">fdsnStation</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="networkSource">
+                                            <p>In <a href="networkSource.html">networkSource</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="fdsnStation.html">fdsnStation</a>
+</li>
+                            <li><a href="finder.html">networkFinder</a>
+</li>
+                            <li><a href="filterFinder.html">filterNetworkFinder</a>
+</li>
+                            <li><a href="channelLimitedNetworkFinder.html">channelLimitedNetworkFinder</a>
+</li>
+                            <li><a href="CSVNetworkSource.html">CSVNetworkSource</a>
+</li>
+                            <li><a href="winstonNetworkSource.html">winstonNetworkSource</a>
+</li>
+                            <li><a href="combineNetworkSource.html">combineNetworkSource</a>
+</li>
+                            <li><a href="stationXML.html">stationXML</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

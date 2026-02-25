@@ -1,0 +1,296 @@
+package edu.sc.seis.sod.source.seismogram;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import edu.sc.seis.sod.*;
+import org.w3c.dom.Element;
+
+import edu.sc.seis.seisFile.ChannelTimeWindow;
+import edu.sc.seis.seisFile.SeisFileException;
+import edu.sc.seis.seisFile.fdsnws.AbstractFDSNQuerier;
+import edu.sc.seis.seisFile.fdsnws.FDSNDataSelectQuerier;
+import edu.sc.seis.seisFile.fdsnws.FDSNDataSelectQueryParams;
+import edu.sc.seis.seisFile.fdsnws.FDSNWSException;
+import edu.sc.seis.seisFile.mseed.DataRecord;
+import edu.sc.seis.seisFile.mseed.DataRecordIterator;
+import edu.sc.seis.sod.model.common.FissuresException;
+import edu.sc.seis.sod.model.seismogram.LocalSeismogramImpl;
+import edu.sc.seis.sod.model.seismogram.RequestFilter;
+import edu.sc.seis.sod.model.station.ChannelId;
+import edu.sc.seis.sod.source.event.FdsnEvent;
+import edu.sc.seis.sod.source.network.FdsnStation;
+import edu.sc.seis.sod.source.network.NetworkSource;
+import edu.sc.seis.sod.source.network.WrappingNetworkSource;
+import edu.sc.seis.sod.util.convert.mseed.FissuresConvert;
+import edu.sc.seis.sod.util.time.RangeTool;
+import edu.sc.seis.sod.util.time.ReduceTool;
+
+public class FdsnDataSelect extends ConstantSeismogramSourceLocator implements SeismogramSourceLocator {
+
+    private FDSNDataSelectQueryParams queryParams = new FDSNDataSelectQueryParams();
+
+    private int timeoutMillis = 10 * 1000;
+
+    FdsnStation fdsnStation = null;
+
+    private String username;
+
+    private String password;
+
+    private String realm;
+
+    private int queryCount = 0;
+
+    private int authFailCount = 0;
+
+    public static final String IRIS_REALM = "IRIS";
+
+    public static final String BAD_AUTH_MESSAGE = "The remote web service just indicated that the query was not authorized. "
+    +"This may be because your username, password is wrong, the service does not support authentication or it could be a bug in SOD. "
+    +"Check your recipe and "
+    +"if you cannot figure it out contact the developers at sod@seis.sc.edu. ";
+
+    public FdsnDataSelect() {
+        super("DefaultFDSNDataSelect");
+        timeoutMillis = 10 * 1000;
+        username = "";
+        password = "";
+        realm = "";
+        checkFdsnStationLinkage();
+    }
+
+    public FdsnDataSelect(Element config) throws MalformedURLException, URISyntaxException, ConfigurationException {
+        this(config, FDSNDataSelectQueryParams.DEFAULT_HOST);
+    }
+
+    public FdsnDataSelect(Element config, String defaultHost) throws MalformedURLException, URISyntaxException, ConfigurationException {
+        super(config, "DefaultFDSNDataSelect", 2);
+
+        int port = SodUtil.loadInt(config, "port", -1);
+        if (port > 0) {
+            queryParams.setPort(port);
+        }
+        String host = SodUtil.loadHost(config, "host", defaultHost);
+        if ( ! FDSNDataSelectQueryParams.DEFAULT_HOST.equals(host)) {
+            queryParams.setHost(host);
+        }
+        String scheme = SodUtil.loadText(config, "scheme", null);
+        if (scheme != null && scheme.length() != 0) {
+            queryParams.setScheme(scheme);
+            // also update port for 80,443 if needed
+            if (port == -1) {
+                // port not set in config, so set default for scheme
+                if (scheme.equalsIgnoreCase("http") ) {
+                    queryParams.setPort(80);
+                }
+                if (scheme.equalsIgnoreCase("https") ) {
+                    queryParams.setPort(443);
+                }
+            }
+        }
+        // mainly for beta testing
+        String fdsnwsPath = SodUtil.loadText(config, "fdsnwsPath", null);
+        if (fdsnwsPath != null && fdsnwsPath.length() != 0) {
+            queryParams.setFdsnwsPath(fdsnwsPath);
+        }
+        username = SodUtil.loadText(config, "user", "");
+        password = SodUtil.loadText(config, "password", "");
+        realm = SodUtil.loadText(config, "realm", null);// null realm means ANY
+        timeoutMillis = 1000 * SodUtil.loadInt(config, "timeoutSecs", 10);
+
+        checkFdsnStationLinkage();
+    }
+
+    private void checkFdsnStationLinkage() {
+        NetworkSource wrappedNetSource = ((WrappingNetworkSource)Start.getNetworkArm().getNetworkSource());
+        while (wrappedNetSource instanceof WrappingNetworkSource) {
+            wrappedNetSource = ((WrappingNetworkSource)wrappedNetSource).getWrapped();
+        }
+        if (wrappedNetSource instanceof FdsnStation) {
+            fdsnStation = (FdsnStation)wrappedNetSource;
+        } else {
+            logger.warn("Can't do FdsnStation Linkage, net source no FdsnStation: "+wrappedNetSource.getClass().getCanonicalName());
+        }
+
+        // check if username and password, and if so enable restricted on the network source
+        if (username != null && ! username.equals("") && password != null && Start.getNetworkArm() != null) {
+            logger.info("User and password set, so including restricted in FdsnStation network source");
+            fdsnStation.includeRestricted(true);
+        }
+    }
+    public FdsnDataSelect(String host,int port) {
+        super(host, 2);
+        queryParams.setHost(host);
+        queryParams.setPort(port);
+    }
+
+    @Override
+    public SeismogramSource getSeismogramSource() {
+        return new SeismogramSource() {
+
+            @Override
+            public List<LocalSeismogramImpl> retrieveData(List<RequestFilter> request) throws SeismogramSourceException {
+                int count = 0;
+                SeismogramSourceException latest = null;
+
+                while (count == 0 || getRetryStrategy().shouldRetry(latest, this, count++)) {
+                    try {
+                        List<LocalSeismogramImpl> result = internalRetrieveData(request);
+                        getRetryStrategy().serverRecovered(this);
+                        return result;
+                    } catch(SeismogramSourceException t) {
+                        latest = t;
+                        Throwable rootCause = AbstractFDSNQuerier.extractRootCause(t);
+                        if (t instanceof SeismogramAuthorizationException) {
+                            // generally this means user has bad password or is not authorized, shamelessly quit
+                            throw t;
+                        } else if (t.getCause() == null) {
+                            throw t;
+                        } else if (rootCause instanceof IOException) {
+                            // try again on IOException
+                        } else if (t.getCause() instanceof FDSNWSException && ((FDSNWSException)t.getCause()).getHttpResponseCode() != 200 && ((FDSNWSException)t.getCause()).getHttpResponseCode() != 401) {
+                            // try again on IOException
+                        } else {
+                            throw t;
+                        }
+                    } catch(OutOfMemoryError e) {
+                        throw new RuntimeException("Out of memory", e);
+                    }
+                }
+                throw latest;
+            }
+
+            public List<LocalSeismogramImpl> internalRetrieveData(List<RequestFilter> request)
+                    throws SeismogramSourceException {
+                List<LocalSeismogramImpl> out = new ArrayList<LocalSeismogramImpl>();
+                if (request.size() != 0) {
+                    FDSNDataSelectQueryParams newQueryParams = queryParams.clone();
+                    List<ChannelTimeWindow> queryRequest = new ArrayList<ChannelTimeWindow>();
+                    for (RequestFilter rf : request) {
+                        ChannelId c = rf.channelId;
+                        queryRequest.add(new ChannelTimeWindow(c.getNetworkCode(),
+                                                               c.getStationCode(),
+                                                               c.getLocCode(),
+                                                               c.getChannelCode(),
+                                                               rf.startTime,
+                                                               rf.endTime));
+                    }
+                    List<DataRecord> drList = retrieveData(newQueryParams, queryRequest, getRetries());
+                    try {
+                        List<LocalSeismogramImpl> perRFList = FissuresConvert.toFissures(drList);
+                        perRFList = Arrays.asList(ReduceTool.merge(perRFList.toArray(new LocalSeismogramImpl[0])));
+                        for (LocalSeismogramImpl seis : perRFList) {
+                            // the DataRecords know nothing about channel or
+                            // network
+                            // begin times, so use the request
+                            for (RequestFilter rf : request) {
+                                // find matching chan id
+                                if (RangeTool.seisPartOfRequest(rf, seis)) {
+                                    seis.channel_id = rf.getChannelId();
+                                    break;
+                                }
+                            }
+                        }
+                        out.addAll(perRFList);
+                    } catch(SeisFileException e) {
+                        throw new SeismogramSourceException(e);
+                    } catch(FissuresException e) {
+                        throw new SeismogramSourceException(e);
+                    }
+                }
+                return out;
+            }
+
+            public List<DataRecord> retrieveData(FDSNDataSelectQueryParams queryParams,
+                                                 List<ChannelTimeWindow> queryRequest,
+                                                 int tryCount) throws SeismogramSourceException {
+                List<DataRecord> drList = new ArrayList<DataRecord>();
+                FDSNDataSelectQuerier querier = new FDSNDataSelectQuerier(queryParams, queryRequest);
+                RunProperties runProps = Start.getRunProps();
+                if (runProps.getProxyHost() != null) {
+                  querier.setProxyHost(runProps.getProxyHost());
+                  querier.setProxyPort(runProps.getProxyPort());
+                  querier.setProxyProtocol(runProps.getProxyScheme());
+                }
+                querier.setConnectTimeout(timeoutMillis);
+                querier.setReadTimeout(timeoutMillis);
+                String restrictedStr = "query: ";
+                if (username != null && username.length() != 0 && password != null && password.length() != 0) {
+                    querier.enableRestrictedData(username, password, realm);
+                    restrictedStr = "restricted "+restrictedStr;
+                }
+                try {
+                    logger.info(restrictedStr+querier.formURIForPost());
+                } catch(URISyntaxException e) {
+                    throw new SeismogramSourceException("Error with URL syntax", e);
+                }
+                querier.setUserAgent("SOD/" + BuildVersion.getVersion());
+                try {
+                    DataRecordIterator drIt = querier.getDataRecordIterator();
+                    while (drIt.hasNext()) {
+                        drList.add(drIt.next());
+                    }
+                    queryCount++;
+                } catch(FDSNWSException e) {
+                    if (querier.getResponseCode() == 401 || querier.getResponseCode() == 403) {
+                        if (queryCount < 3 && authFailCount != 0) {
+                            // if we get an auth fail early on, but not very first, halt to warn the user they
+                            // probably have entered a bad password. If later, try again
+                            // as sometimes have seen auth fails with same pw even after
+                            // dozens of successes
+                            Start.simpleArmFailure(Start.getWaveformArmArray()[0],
+                                                   BAD_AUTH_MESSAGE+" "+querier.getResponseCode()
+                                                   +"     "+((FDSNWSException)e).getMessage()
+                                                   +" on "+((FDSNWSException)e).getTargetURI());
+                            throw new SeismogramAuthorizationException("Authorization failure to " + e.getTargetURI(), e);
+                        } else {
+                            authFailCount++;
+                            tryCount--;
+                            logger.info(authFailCount+" Authentication failures, but will trying "+tryCount+" more times: "+querier.getResponseCode()+" "+((FDSNWSException)e).getTargetURI());
+                            if (tryCount > 0) {
+                                return retrieveData(queryParams, queryRequest, tryCount);
+                            } else {
+                                // not sure I like this...
+                                throw new SeismogramSourceException("Auth fail retries exceeded", e);
+                            }
+                        }
+                    } else if (querier.getResponseCode() == 400) {
+                        // badly formed query, cowardly quit
+                        Start.simpleArmFailure(Start.getWaveformArmArray()[0],
+                                               FdsnEvent.BAD_PARAM_MESSAGE+" "+((FDSNWSException)e).getMessage()+" on "+((FDSNWSException)e).getTargetURI());
+                        throw new SeismogramSourceException(e);
+                    } else {
+                        throw new SeismogramSourceException(e);
+                    }
+                } catch(SeisFileException e) {
+                    throw new SeismogramSourceException(e);
+                } catch(SocketTimeoutException e) {
+                    tryCount--;
+                    logger.info("Timeout, will retry "+tryCount+" more times");
+                    if (tryCount > 0) {
+                        return retrieveData(queryParams, queryRequest, tryCount);
+                    } else {
+                        // not sure I like this...
+                        throw new SeismogramSourceException("Retries exceeded", e);
+                    }
+                } catch(IOException e) {
+                    throw new SeismogramSourceException(e);
+                } finally {
+                    querier.close();
+                }
+                if (logger.isDebugEnabled()) {
+                    logger.debug("Found " + drList.size() + " data records.");
+                }
+                return drList;
+            }
+        };
+    }
+
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(FdsnDataSelect.class);
+}

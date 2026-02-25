@@ -1,0 +1,87 @@
+/**
+ * NetworkArmContext.java
+ * 
+ * @author Philip Crotwell
+ */
+package edu.sc.seis.sod.status.networkArm;
+
+import java.util.List;
+
+import org.apache.velocity.context.AbstractContext;
+import org.apache.velocity.context.Context;
+
+import edu.sc.seis.seisFile.fdsnws.stationxml.Network;
+import edu.sc.seis.sod.Start;
+import edu.sc.seis.sod.hibernate.NetworkDB;
+import edu.sc.seis.sod.source.SodSourceException;
+
+public class NetworkArmContext extends AbstractContext {
+
+    public NetworkArmContext()   {
+        super();
+        netDb =  NetworkDB.getSingleton();
+    }
+
+    public NetworkArmContext(Context context)   {
+        super(context);
+        netDb =  NetworkDB.getSingleton();
+    }
+
+    public Object internalGet(String key) {
+        if(key.equals(ALL_NETS_KEY)) {
+            try {
+                return Start.getNetworkArm().getNetworkSource().getNetworks();
+            } catch(SodSourceException e) {
+                throw new RuntimeException("can't get for key=" + key, e);
+            }
+        } else if(key.equals(SUCCESSFUL_NETS_KEY)) {
+            try {
+                return Start.getNetworkArm()
+                        .getSuccessfulNetworks();
+            } catch(Exception e) {
+                throw new RuntimeException("can't get for key=" + key, e);
+            }
+        } else if(key.length() == 2
+                && !(key.startsWith("X") || key.startsWith("Y") || key.startsWith("Z"))) {
+            // try as a network code
+            List<Network> dbAttrs =  netDb.getNetworkByCode(key);
+            return dbAttrs;
+        }
+        // else
+        return null;
+    }
+
+    @Override
+    public boolean internalContainsKey(String key) {
+        if(key.equals(ALL_NETS_KEY)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String[] internalGetKeys() {
+        return new String[] {ALL_NETS_KEY};
+    }
+
+    @Override
+    public Object internalRemove(String s) {
+        return null;
+    }
+
+    public Object internalRemove(Object key) {
+        throw new RuntimeException("Read only context, operation remove not permitted: key="
+                + key);
+    }
+
+    public Object internalPut(String key, Object p2) {
+        throw new RuntimeException("Read only context, operation put not permitted: key="
+                + key);
+    }
+
+    NetworkDB netDb;
+
+    public static final String ALL_NETS_KEY = "network_arm_all";
+
+    public static final String SUCCESSFUL_NETS_KEY = "successful_networks";
+}

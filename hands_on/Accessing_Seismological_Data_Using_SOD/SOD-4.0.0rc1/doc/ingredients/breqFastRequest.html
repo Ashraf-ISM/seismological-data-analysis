@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - breqFastRequest</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="breqFastRequest">breqFastRequest</a>
+				</h3>
+					<p>
+			Mainly useful for accessing data that is not available via Fissures/DHI, such as restricted
+                    PASSCAL datasets or data from datacenters that have a breqfast system but not DHI seismogram
+                    servers. Of course the network information must be available to SOD. As this subsetter always
+                    returns true, processing will continue past this point. In most cases, the whole reason to generate
+                    breqfast requests is that it is the only way to get the data, and so there is not much point in
+                    proceeding down the waveform arm. You will generally want to wrap the breqFastRequest in a
+                    requestNOT (or vectorRequestNOT for a waveformVectorArm) so that the return value is false. This will allow SOD to proceed to the next piece of
+                    work and avoid the wasted time in going to the server to get data.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;breqFastRequest&gt;
+  &lt;name&gt;Jenny Seismologist&lt;/name&gt;
+  &lt;inst&gt;Univ. of Example&lt;/inst&gt;
+  &lt;mail&gt;Dept. of Seismology., Main St. MyTown AA, USA&lt;/mail&gt;
+  &lt;email&gt;joe@seis.example.edu&lt;/email&gt;
+  &lt;phone&gt;555-867-5309&lt;/phone&gt;
+  &lt;fax&gt;none&lt;/fax&gt;
+  &lt;media&gt;Electronic&lt;/media&gt;
+  &lt;altmedia1&gt;Electronic&lt;/altmedia1&gt;
+  &lt;altmedia2&gt;Electronic&lt;/altmedia2&gt;
+  &lt;quality&gt;b&lt;/quality&gt;
+&lt;/breqFastRequest&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="breqFastRequest.html" title="Creates a breqfast request and saves it to a file and returns true">breqFastRequest</a>&gt; <div>
+<div id="group">
+&lt;workingDir&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/workingDir&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;location&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/location&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+ <i><a href="../../ingredients/abstractStructure.html#interleave">interleave</a></i>
+<div id="inter">
+&lt;label&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/label&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;name&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/name&gt; <br />
+&lt;inst&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/inst&gt; <br />
+&lt;mail&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/mail&gt; <br />
+&lt;email&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/email&gt; <br />
+&lt;phone&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/phone&gt; <br />
+&lt;fax&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/fax&gt; <br />
+&lt;media&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/media&gt; <br />
+&lt;altmedia1&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/altmedia1&gt; <br />
+&lt;altmedia2&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/altmedia2&gt; <br />
+&lt;quality&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/quality&gt; <br />
+</div> 
+</div>
+</div>
+&lt;/<a href="breqFastRequest.html" title="Creates a breqfast request and saves it to a file and returns true">breqFastRequest</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="request">
+                                            <p>In <a href="request.html">request</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="requestAND.html">requestAND</a>
+</li>
+                            <li><a href="requestOR.html">requestOR</a>
+</li>
+                            <li><a href="requestNOT.html">requestNOT</a>
+</li>
+                            <li><a href="printlineRequest.html">printlineRequest</a>
+</li>
+                            <li><a href="requestPrint.html">requestPrint</a>
+</li>
+                            <li><a href="breqFastRequest.html">breqFastRequest</a>
+</li>
+                            <li><a href="netDCRequest.html">netDCRequest</a>
+</li>
+                            <li><a href="plottableRequest.html">plottableRequest</a>
+</li>
+                            <li><a href="requestScript.html">requestScript</a>
+</li>
+                            <li><a href="externalRequestSubsetter.html">externalRequestSubsetter</a>
+</li>
+                            <li><a href="atLeastOneRequest.html">atLeastOneRequest</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

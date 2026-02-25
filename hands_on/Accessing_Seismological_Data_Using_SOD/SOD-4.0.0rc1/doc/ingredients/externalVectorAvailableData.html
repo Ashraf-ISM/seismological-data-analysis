@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - externalVectorAvailableDataSubsetter</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="externalVectorAvailableDataSubsetter">externalVectorAvailableDataSubsetter</a>
+				</h3>
+					<p>
+			<p>Checks the available data for the entire vector</p>
+<p>The jython class defined in class must implement <a href="http://www.seis.sc.edu/viewvc/seis/trunk/sod/src/main/java/edu/sc/seis/sod/subsetter/availableData/vector/VectorAvailableDataSubsetter.java?view=markup">VectorAvailableDataSubsetter</a> like this <a href="http://www.seis.sc.edu/viewvc/seis/trunk/sod/jythonExample/VectorAvailableDataSubsetterExample.py">example implementation</a>.</p>
+<p>For more information on externals, see the <a href="../documentation/externals/index.html">externals documentation</a></p>
+
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;externalVectorAvailableData&gt;
+    &lt;classname&gt;edu.somewhere.seis.sodExt.subsetter.waveformVector.MyVectorAvailableData&lt;/classname&gt;
+&lt;/externalVectorAvailableData&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="externalVectorAvailableData.html" title="Use a VectorAvailableData subsetter external to sod">externalVectorAvailableDataSubsetter</a>&gt; <div>
+<div id="group">
+&lt;classname&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/classname&gt; <br />
+</div>
+</div>
+&lt;/<a href="externalVectorAvailableData.html" title="Use a VectorAvailableData subsetter external to sod">externalVectorAvailableDataSubsetter</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="vectorAvailableData">
+                                            <p>In <a href="vectorAvailableData.html">vectorAvailableData</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="ANDAvailableDataWrapper.html">ANDAvailableDataWrapper</a>
+</li>
+                            <li><a href="ORAvailableDataWrapper.html">ORAvailableDataWrapper</a>
+</li>
+                            <li><a href="vectorAvailableDataAND.html">vectorAvailableDataAND</a>
+</li>
+                            <li><a href="vectorAvailableDataOR.html">vectorAvailableDataOR</a>
+</li>
+                            <li><a href="vectorAvailableDataNOT.html">vectorAvailableDataNOT</a>
+</li>
+                            <li><a href="vectorAvailableDataScript.html">vectorAvailableDataScript</a>
+</li>
+                            <li><a href="externalVectorAvailableData.html">externalVectorAvailableDataSubsetter</a>
+</li>
+                            <li><a href="availableData.html">availableData</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

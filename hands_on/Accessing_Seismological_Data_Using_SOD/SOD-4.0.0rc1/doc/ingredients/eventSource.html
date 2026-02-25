@@ -1,0 +1,183 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - eventSource</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="open">
+			eventArm
+    	</li>
+	</a>
+	               <ul>
+                	<a href="eventSource.html">
+		<li id="selected">
+			eventSource
+    	</li>
+	</a>
+                	<a href="origin.html">
+		<li>
+			origin
+    	</li>
+	</a>
+            </ul>
+	  	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="eventSource">eventSource</a>
+				</h3>
+		            <p>
+            Ingredient to acquire events
+            </p>
+			</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;fdsnEvent&gt;
+    &lt;originTimeRange&gt;
+        &lt;startTime&gt;
+            2015-01-01T00:00:00.000Z
+        &lt;/startTime&gt;
+        &lt;endTime&gt;
+            2015-01-31T23:59:59.999Z
+        &lt;/endTime&gt;
+    &lt;/originTimeRange&gt;
+    &lt;magnitudeRange&gt;
+        &lt;min&gt;6.0&lt;/min&gt;
+    &lt;/magnitudeRange&gt;
+&lt;/fdsnEvent&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<a href="eventSource.html" title="Ingredient to acquire events">eventSource</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="backwardsEventFinder.html" title=" Retrieve events from an EventFinder in reverse time order. ">backwardsEventFinder</a>&gt; <br />&lt;<a href="CSVEventSource.html" title="Retrieve events from a Comma-Separated Values file">CSVEventSource</a>&gt; <br />&lt;<a href="delayedEventSource.html" title="Delays events from the enclosed source.">delayedEventSource</a>&gt; <br />&lt;<a href="eventFinder.html" title=" Retrieve events from an EventFinder. ">eventFinder</a>&gt; <br />&lt;<a href="fdsnEvent.html" title="Querys events from a FDSN Event web service or file.">fdsnEvent</a>&gt; <br />&lt;<a href="nowFakeEventSource.html" title="Fake events from on a repeating schedule">nowFakeEventSource</a>&gt; <br />&lt;<a href="periodicFakeEventSource.html" title="Fake events on a repeating schedule">periodicFakeEventSource</a>&gt; <br /></div> 
+<br />
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="delayedEventSource">
+                                <p><a href="delayedEventSource.html">delayedEventSource</a>
+ contains this directly</p>
+                </section>
+            <section name="eventArm">
+                                <p><a href="eventArm.html">eventArm</a>
+ contains this directly</p>
+                </section>
+            <section name="similarEvent">
+                                <p><a href="similarEvent.html">similarEvent</a>
+ contains this directly</p>
+                </section>
+            </div>
+       			</div>
+    </body>
+</html>

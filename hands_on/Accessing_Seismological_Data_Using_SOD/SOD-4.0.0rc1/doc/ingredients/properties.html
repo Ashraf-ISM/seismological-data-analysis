@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - properties</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li id="selected">
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="properties">properties</a>
+				</h3>
+					<p>
+			The properties contained here tell SOD how to go about its business
+                    whereas the items in each of the arms tell SOD what its business is. Go to the
+                    page for any property to find out more about it. 
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;properties&gt;
+  &lt;runName&gt;II and IU 1992-1993&lt;/runName&gt;
+  &lt;hibernateConfig&gt;tables.hbm.xml&lt;/hibernateConfig&gt;
+  &lt;proxyHost&gt;myproxy.example.com&lt;/proxyHost&gt;
+  &lt;proxyScheme&gt;https&lt;/proxyScheme&gt;
+&lt;/properties&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="properties.html" title="Various non arm specific SOD run settings">properties</a>&gt; <div>
+ <i><a href="../../ingredients/abstractStructure.html#interleave">interleave</a></i>
+<div id="inter">
+&lt;<a href="allowNetworksOutsideEventRequestTime.html" title="Instructs SOD to allow networks, stations, sites and channels that aren't active at all during the requested event times">allowNetworksOutsideEventRequestTime</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="channelGroupingRules.html" title="Adds rules for grouping channels.">channelGroupingRules</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="checkpoint.html" title="Periodically send a CHECKPOINT to the database">checkpointPeriodically</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="eventChannelPairProcessing.html" title="Sets handling on open event channel pairs on restart">eventChannelPairProcessing</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="eventLag.html" title="Time after the end event query time to wait for new events">eventLag</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="eventQueryIncrement.html" title="Time spanned by a single event server query">eventQueryIncrement</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="eventRefreshInterval.html" title="Time between queries to the event server">eventRefreshInterval</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="hibernateConfig.html" title="Adds additional hibernate table creation settings.">hibernateConfig</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="loserEventCleaner.html" title="Periodically removes failed events from the database. ">loserEventCleaner</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="maxRetryDelay.html" title="Max time after first try to retry items in the waveform arm">maxRetryDelay</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="proxyHost.html" title="Proxy HTTP host.">proxyHost</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="proxyPort.html" title="Port of the HTTP proxy host.">proxyPort</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="proxyScheme.html" title="Proxy HTTP scheme.">proxyScheme</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="removeDatabase.html" title="Remove existing SOD database">removeDatabase</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="reopenEvents.html" title="Restart events if database exists">reopenEvents</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="runName.html" title="Sets the name of the SOD run">runName</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="seismogramLatency.html" title="Amount of time after an event to keep retrying for data">seismogramLatency</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="skipAvailableData.html" title="Instructs SOD to skip the available data check.">skipAvailableData</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="statusBase.html" title="Specifies the directory to which all status HTML is written">statusBase</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="statusPages.html" title="Should SOD create html status pages">statusPages</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="warnIfDatabaseExists.html" title="Instructs SOD to skip the check for a preexisting database.">warnIfDatabaseExists</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;<a href="waveformWorkerThreads.html" title="Number of threads to use in the waveform arm">waveformWorkerThreads</a>&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br /></div> 
+</div>
+&lt;/<a href="properties.html" title="Various non arm specific SOD run settings">properties</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="sod">
+                                <p><a href="start.html">sod</a>
+ contains this directly</p>
+                </section>
+            </div>
+       			</div>
+    </body>
+</html>

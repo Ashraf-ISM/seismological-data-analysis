@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>SOD - Ingredient Listing</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+</head>
+<body>
+<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+<div id="content">
+<div class="section">
+<h3>
+	<a name="SOD Recipe Structure">SOD Recipe Structure</a>
+</h3>
+            <p>The <a href="../documentation/tutorials/index.html">tutorial</a>
+documents the overall structure of a SOD recipe. You should read through it if you are unfamiliar with how a SOD recipe is formed.
+            </p>
+</div>
+<div class="section">
+<h3>
+	<a name="SOD Ingredient Listing">SOD Ingredient Listing</a>
+</h3>
+            <p>The ingredient listing contains a page for every ingredient that can go into SOD. If you
+                want to extend and improve your SOD runs, it's the place to find pieces of SOD that
+                do what you want.</p>
+</div>
+<div class="section">
+<h3>
+	<a name="What is an ingredient?">What is an ingredient?</a>
+</h3>
+            <p>An ingredient is a single operation in a recipe. A full SOD recipe consists of multiple
+                ingredents that tell SOD how to gather and process data.</p>
+</div>
+<div class="section">
+<h3>
+	<a name="What's in each ingredient's page?">What's in each ingredient's page?</a>
+</h3>
+            <p> Each ingredient's page consists of four major sections: a description of the ingredient's
+                uses, an example of the ingredient, an abstract description of the ingredient's
+                structure, and a list of all of the ingredients that contain this ingredient. </p>
+<div class="section">
+<h4>
+	<a name="Example">Example</a>
+</h4>
+                <p>The example of the ingredient. You can copy the
+                    example, paste it in the correct place in a recipe, and SOD will start
+                    using it.</p>
+</div>
+<div class="section">
+<h4>
+	<a name="This consists of">This consists of</a>
+</h4>
+                <p>This section describes the exact structure of the ingredient. It's important
+                    enough to get its own page explaining it <a href="abstractStructure.html">here</a>.</p>
+</div>
+<div class="section">
+<h4>
+	<a name="Places this can be found">Places this can be found</a>
+</h4>
+                <p> This section lists every ingredient that contains this ingredient. In the case where
+                    this is contained in a choice, the items that can be substituted for this are
+                    listed as well. </p>
+</div>
+</div>
+</div>
+<div id="footer">
+	<div id="contact">
+        <a 	href="http://www.seis.sc.edu/mail.html"
+   onmouseover="javascript:this.href=decode('seis.sc.edu', '*rem*sod')"
+   onfocus="javascript:this.href=decode('seis.sc.edu', '*rem*sod')"
+>
+			<img src="../images/contact.png"/>
+			Contact Us
+		</a>
+	</div>
+<img class="right" src="../images/dhi_logo.png"/>
+<p>SOD is made possible by the <a href="http://www.geol.sc.edu"> Department of Geological Sciences</a> at the <a href="http://www.sc.edu"><br />University of South Carolina</a> and the <a href="http://www.iris.edu">IRIS Consortium</a>.
+                   </p>
+
+</div>
+
+</body>
+</html>

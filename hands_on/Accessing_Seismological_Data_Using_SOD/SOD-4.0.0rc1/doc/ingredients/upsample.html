@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - upsample</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="upsample">upsample</a>
+				</h3>
+					<p>
+			This upsamples seismograms by the given factor or to the given sample rate. 
+                Any needed low pass filtering can be done after applying this or using the antiAliasFilter
+                element to avoid aliasing. The antiAliasFilter is the same as the oregonDSPFilter ingredient,
+                with the passband and highFreqCorner determined automatically.
+                If the seismogram sample rate is not an integer multiple of the desired max sample rate, then
+                the resulting sample rate will be greater than or equal to the desired. For example if the
+                seismogram is 30 samples per second and the desired rate is 100 sps, then the decimation
+                factor will be 4 and the resulting rate will be 120 sps.
+                
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;upsample&gt;
+    &lt;minSamplesPerSec&gt;10&lt;/minSamplesPerSec&gt;
+&lt;/upsample&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="upsample.html" title="Upsamples seismograms.">upsample</a>&gt; <div>
+ <i><a href="../../ingredients/abstractStructure.html#interleave">interleave</a></i>
+<div id="inter">
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;minSamplesPerSec&gt;<b><a href="../../ingredients/datatypes/FloatDatatype.html">float</a></b>&lt;/minSamplesPerSec&gt; <br />
+&lt;byFactor&gt;<b><a href="../../ingredients/datatypes/Token.html">Token</a></b>&lt;/byFactor&gt; <br />
+</div> 
+<br />&lt;antiAliasFilter&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+ <i><a href="../../ingredients/abstractStructure.html#interleave">interleave</a></i>
+<div id="inter">
+ <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i> <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;butterworth/&gt;
+ <br />&lt;chebyshevI/&gt;
+ <br />&lt;chebyshevII/&gt;
+ <br /></div> 
+<br />&lt;numPoles&gt;<b><a href="../../ingredients/datatypes/IntegerDatatype.html">integer</a></b>&lt;/numPoles&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;filterType&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<div><b>NONCAUSAL</b></div>
+<div><b>CAUSAL</b></div>
+<div><b>TWOPASS</b></div>
+</div> 
+<br /></div>
+&lt;/filterType&gt;<br />
+&lt;epsilon&gt;<b><a href="../../ingredients/datatypes/FloatDatatype.html">float</a></b>&lt;/epsilon&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+</div> 
+</div>
+&lt;/antiAliasFilter&gt;<br />
+</div> 
+</div>
+&lt;/<a href="upsample.html" title="Upsamples seismograms.">upsample</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        </div>
+       			</div>
+    </body>
+</html>

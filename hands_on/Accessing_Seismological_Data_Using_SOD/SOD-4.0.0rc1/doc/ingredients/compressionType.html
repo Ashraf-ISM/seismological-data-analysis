@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - compressionType</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="compressionType">compressionType</a>
+				</h3>
+					<p>
+			This checks the compression algorithm used by the seismograms and passes if each seismogram
+                    matches one of the given types. The integers follow the compression types as defined in the SEED
+                    manual for blockette 1000.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;compressionType&gt;
+  &lt;type&gt;12&lt;/type&gt;
+&lt;/compressionType&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="compressionType.html" title="Passes a seismogram's data if it is compressed with the given types.">compressionType</a>&gt; <div>
+&lt;type&gt;<b><a href="../../ingredients/datatypes/IntegerDatatype.html">integer</a></b>&lt;/type&gt; <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+&lt;/<a href="compressionType.html" title="Passes a seismogram's data if it is compressed with the given types.">compressionType</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="seismogramProcess">
+                                            <p>In <a href="seismogramProcess.html">seismogramProcess</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="printlineSeismogramProcess.html">printlineSeismogramProcess</a>
+</li>
+                            <li><a href="sacWriter.html">sacWriter</a>
+</li>
+                            <li><a href="mseedWriter.html">mseedWriter</a>
+</li>
+                            <li><a href="asciiWriter.html">asciiWriter</a>
+</li>
+                            <li><a href="wavWriter.html">wavWriter</a>
+</li>
+                            <li><a href="recordSectionDisplayGenerator.html">recordSectionDisplayGenerator</a>
+</li>
+                            <li><a href="responseGain.html">responseGain</a>
+</li>
+                            <li><a href="phaseCut.html">phaseCut</a>
+</li>
+                            <li><a href="requestCut.html">requestCut</a>
+</li>
+                            <li><a href="merge.html">merge</a>
+</li>
+                            <li><a href="gapFill.html">gapFill</a>
+</li>
+                            <li><a href="rMean.html">rMean</a>
+</li>
+                            <li><a href="rTrend.html">rTrend</a>
+</li>
+                            <li><a href="taper.html">taper</a>
+</li>
+                            <li><a href="externalWaveformProcess.html">externalWaveformProcess</a>
+</li>
+                            <li><a href="seismogramScript.html">seismogramScript</a>
+</li>
+                            <li><a href="localSeismogramStatus.html">localSeismogramTemplateGenerator</a>
+</li>
+                            <li><a href="filter.html">filter</a>
+</li>
+                            <li><a href="oregonDSPFFT.html">rms</a>
+</li>
+                            <li><a href="oregonDSPFilter.html">oregonDSPFilter</a>
+</li>
+                            <li><a href="forkProcess.html">forkProcess</a>
+</li>
+                            <li><a href="seismogramAlwaysSuccess.html">alwaysSuccess</a>
+</li>
+                            <li><a href="phaseSignalToNoise.html">phaseSignalToNoise</a>
+</li>
+                            <li><a href="compoundPhaseSignalToNoise.html">compoundPhaseSignalToNoise</a>
+</li>
+                            <li><a href="seismogramImageProcess.html">seismogramImageProcess</a>
+</li>
+                            <li><a href="legacyExecute.html">legacyExecute</a>
+</li>
+                            <li><a href="seismogramAND.html">seismogramAND</a>
+</li>
+                            <li><a href="seismogramOR.html">seismogramOR</a>
+</li>
+                            <li><a href="seismogramNOT.html">seismogramNOT</a>
+</li>
+                            <li><a href="someDataCoverage.html">someDataCoverage</a>
+</li>
+                            <li><a href="noDataGaps.html">noDataGaps</a>
+</li>
+                            <li><a href="fullDataCoverage.html">fullDataCoverage</a>
+</li>
+                            <li><a href="integrate.html">integrate</a>
+</li>
+                            <li><a href="differentiate.html">differentiate</a>
+</li>
+                            <li><a href="transferResponse.html">transferResponse</a>
+</li>
+                            <li><a href="collapseOverlaps.html">collapseOverlaps</a>
+</li>
+                            <li><a href="div.html">div</a>
+</li>
+                            <li><a href="mul.html">mul</a>
+</li>
+                            <li><a href="invertFlippedChannels.html">invertFlippedChannels</a>
+</li>
+                            <li><a href="seismogramSampling.html">seismogramSampling</a>
+</li>
+                            <li><a href="decimate.html">decimate</a>
+</li>
+                            <li><a href="stddev.html">stddev</a>
+</li>
+                            <li><a href="rms.html">rms</a>
+</li>
+                            <li><a href="mean.html">mean</a>
+</li>
+                            <li><a href="minMax.html">minMax</a>
+</li>
+                            <li><a href="compressionType.html">compressionType</a>
+</li>
+                            <li><a href="availableDataPlus.html">availableDataPlus</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

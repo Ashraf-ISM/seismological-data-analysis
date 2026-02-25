@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - originNOT</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="originNOT">originNOT</a>
+				</h3>
+					<p>
+			The output is the logical NOT of the output of the enclosed Origin subsetter. This
+                        means that it will evaluate to false if the enclosed Origin subsetter evaluates to true, and
+                        vice versa.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;originNOT&gt;
+    &lt;catalog&gt;NEIC PDE&lt;/catalog&gt;
+&lt;/originNOT&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="originNOT.html" title="Matches the negated output of the enclosed Origin subsetter">originNOT</a>&gt; <div>
+<a href="origin.html" title="Ingredients for selecting events">origin</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="catalog.html" title="Matches events with a given catalog">catalog</a>&gt; <br />&lt;<a href="contributor.html" title="Matches events with a given contributor">contributor</a>&gt; <br />&lt;<a href="CSVEventPrinter.html" title="Prints out events into a comma-separated text file. If no filename is given, the csv is written to the console.">CSVEventPrinter</a>&gt; <br />&lt;<a href="eventArea.html" title="Matches events that occur within a specified area">eventArea</a>&gt; <br />&lt;<a href="eventAttrName.html" title=" Matches the event name">eventAttrName</a>&gt; <br />&lt;<a href="eventBoxArea.html" title="Accepts events that occur within a lat lon box ">eventBoxArea</a>&gt; <br />&lt;<a href="eventPolygonFile.html" title="Reads in a file with lat long points and accepts any event that falls inside the shape they create">eventPolygonFile</a>&gt; <br />&lt;<a href="externalOriginSubsetter.html" title="Use an Origin subsetter external to SOD">externalOriginSubsetter</a>&gt; <br />&lt;<a href="geographicalRegion.html" title=" Matches the geographic Flinn-Engdahl region number">geographicalRegion</a>&gt; <br />&lt;<a href="magnitudeRange.html" title=" Accepts a range of magnitudes">magnitudeRange</a>&gt; <br />&lt;<a href="networkTimeRange.html" title="Allows events that occured during the time range covered by active channels retrieved by the network arm.">networkTimeRange</a>/&gt;
+ <br />&lt;<a href="originAND.html" title="Matches all enclosed Origin subsetters">originAND</a>&gt; <br />&lt;<a href="originArrayAND.html" title="Enclosed subsetter matches all origins for an event">originArrayAND</a>&gt; <br />&lt;<a href="originArrayOR.html" title="Enclosed subsetter matches at least one origin for an event">originArrayOR</a>&gt; <br />&lt;<a href="originDepthRange.html" title="Matches events with depth within a defined range">originDepthRange</a>&gt; <br />&lt;<a href="originNOT.html" title="Matches the negated output of the enclosed Origin subsetter">originNOT</a>&gt; <br />&lt;<a href="originOR.html" title="Matches at least one enclosed Origin subsetter">originOR</a>&gt; <br />&lt;<a href="originPointAzimuth.html" title=" Azimuth range from a fixed point">originPointAzimuth</a>&gt; <br />&lt;<a href="originPointBackAzimuth.html" title=" Back azimuth range from a fixed point">originPointBackAzimuth</a>&gt; <br />&lt;<a href="originPointDistance.html" title="Distance range from a fixed point">originPointDistance</a>&gt; <br />&lt;<a href="originScript.html" title="Runs an script origin subsetter">originScript</a>&gt; <br />&lt;<a href="originTimeRange.html" title="Matches events whose time occurs within the given range">originTimeRange</a>&gt; <br />&lt;<a href="pointLinearDistanceMagnitude.html" title="Accepts events above a linear threshold of magnitude with distance">pointLinearDistanceMagnitude</a>&gt; <br />&lt;<a href="printlineEventProcess.html" title="Prints out each event on a new line">printlineEventProcess</a>&gt; <br />&lt;<a href="removeEventDuplicate.html" title="Accepts events that are dissimilar from already accepted events">removeEventDuplicate</a>&gt; <br />&lt;<a href="seismicRegion.html" title=" Matches the seismic Flinn-Engdahl region number">seismicRegion</a>&gt; <br />&lt;<a href="similarEvent.html" title="Accepts events that are similar to one in the included event source.">similarEvent</a>&gt; <br />&lt;<a href="youngerThan.html" title="The event must have occured more recently than now minus the given time interval">youngerThan</a>&gt; <br /></div> 
+<br /></div>
+&lt;/<a href="originNOT.html" title="Matches the negated output of the enclosed Origin subsetter">originNOT</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="origin">
+                                            <p>In <a href="origin.html">origin</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="removeEventDuplicate.html">removeEventDuplicate</a>
+</li>
+                            <li><a href="eventAttrName.html">eventAttrName</a>
+</li>
+                            <li><a href="geographicalRegion.html">geographicalRegion</a>
+</li>
+                            <li><a href="seismicRegion.html">seismicRegion</a>
+</li>
+                            <li><a href="originTimeRange.html">originTimeRange</a>
+</li>
+                            <li><a href="magnitudeRange.html">magnitudeRange</a>
+</li>
+                            <li><a href="originDepthRange.html">originDepthRange</a>
+</li>
+                            <li><a href="originPointDistance.html">originPointDistance</a>
+</li>
+                            <li><a href="originPointAzimuth.html">originPointAzimuth</a>
+</li>
+                            <li><a href="originPointBackAzimuth.html">originPointBackAzimuth</a>
+</li>
+                            <li><a href="pointLinearDistanceMagnitude.html">pointLinearDistanceMagnitude</a>
+</li>
+                            <li><a href="eventArea.html">eventArea</a>
+</li>
+                            <li><a href="eventBoxArea.html">eventBoxArea</a>
+</li>
+                            <li><a href="eventPolygonFile.html">eventPolygonFile</a>
+</li>
+                            <li><a href="catalog.html">catalog</a>
+</li>
+                            <li><a href="contributor.html">contributor</a>
+</li>
+                            <li><a href="networkTimeRange.html">networkTimeRange</a>
+</li>
+                            <li><a href="originArrayAND.html">originArrayAND</a>
+</li>
+                            <li><a href="originArrayOR.html">originArrayOR</a>
+</li>
+                            <li><a href="originAND.html">originAND</a>
+</li>
+                            <li><a href="originOR.html">originOR</a>
+</li>
+                            <li><a href="originNOT.html">originNOT</a>
+</li>
+                            <li><a href="externalOriginSubsetter.html">externalOriginSubsetter</a>
+</li>
+                            <li><a href="youngerThan.html">youngerThan</a>
+</li>
+                            <li><a href="printlineEventProcess.html">printlineEventProcess</a>
+</li>
+                            <li><a href="CSVEventPrinter.html">CSVEventPrinter</a>
+</li>
+                            <li><a href="similarEvent.html">similarEvent</a>
+</li>
+                            <li><a href="originScript.html">originScript</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

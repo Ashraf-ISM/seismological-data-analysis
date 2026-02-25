@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - combineNetworkSource</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="combineNetworkSource">combineNetworkSource</a>
+				</h3>
+					<p>
+			The combination is on a per network basis, so the first network source that contains
+                    a given network is used.
+                    
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;combineNetworkSource&gt;
+  &lt;winstonNetworkSource&gt;
+      &lt;stationFile&gt;winstonStations.csv&lt;/stationFile&gt;
+      &lt;host&gt;winston.seismo.univ.edu&lt;/host&gt;
+      &lt;port&gt;16022&lt;/port&gt;
+  &lt;/winstonNetworkSource&gt;
+  &lt;networkFinder&gt;
+      &lt;name&gt;IRIS_NetworkDC&lt;/name&gt;
+      &lt;dns&gt;edu/iris/dmc&lt;/dns&gt;
+      &lt;refreshInterval&gt;
+          &lt;unit&gt;MINUTE&lt;/unit&gt;
+          &lt;value&gt;3000&lt;/value&gt;
+      &lt;/refreshInterval&gt;
+      &lt;filterURL&gt;http://seis.sc.edu/GEE/Dynamic/GEE_2.1/configs/filterStations.txt&lt;/filterURL&gt;
+  &lt;/networkFinder&gt;
+&lt;/combineNetworkSource&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="combineNetworkSource.html" title="combines the networks from several sources, allowing for example the DMC and a local  winston wave server to both contribute to a SOD run.">combineNetworkSource</a>&gt; <div>
+<div id="group">
+&lt;name&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/name&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+<a href="networkSource.html" title="Defines the source for network/station/channel information.">networkSource</a> <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+</div>
+&lt;/<a href="combineNetworkSource.html" title="combines the networks from several sources, allowing for example the DMC and a local  winston wave server to both contribute to a SOD run.">combineNetworkSource</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="networkSource">
+                                            <p>In <a href="networkSource.html">networkSource</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="fdsnStation.html">fdsnStation</a>
+</li>
+                            <li><a href="finder.html">networkFinder</a>
+</li>
+                            <li><a href="filterFinder.html">filterNetworkFinder</a>
+</li>
+                            <li><a href="channelLimitedNetworkFinder.html">channelLimitedNetworkFinder</a>
+</li>
+                            <li><a href="CSVNetworkSource.html">CSVNetworkSource</a>
+</li>
+                            <li><a href="winstonNetworkSource.html">winstonNetworkSource</a>
+</li>
+                            <li><a href="combineNetworkSource.html">combineNetworkSource</a>
+</li>
+                            <li><a href="stationXML.html">stationXML</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

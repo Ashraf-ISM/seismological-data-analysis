@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - ORAvailableDataWrapper</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="ORAvailableDataWrapper">ORAvailableDataWrapper</a>
+				</h3>
+					<p>
+			Allows an event channel request subsetter to be embedded within an
+                    event channelgroup available data subsetter. The result is the OR of the result
+                    of all the individual per channel available data subsetters. The is most often
+                    used within the motion vector arm.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;ORAvailableDataWrapper&gt;
+    &lt;someCoverage /&gt;
+&lt;/ORAvailableDataWrapper&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="ORAvailableDataWrapper.html" title="Allows an event channel request subsetter to be embedded within an event vector available data subsetter.">ORAvailableDataWrapper</a>&gt; <div>
+<a href="availableData.html" title="Ingredients for subsetting based on the availability of data">availableData</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="availableDataAND.html" title="Matches all enclosed AvailableData subsetters">availableDataAND</a>&gt; <br />&lt;<a href="availableDataNOT.html" title="Matches the negated output of the enclosed AvailableData subsetter">availableDataNOT</a>&gt; <br />&lt;<a href="availableDataOR.html" title="Matches at least one enclosed AvailableData subsetter">availableDataOR</a>&gt; <br />&lt;<a href="availableDataScript.html" title="Runs a script available data subsetter">availableDataScript</a>&gt; <br />&lt;<a href="externalAvailable.html" title="Use an AvailableData subsetter external to SOD">externalAvailableDataSubsetter</a>&gt; <br />&lt;<a href="fullCoverage.html" title="Accepts data only if it spans the entire generated request">fullCoverage</a>/&gt;
+ <br />&lt;<a href="noGaps.html" title="Accepts data only if it has no gaps">noGaps</a>/&gt;
+ <br />&lt;<a href="percentCoverage.html" title="Accepts data if it spans the specified percentage of the generated request">percentCoverage</a>&gt; <br />&lt;<a href="postEventWait.html" title="Ensure good data after a fresh event">postEventWait</a>&gt; <br />&lt;<a href="printlineAvailableDataProcess.html" title="Print out information about the data the server reported as available">printlineAvailableDataProcess</a>&gt; <br />&lt;<a href="someCoverage.html" title="Accepts data if it spans some of the generated request">someCoverage</a>/&gt;
+ <br />&lt;<a href="subrequestCoverage.html" title="Accepts data if it matches a request generated by this subsetter">subrequestCoverage</a>&gt; <br /></div> 
+<br /></div>
+&lt;/<a href="ORAvailableDataWrapper.html" title="Allows an event channel request subsetter to be embedded within an event vector available data subsetter.">ORAvailableDataWrapper</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="vectorAvailableData">
+                                            <p>In <a href="vectorAvailableData.html">vectorAvailableData</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="ANDAvailableDataWrapper.html">ANDAvailableDataWrapper</a>
+</li>
+                            <li><a href="ORAvailableDataWrapper.html">ORAvailableDataWrapper</a>
+</li>
+                            <li><a href="vectorAvailableDataAND.html">vectorAvailableDataAND</a>
+</li>
+                            <li><a href="vectorAvailableDataOR.html">vectorAvailableDataOR</a>
+</li>
+                            <li><a href="vectorAvailableDataNOT.html">vectorAvailableDataNOT</a>
+</li>
+                            <li><a href="vectorAvailableDataScript.html">vectorAvailableDataScript</a>
+</li>
+                            <li><a href="externalVectorAvailableData.html">externalVectorAvailableDataSubsetter</a>
+</li>
+                            <li><a href="availableData.html">availableData</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

@@ -1,0 +1,181 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - networkSource</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="open">
+			networkArm
+    	</li>
+	</a>
+	               <ul>
+                	<a href="networkSource.html">
+		<li id="selected">
+			networkSource
+    	</li>
+	</a>
+                	<a href="network.html">
+		<li>
+			network
+    	</li>
+	</a>
+                	<a href="station.html">
+		<li>
+			station
+    	</li>
+	</a>
+                	<a href="channel.html">
+		<li>
+			channel
+    	</li>
+	</a>
+            </ul>
+	  	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="networkSource">networkSource</a>
+				</h3>
+					<p>
+			This defines the source for all network information.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;fdsnStation&gt;
+    &lt;networkCode&gt;II&lt;/networkCode&gt;
+    &lt;stationCode&gt;AAK&lt;/stationCode&gt;
+    &lt;channelCode&gt;BHZ&lt;/channelCode&gt;
+&lt;/fdsnStation&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<a href="networkSource.html" title="Defines the source for network/station/channel information.">networkSource</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="channelLimitedNetworkFinder.html" title="Finds networks">channelLimitedNetworkFinder</a>&gt; <br />&lt;<a href="combineNetworkSource.html" title="combines the networks from several sources, allowing for example the DMC and a local  winston wave server to both contribute to a SOD run.">combineNetworkSource</a>&gt; <br />&lt;<a href="CSVNetworkSource.html" title="Retrieve channels from a Comma-Separated Values file">CSVNetworkSource</a>&gt; <br />&lt;<a href="fdsnStation.html" title="Loads network metadata from a FDSN Station web service.">fdsnStation</a>&gt; <br />&lt;<a href="filterFinder.html" title="Finds networks and only allows in stations matching reg exps loaded from a url">filterNetworkFinder</a>&gt; <br />&lt;<a href="finder.html" title="Finds networks">networkFinder</a>&gt; <br />&lt;<a href="stationXML.html" title="Loads network metadata from StationXML">stationXML</a>&gt; <br />&lt;<a href="winstonNetworkSource.html" title="Retrieve channels from a Winston wave server, plus stations from Comma-Separated Values file">winstonNetworkSource</a>&gt; <br /></div> 
+<br />
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="combineNetworkSource">
+                                <p><a href="combineNetworkSource.html">combineNetworkSource</a>
+ contains this directly</p>
+                </section>
+            <section name="networkArm">
+                                <p><a href="networkArm.html">networkArm</a>
+ contains this directly</p>
+                </section>
+            </div>
+       			</div>
+    </body>
+</html>

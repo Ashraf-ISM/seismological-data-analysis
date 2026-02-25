@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - seismogramImageBase</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="seismogramImageBase">seismogramImageBase</a>
+				</h3>
+			</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre></pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<div id="group">
+&lt;phaseWindow&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="phaseWindow.html" >phaseWindow</a> <br />
+</div>
+&lt;/phaseWindow&gt;<br />
+&lt;fileType&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<div><b>png</b></div>
+<div><b>pdf</b></div>
+</div> 
+<br /></div>
+&lt;/fileType&gt;<br />
+&lt;fileDir&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="any.html" >any</a> <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+&lt;/fileDir&gt;<br />
+ <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i> <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;seismogramConfig&gt; <div>
+&lt;template&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/template&gt; <br />
+</div>
+&lt;/seismogramConfig&gt;<br />
+&lt;outputLocationCreators&gt; <div>
+<div id="group">
+&lt;eventDir&gt; <div>
+<a href="any.html" >any</a> <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+&lt;/eventDir&gt;<br />
+&lt;stationDir&gt; <div>
+<a href="any.html" >any</a> <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+&lt;/stationDir&gt;<br />
+&lt;picName&gt; <div>
+<a href="any.html" >any</a> <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+&lt;/picName&gt;<br />
+</div>
+</div>
+&lt;/outputLocationCreators&gt;<br />
+</div> 
+<br />&lt;prefix&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/prefix&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;putDataInCookieJar/&gt;
+ <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;dimension&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<div id="group">
+&lt;width&gt;<b><a href="../../ingredients/datatypes/IntegerDatatype.html">integer</a></b>&lt;/width&gt; <br />
+&lt;height&gt;<b><a href="../../ingredients/datatypes/IntegerDatatype.html">integer</a></b>&lt;/height&gt; <br />
+</div>
+</div>
+&lt;/dimension&gt;<br />
+&lt;showOnlyFirstArrivals/&gt;
+ <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />&lt;phaseNameMappings&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+&lt;mapping&gt; <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><div>
+<div id="group">
+&lt;pattern&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/pattern&gt; <br />
+&lt;replacement&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/replacement&gt; <br />
+</div>
+</div>
+&lt;/mapping&gt;<br />
+</div>
+&lt;/phaseNameMappings&gt;<br />
+&lt;phaseFlags&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+&lt;phase&gt;<b><a href="phaseName.html" title="The name of a seismic phase">phaseName</a></b>&lt;/phase&gt; <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+&lt;/phaseFlags&gt;<br />
+</div>
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        </div>
+       			</div>
+    </body>
+</html>

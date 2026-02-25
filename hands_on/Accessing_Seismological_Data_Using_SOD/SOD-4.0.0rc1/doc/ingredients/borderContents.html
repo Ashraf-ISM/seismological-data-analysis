@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - borderContents</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="borderContents">borderContents</a>
+				</h3>
+			</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;type&gt;title&lt;/type&gt;
+&lt;position&gt;bottom&lt;/position&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<div id="group">
+<a href="defineAndReference.html" >defineAndReference</a> <br />
+&lt;type&gt; <div>
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<div><b>title</b></div>
+<div><b>dist</b></div>
+<div><b>amp</b></div>
+<div><b>time</b></div>
+<div><b>triangle</b></div>
+<div><b>elapsed</b></div>
+</div> 
+<br /></div>
+&lt;/type&gt;<br />
+&lt;position&gt; <div>
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<div><b>bottom</b></div>
+<div><b>top</b></div>
+<div><b>left</b></div>
+<div><b>right</b></div>
+<div><b>bottom left</b></div>
+<div><b>bottom right</b></div>
+<div><b>top left</b></div>
+<div><b>top right</b></div>
+</div> 
+<br /></div>
+&lt;/position&gt;<br />
+&lt;titleCentered&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<div><b>true</b></div>
+<div><b>false</b></div>
+</div> 
+<br /></div>
+&lt;/titleCentered&gt;<br />
+&lt;triangleColors&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+&lt;color&gt; <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><div>
+<a href="colorContents.html" >colorContents</a> <br />
+</div>
+&lt;/color&gt;<br />
+</div>
+&lt;/triangleColors&gt;<br />
+&lt;clipTicks&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<div id="group">
+&lt;min&gt;<b><a href="../../ingredients/datatypes/DoubleDatatype.html">double</a></b>&lt;/min&gt; <br />
+&lt;max&gt;<b><a href="../../ingredients/datatypes/DoubleDatatype.html">double</a></b>&lt;/max&gt; <br />
+</div>
+</div>
+&lt;/clipTicks&gt;<br />
+&lt;titleFont&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="fontContents.html" >fontContents</a> <br />
+</div>
+&lt;/titleFont&gt;<br />
+&lt;titleColor&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="colorContents.html" >colorContents</a> <br />
+</div>
+&lt;/titleColor&gt;<br />
+&lt;background&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="colorContents.html" >colorContents</a> <br />
+</div>
+&lt;/background&gt;<br />
+&lt;title&gt; <i><a href="../../ingredients/abstractStructure.html#Any number of times">Any number of times</a> </i><div>
+<div id="group">
+<a href="defineAndReference.html" >defineAndReference</a> <br />
+&lt;text&gt;<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b>&lt;/text&gt; <br />
+&lt;font&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="fontContents.html" >fontContents</a> <br />
+</div>
+&lt;/font&gt;<br />
+&lt;titleColor&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="colorContents.html" >colorContents</a> <br />
+</div>
+&lt;/titleColor&gt;<br />
+</div>
+</div>
+&lt;/title&gt;<br />
+</div>
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        </div>
+       			</div>
+    </body>
+</html>

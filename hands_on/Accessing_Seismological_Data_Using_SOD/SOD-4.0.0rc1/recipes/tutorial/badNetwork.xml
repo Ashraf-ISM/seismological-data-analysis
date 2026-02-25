@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sod>
+    <networkArm>
+        <fdsnStation/>
+        <channelAND>
+            <networkCode>II</networkCode>
+            <bandCode>B</bandCode>
+        </channelAND>
+        <printlineChannelProcess/>
+    </networkArm>
+</sod>

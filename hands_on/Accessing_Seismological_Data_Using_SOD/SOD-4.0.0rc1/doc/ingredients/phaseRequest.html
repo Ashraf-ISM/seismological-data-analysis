@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - phaseRequest</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="phaseRequest">phaseRequest</a>
+				</h3>
+					<p>
+			This generates requests based on the times relative to calculated phase arrivals.
+                See the documentation for the TauP Toolkit, http://www.seis.sc.edu/TauP for the phase naming
+                convention. SOD uses the TauP Toolkit internally. The begin and end phase can be a comma
+                separated list. If there are multiple arrivals for the phases, then the time will be calculated
+                relative to the first arriving phase. If there are zero arrivals for the phases, then
+                no request will be generated and no data will be retrieved. The
+                phase name "origin" may be used to express an offset from the
+                origin time.
+                
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;phaseRequest&gt;
+  &lt;beginPhase&gt;ttp&lt;/beginPhase&gt;
+  &lt;beginOffset&gt;
+      &lt;unit&gt;SECOND&lt;/unit&gt;
+      &lt;value&gt;-60&lt;/value&gt;
+  &lt;/beginOffset&gt;
+  &lt;endPhase&gt;ttp&lt;/endPhase&gt;
+  &lt;endOffset&gt;
+      &lt;unit&gt;SECOND&lt;/unit&gt;
+      &lt;value&gt;360&lt;/value&gt;
+  &lt;/endOffset&gt;
+&lt;/phaseRequest&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="phaseRequest.html" title="Generates requests based on phases">phaseRequest</a>&gt; <div>
+<div id="group">
+&lt;model&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="model.html" title="Velocity model used to calculate the arrival time">model</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<div><b>1066a</b></div>
+<div><b>1066b</b></div>
+<div><b>ak135</b></div>
+<div><b>alfs</b></div>
+<div><b>herrin</b></div>
+<div><b>iasp91</b></div>
+<div><b>jb</b></div>
+<div><b>prem</b></div>
+<div><b>pwdk</b></div>
+<div><b>qdt</b></div>
+<div><b>sp6</b></div>
+</div> 
+<br /></div>
+&lt;/model&gt;<br />
+&lt;beginPhase&gt;<b><a href="phaseName.html" title="The name of a seismic phase">phaseName</a></b>&lt;/beginPhase&gt; <br />
+&lt;beginOffset&gt; <div>
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<a href="randomOffset.html" >randomOffset</a> <br />
+<a href="timeInterval.html" title="A length of time">timeInterval</a> <br />
+</div> 
+<br /></div>
+&lt;/beginOffset&gt;<br />
+&lt;endPhase&gt;<b><a href="phaseName.html" title="The name of a seismic phase">phaseName</a></b>&lt;/endPhase&gt; <br />
+&lt;endOffset&gt; <div>
+  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<a href="randomOffset.html" >randomOffset</a> <br />
+<a href="timeInterval.html" title="A length of time">timeInterval</a> <br />
+</div> 
+<br /></div>
+&lt;/endOffset&gt;<br />
+</div>
+</div>
+&lt;/<a href="phaseRequest.html" title="Generates requests based on phases">phaseRequest</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="requestGenerator">
+                                            <p>In <a href="requestGenerator.html">requestGenerator</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="phaseRequest.html">phaseRequest</a>
+</li>
+                            <li><a href="originOffsetRequest.html">originOffsetRequest</a>
+</li>
+                            <li><a href="choiceRequest.html">choiceRequest</a>
+</li>
+                            <li><a href="combineRequest.html">combineRequest</a>
+</li>
+                            <li><a href="requestGeneratorScript.html">requestGeneratorScript</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

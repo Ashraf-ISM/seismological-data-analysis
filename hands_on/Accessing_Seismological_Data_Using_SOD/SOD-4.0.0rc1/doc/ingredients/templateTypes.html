@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>SOD - Template Variables in SOD</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+</head>
+<body>
+<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+<div id="content">
+<div class="section">
+<h3>
+	<a name="Types of variables available">Types of variables available</a>
+</h3>
+            <p>The names and subtypes of variables availble from various Velocity templates used by SOD ingredients are listed here.
+				The ingredients that expose them link here to show what's available from their variables.
+				You can see how to use templates in SOD at the <a href="templates.html">template instructions</a> page.
+			</p>
+</div>
+<div class="section">
+<h3>
+	<a name="Network Types">Network Types</a>
+</h3>
+<div class="section">
+<h4>
+	<a name="channel">channel</a>
+</h4>
+<p><b>Default value:</b> "${net}.${channel.station.code}.${channel.site.code}.${channel.code}.${channel.start}"</p>
+<dl>
+	<h4>Available subfields</h4>
+					<dt>azimuth</dt>
+				<dd>the angle of the channel with respect to North</dd>
+								<dt>code</dt>
+				<dd>the channel's band, gain and orientation codes i.e. BHZ</dd>
+								<dt>bandCode</dt>
+				<dd>the channel's band code i.e. B</dd>
+								<dt>gainCode</dt>
+				<dd>the channel's gain code i.e. H</dd>
+								<dt>orientationCode</dt>
+				<dd>the channel's orientation codes i.e. Z</dd>
+								<dt>codes</dt>
+				<dd>${channel.net.code}.${channel.station.code}.${channel.site.code}.${channel.code}</dd>
+								<dt>dip</dt>
+				<dd>the angle of the channel with respect to horizontal</dd>
+								<dt>end</dt>
+				<dd>time at which the channel stopped recording. can be formatted using getEnd('date format')</dd>
+								<dt>name</dt>
+				<dd>the full name of the channel. may be empty</dd>
+					<dt><a href="#net">net</a></dt>
+	<dd>the channel's network</dd>
+		<dt><a href="#sampling">sampling</a></dt>
+	<dd>the default sampling rate of the channel</dd>
+		<dt><a href="#site">site</a></dt>
+	<dd>the channel's site.  The channel's location is in here</dd>
+					<dt>start</dt>
+				<dd>time at which the channel began recording.  can be formatted using getStart('date format')</dd>
+					<dt><a href="#station">station</a></dt>
+	<dd>the channel's station</dd>
+</dl>
+</div>
+<div class="section">
+<h4>
+	<a name="site">site</a>
+</h4>
+<p><b>Default value:</b> "${net}:${site.station.code}:${site.code}:${site.start}"</p>
+<dl>
+	<h5>Available subfields</h5>
+					<dt>code</dt>
+				<dd>the location code ie 00</dd>
+								<dt>codes</dt>
+				<dd>${site.net.code}.${site.station.code}.${site.code}</dd>
+								<dt>comment</dt>
+				<dd>a comment about the site.  may be empty</dd>
+								<dt>end</dt>
+				<dd>time at which the site stopped recording. can be formatted using getEnd('date format')</dd>
+								<dt>latitude</dt>
+				<dd>the latitude of the site from -90 to 90</dd>
+								<dt>longitude</dt>
+				<dd>the longitude of the site from -180 to 180</dd>
+					<dt><a href="#net">net</a></dt>
+	<dd>the site's network</dd>
+					<dt>orientedLatitude</dt>
+				<dd>the latitude of the site with a cardinal direction ie 90 S to 90 N</dd>
+								<dt>orientedLongitude</dt>
+				<dd>the longitude of the site with a cardinal direction ie 180 W to 180 E</dd>
+								<dt>start</dt>
+				<dd>time at which the site began recording.  can be formatted using getStart('date format')</dd>
+					<dt><a href="#station">station</a></dt>
+	<dd>the site's station</dd>
+</dl>
+</div>
+<div class="section">
+<h4>
+	<a name="station">station</a>
+</h4>
+<p><b>Default value:</b> "${net}:${station.code}:${station.start}"</p>
+<p>The subfields with $event are only available in the waveformArm and waveformVectorArm</p>
+<dl>
+	<h5>Available subfields</h5>
+					<dt>code</dt>
+				<dd>the station code ie ANMO</dd>
+								<dt>codes</dt>
+				<dd>${station.net.code}.${station.code}</dd>
+								<dt>comment</dt>
+				<dd>a comment about the station.  may be empty</dd>
+								<dt>depth</dt>
+				<dd>how far the station is below the ground</dd>
+								<dt>getDepth(format)</dt>
+				<dd>how far the station is below the ground in meters, formatted by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/text/DecimalFormat.html">DecimalFormat string</a>, such as "#.0"</dd>
+			    				<dt>description</dt>
+				<dd>a description of the station.  may be empty</dd>
+								<dt>getAz($event)</dt>
+				<dd>the azimuth to event</dd>
+								<dt>getBaz($event)</dt>
+				<dd>the back azimuth to event</dd>
+								<dt>getDistance($event)</dt>
+				<dd>the distance in kilometers to event</dd>
+								<dt>getDistanceDeg($event)</dt>
+				<dd>the distance in degrees to event</dd>
+								<dt>elevation</dt>
+				<dd>the height of the station's location relative to sea level</dd>
+								<dt>end</dt>
+				<dd>time at which the station stopped recording. can be formatted using getEnd('date format')</dd>
+								<dt>latitude</dt>
+				<dd>the latitude of the station from -90 to 90</dd>
+								<dt>getLatitude(format)</dt>
+				<dd>the latitude of the station from -90 to 90, formatted by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/text/DecimalFormat.html">DecimalFormat string</a>, such as "#.0"</dd>
+			    				<dt>longitude</dt>
+				<dd>the longitude of the station from -180 to 180</dd>
+								<dt>getLongitude(format)</dt>
+				<dd>the longitude of the station from -180 to 180, formatted by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/text/DecimalFormat.html">DecimalFormat string</a>, such as "#.0"</dd>
+			    				<dt>name</dt>
+				<dd>the full name of the station</dd>
+								<dt>net</dt>
+				<dd>the station's network</dd>
+								<dt>operator</dt>
+				<dd>the full of the group operating the station</dd>
+								<dt>orientedLatitude</dt>
+				<dd>the latitude of the station with a cardinal direction ie 90 S to 90 N</dd>
+								<dt>orientedLongitude</dt>
+				<dd>the longitude of the station with a cardinal direction ie 180 W to 180 E</dd>
+								<dt>start</dt>
+				<dd>time at which the station began recording.  can be formatted using getStart('date format')</dd>
+			</dl>
+</div>
+<div class="section">
+<h4>
+	<a name="net">net</a>
+</h4>
+<p><b>Default value:</b> "${net.code}.${net.start}"</p>
+<dl>
+    <h5>Available subfields</h5>
+    				<dt>code</dt>
+				<dd>the network code ie IU</dd>
+			    				<dt>description</dt>
+				<dd>a description of the network.  may be empty</dd>
+			    				<dt>end</dt>
+				<dd>time at which the network stopped recording. can be formatted using getEnd('date format')</dd>
+			    				<dt>name</dt>
+				<dd>the full name of the network</dd>
+			    				<dt>owner</dt>
+				<dd>the full of the group that owns the network</dd>
+			    				<dt>start</dt>
+				<dd>time at which the station began recording.  can be formatted using getStart('date format')</dd>
+			</div>
+<div class="section">
+<h4>
+	<a name="instrumentation">instrumentation</a>
+</h4>
+<p><b>Default value:</b> "${instrumentation.sensitivity} ${instrumentation.sensorModel}"</p>
+<dl>
+    <h5>Available subfields</h5>
+    				<dt>sensorModel</dt>
+				<dd>the sensor model, may be empty</dd>
+			    				<dt>dataLoggerModel</dt>
+				<dd>the data logger model, may be empty</dd>
+			    				<dt>sensitivity</dt>
+				<dd>overall sensitivity, gain and frequency</dd>
+			</div>
+</div>
+<div class="section">
+<h3>
+	<a name="Event types">Event types</a>
+</h3>
+<div class="section">
+<h4>
+	<a name="event">event</a>
+</h4>
+<p><b>Default value:</b> "Event: $event.region | $event.time | Mag: $event.magnitudeValue  | Depth $event.depth  | ($event.latitude, $event.longitude)"</p>
+<p>The subfields with $station are only available in the waveformArm and waveformVectorArm</p>
+<dl>
+	<h5>Available subfields</h5>
+    				<dt>allMagnitudes</dt>
+				<dd>comma separated list of all magnitudes</dd>
+								<dt>catalog</dt>
+				<dd>the catalog to which the event belongs</dd>
+								<dt>contributor</dt>
+				<dd>the organization that estimated the event</dd>
+								<dt>depth</dt>
+				<dd>how far the event was below the ground, with units</dd>
+								<dt>getDepth(format)</dt>
+				<dd>how far the event was below the ground in kilometers, formatted by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/text/DecimalFormat.html">DecimalFormat string</a>, such as "#.0"</dd>
+								<dt>depthValue</dt>
+				<dd>how far the event was below the ground, without units</dd>
+								<dt>getAz($station)</dt>
+				<dd>the azimuth to $station</dd>
+								<dt>getBaz($station)</dt>
+				<dd>the back azimuth to $station</dd>
+								<dt>getDistance($station)</dt>
+				<dd>the distance in kilometers to $station</dd>
+			    				<dt>getDistanceDeg($station)</dt>
+				<dd>the distance in degrees to $station</dd>
+			    				<dt>id</dt>
+				<dd>the id of the event as generated by the server</dd>
+								<dt>latitude</dt>
+				<dd>the latitude of the event from -90 to 90</dd>
+								<dt>getLatitude(format)</dt>
+				<dd>the latitude of the event from -90 to 90, formatted by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/text/DecimalFormat.html">DecimalFormat string</a>, such as "#.0"</dd>
+			    				<dt>longitude</dt>
+				<dd>the longitude of the event from -180 to 180</dd>
+								<dt>getLongitude(format)</dt>
+				<dd>the longitude of the event from -180 to 180, formatted by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/text/DecimalFormat.html">DecimalFormat string</a>, such as "#.0"</dd>
+			    				<dt>magnitude</dt>
+				<dd>both the value and type of the magnitude</dd>
+								<dt>magnitudeType</dt>
+				<dd>the type of the magnitude</dd>
+			    				<dt>magnitudeValue</dt>
+				<dd>the value of the magnitude</dd>
+			    				<dt>magnitudeContributor</dt>
+				<dd>the contributor of the magnitude</dd>
+								<dt>orientedLatitude</dt>
+				<dd>the latitude of the event with a cardinal direction ie 90 S to 90 N</dd>
+								<dt>orientedLongitude</dt>
+				<dd>the longitude of the event with a cardinal direction ie 180 W to 180 E</dd>
+			    				<dt>region</dt>
+				<dd>the Flinn Engdahl region for the event</dd>
+			    				<dt>regionNumber</dt>
+				<dd>the Flinn Engdahl region number for the event</dd>
+								<dt>time</dt>
+				<dd>time at which the event occurred, to whole seconds</dd>
+			    				<dt>timePrecise</dt>
+				<dd>time at which the event occurred, to milliseconds</dd>
+								<dt>getTime(format)</dt>
+				<dd>time at which the event occurred, formatted by a <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat string</a>, such as "yyyy/MM/dd HH:mm:ss.SSS Z"</dd>
+			</dl>
+</div>
+</div>
+<div class="section">
+<h3>
+	<a name="Seismogram Types">Seismogram Types</a>
+</h3>
+<div class="section">
+<h4>
+	<a name="sampling">sampling</a>
+</h4>
+<p><b>Default value:</b> "$sampling.numPoints in $sampling.timeInterval"</p>
+<dl>
+	<h5>Available subfields</h5>
+					<dt>frequency</dt>
+				<dd>number of samples per time interval</dd>
+								<dt>intervalUnitName</dt>
+				<dd>the name of the time interval unit</dd>
+								<dt>intervalValue</dt>
+				<dd>the size of the time interval in intervalUnitName</dd>
+								<dt>period</dt>
+				<dd>time between samples</dd>
+								<dt>numPoints</dt>
+				<dd>the number of points per timeInterval</dd>
+								<dt>timeInterval</dt>
+				<dd>the amount of time over which numPoints are recorded</dd>
+			</dl>
+</div>
+<div class="section">
+<h4>
+	<a name="seismogram">seismogram</a>
+</h4>
+<p><b>Default value:</b> "Seismogram on $seismogram.channel from $seismogram.begin to $seismogram.end"</p>
+<dl>
+	<h5>Available subfields</h5>
+					<dt>begin</dt>
+				<dd>the start time of the data in the seismogram.  can be formatted with getBegin('time format')</dd>
+					<dt><a href="#channel">channel</a></dt>
+	<dd>the channel that recorded the seismogram</dd>
+					<dt>end</dt>
+				<dd>the time of the last recorded point in the seismogram. can be formatted with getEnd('time format')</dd>
+								<dt>maxValue</dt>
+				<dd>largest value in the seismogram</dd>
+								<dt>meanValue</dt>
+				<dd>mean value of all the points in the seismogram</dd>
+								<dt>minValue</dt>
+				<dd>smallest value in the seismogram</dd>
+								<dt>numPoints</dt>
+				<dd>number of points in the seismogram</dd>
+								<dt>name</dt>
+				<dd>name of the seismogram.  generated automatically by SOD</dd>
+					<dt><a href="#sampling">sampling</a></dt>
+	<dd>sampling rate at which the seismogram was recorded</dd>
+					<dt>timeInterval</dt>
+				<dd>the amount of time over which numPoints are recorded</dd>
+								<dt>unit</dt>
+				<dd>the unit the values of the seismogram are in</dd>
+			</dl>
+</div>
+<div class="section">
+<h4>
+	<a name="request">request</a>
+</h4>
+<p><b>Default value:</b> "Request for $request.channel from $request.begin to $request.end"</p>
+<dl>
+	<h5>Available subfields</h5>
+					<dt>begin</dt>
+				<dd>the start time of the request.  can be formatted with getBegin('time format')</dd>
+					<dt><a href="#channel">channel</a></dt>
+	<dd>the requested channel</dd>
+					<dt>end</dt>
+				<dd>the time of the last recorded point in the seismogram. can be formatted with getEnd('time format')</dd>
+			</dl>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+	<div id="contact">
+        <a 	href="http://www.seis.sc.edu/mail.html"
+   onmouseover="javascript:this.href=decode('seis.sc.edu', '*rem*sod')"
+   onfocus="javascript:this.href=decode('seis.sc.edu', '*rem*sod')"
+>
+			<img src="../images/contact.png"/>
+			Contact Us
+		</a>
+	</div>
+<img class="right" src="../images/dhi_logo.png"/>
+<p>SOD is made possible by the <a href="http://www.geol.sc.edu"> Department of Geological Sciences</a> at the <a href="http://www.sc.edu"><br />University of South Carolina</a> and the <a href="http://www.iris.edu">IRIS Consortium</a>.
+                   </p>
+
+</div>
+
+</body>
+</html>

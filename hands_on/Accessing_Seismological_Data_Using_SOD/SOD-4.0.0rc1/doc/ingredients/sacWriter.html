@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - sacWriter</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="sacWriter">sacWriter</a>
+				</h3>
+					<p>
+			
+<p>The seismograms are written to sac files in the location indicated by location. If multiple
+                    seismograms are found for a channel seismograms past the first will be written out with a number
+                    appended to their file name. ie the second seismogram will be filename.1 and the third will be
+                    filename.2. </p>
+                    <p>The phaseTimeHeader element will cause the travel time of the given phase to be placed
+                    in the sac header corresponding to the tHeader element. tHeader can be 0-9 as well as a. In the case
+                    of 0-9, the ray parameter is inserted into the corresponding userX header as rad/sec. In the case of
+                    triplicated phases, the arrivalIndex can be used to pick an arrival different from the first.
+                    The default is 1, yeilding the first arrival. If this is set to 2, the second arrival is used
+                    and if it is set to -1 then the last arrival is used.
+                    See the TauP user manual, http://www.seis.sc.edu/TauP, for the phase naming convention.  </p>
+                    <p>If the littleEndian element is added to the sacWriter, it will write out sac files in Intel processor style 
+                    little endian byte order.  It defaults to writing in big endian order.</p>
+                    <p>The sacHeaderScript allows manipulation of the sac file before it is written. This is a
+                    type of script similar to seismogramScript. 
+                    The event is put as "event", the channel as "channel" and the sac file as "sac". </p>
+                    <p>Because of the limitations of the SAC header in specifying the data units, this will not set 
+                    the idep header. In the case of having applied the response via transferResponse, the
+                    units will be displacement in meters in most cases, but setting the idep header to IDISP
+                    would imply the units are nanometers. Similarly for a velocity seismogram where only the overall
+                    gain has been applied, the units are most likely to be velocity in meters per second, but the
+                    IVEL value implies nanometers per second. Should you wish to set this header, you should be
+                    careful that the output data is scaled appropriately for the header value you use.</p>
+                    
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;sacWriter&gt;
+    &lt;workingDir&gt;seismograms&lt;/workingDir&gt;
+    &lt;location&gt;${network.code}.${station.code}/${event.filizedTime}/${site.code}.${channel.code}.sac&lt;/location&gt;
+    &lt;phaseTimeHeader&gt;
+        &lt;model&gt;prem&lt;/model&gt;
+        &lt;phaseName&gt;ttp&lt;/phaseName&gt;
+        &lt;tHeader&gt;a&lt;/tHeader&gt;
+    &lt;/phaseTimeHeader&gt;
+    &lt;phaseTimeHeader&gt;
+        &lt;model&gt;prem&lt;/model&gt;
+        &lt;phaseName&gt;tts&lt;/phaseName&gt;
+        &lt;tHeader&gt;1&lt;/tHeader&gt;
+        &lt;arrivalIndex&gt;2&lt;/arrivalIndex&gt;
+    &lt;/phaseTimeHeader&gt;
+    &lt;sacHeaderScript type="jython"&gt;
+        from edu.sc.seis.seisFile.sac import SacConstants
+        h = sac.getHeader()
+        h.idep=SacConstants.IDISP
+        h.ievtyp=SacConstants.IEQ
+        h.iqual=SacConstants.IGOOD
+        h.evdp = h.evdp/1000 # to make depth in km instead of meters
+    &lt;/sacHeaderScript&gt;
+&lt;/sacWriter&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="sacWriter.html" title="Writes sac files from seismograms">sacWriter</a>&gt; <div>
+<div id="group">
+<a href="seisWriterBase.html" >seisWriterBase</a> <br />
+&lt;phaseTimeHeader&gt; <i><a href="../../ingredients/abstractStructure.html#Any number of times">Any number of times</a> </i><div>
+<a href="phaseTimeContents.html" >phaseTimeContents</a> <br />
+</div>
+&lt;/phaseTimeHeader&gt;<br />
+&lt;sacHeaderScript&gt; <i><a href="../../ingredients/abstractStructure.html#Any number of times">Any number of times</a> </i><div>
+<div id="group">
+An attribute named type with a value of <b><a href="../../ingredients/datatypes/Text.html">Any Text</a></b>
+<b><a href="../../ingredients/datatypes/AnyText.html">Any text</a></b></div>
+</div>
+&lt;/sacHeaderScript&gt;<br />
+&lt;littleEndian/&gt;
+ <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br /></div>
+</div>
+&lt;/<a href="sacWriter.html" title="Writes sac files from seismograms">sacWriter</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="seismogramProcess">
+                                            <p>In <a href="seismogramProcess.html">seismogramProcess</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="printlineSeismogramProcess.html">printlineSeismogramProcess</a>
+</li>
+                            <li><a href="sacWriter.html">sacWriter</a>
+</li>
+                            <li><a href="mseedWriter.html">mseedWriter</a>
+</li>
+                            <li><a href="asciiWriter.html">asciiWriter</a>
+</li>
+                            <li><a href="wavWriter.html">wavWriter</a>
+</li>
+                            <li><a href="recordSectionDisplayGenerator.html">recordSectionDisplayGenerator</a>
+</li>
+                            <li><a href="responseGain.html">responseGain</a>
+</li>
+                            <li><a href="phaseCut.html">phaseCut</a>
+</li>
+                            <li><a href="requestCut.html">requestCut</a>
+</li>
+                            <li><a href="merge.html">merge</a>
+</li>
+                            <li><a href="gapFill.html">gapFill</a>
+</li>
+                            <li><a href="rMean.html">rMean</a>
+</li>
+                            <li><a href="rTrend.html">rTrend</a>
+</li>
+                            <li><a href="taper.html">taper</a>
+</li>
+                            <li><a href="externalWaveformProcess.html">externalWaveformProcess</a>
+</li>
+                            <li><a href="seismogramScript.html">seismogramScript</a>
+</li>
+                            <li><a href="localSeismogramStatus.html">localSeismogramTemplateGenerator</a>
+</li>
+                            <li><a href="filter.html">filter</a>
+</li>
+                            <li><a href="oregonDSPFFT.html">rms</a>
+</li>
+                            <li><a href="oregonDSPFilter.html">oregonDSPFilter</a>
+</li>
+                            <li><a href="forkProcess.html">forkProcess</a>
+</li>
+                            <li><a href="seismogramAlwaysSuccess.html">alwaysSuccess</a>
+</li>
+                            <li><a href="phaseSignalToNoise.html">phaseSignalToNoise</a>
+</li>
+                            <li><a href="compoundPhaseSignalToNoise.html">compoundPhaseSignalToNoise</a>
+</li>
+                            <li><a href="seismogramImageProcess.html">seismogramImageProcess</a>
+</li>
+                            <li><a href="legacyExecute.html">legacyExecute</a>
+</li>
+                            <li><a href="seismogramAND.html">seismogramAND</a>
+</li>
+                            <li><a href="seismogramOR.html">seismogramOR</a>
+</li>
+                            <li><a href="seismogramNOT.html">seismogramNOT</a>
+</li>
+                            <li><a href="someDataCoverage.html">someDataCoverage</a>
+</li>
+                            <li><a href="noDataGaps.html">noDataGaps</a>
+</li>
+                            <li><a href="fullDataCoverage.html">fullDataCoverage</a>
+</li>
+                            <li><a href="integrate.html">integrate</a>
+</li>
+                            <li><a href="differentiate.html">differentiate</a>
+</li>
+                            <li><a href="transferResponse.html">transferResponse</a>
+</li>
+                            <li><a href="collapseOverlaps.html">collapseOverlaps</a>
+</li>
+                            <li><a href="div.html">div</a>
+</li>
+                            <li><a href="mul.html">mul</a>
+</li>
+                            <li><a href="invertFlippedChannels.html">invertFlippedChannels</a>
+</li>
+                            <li><a href="seismogramSampling.html">seismogramSampling</a>
+</li>
+                            <li><a href="decimate.html">decimate</a>
+</li>
+                            <li><a href="stddev.html">stddev</a>
+</li>
+                            <li><a href="rms.html">rms</a>
+</li>
+                            <li><a href="mean.html">mean</a>
+</li>
+                            <li><a href="minMax.html">minMax</a>
+</li>
+                            <li><a href="compressionType.html">compressionType</a>
+</li>
+                            <li><a href="availableDataPlus.html">availableDataPlus</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

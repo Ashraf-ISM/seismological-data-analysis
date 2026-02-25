@@ -1,0 +1,221 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - waveformArm</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="open">
+			waveformArm
+    	</li>
+	</a>
+	               <ul> 	<a href="eventStation.html">
+		<li>
+			eventStation
+    	</li>
+	</a>
+                	<a href="eventChannel.html">
+		<li>
+			eventChannel
+    	</li>
+	</a>
+                	<a href="requestGenerator.html">
+		<li>
+			requestGenerator
+    	</li>
+	</a>
+                	<a href="request.html">
+		<li>
+			request
+    	</li>
+	</a>
+                	<a href="seismogramSource.html">
+		<li>
+			seismogramSource
+    	</li>
+	</a>
+                	<a href="availableData.html">
+		<li>
+			availableData
+    	</li>
+	</a>
+                	<a href="seismogramProcess.html">
+		<li>
+			seismogramProcess
+    	</li>
+	</a>
+            </ul>
+	  	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="waveformArm">waveformArm</a>
+				</h3>
+					<p>
+			Both types of waveform arm take the items returned by the network and
+                    event arms and generate the necessary requests to retrieve seismograms. The data
+                    received are then processed. The regular waveformArm takes each channel from the
+                    network arm and runs it through its subsetters and processors individually. The
+                    waveformVectorArm takes the channels from the network arm, groups them as
+                    motion vectors, and runs them through its items as a group.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;waveformArm&gt;
+  &lt;phaseRequest&gt;
+    &lt;beginPhase&gt;ttp&lt;/beginPhase&gt;
+    &lt;beginOffset&gt;
+        &lt;unit&gt;SECOND&lt;/unit&gt;
+        &lt;value&gt;-60&lt;/value&gt;
+    &lt;/beginOffset&gt;
+    &lt;endPhase&gt;ttp&lt;/endPhase&gt;
+    &lt;endOffset&gt;
+        &lt;unit&gt;SECOND&lt;/unit&gt;
+        &lt;value&gt;360&lt;/value&gt;
+    &lt;/endOffset&gt;
+  &lt;/phaseRequest&gt;
+  &lt;printlineSeismogramProcess/&gt;
+&lt;/waveformArm&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="waveformArm.html" title="Operates on the networks and events returned by the network and event arms, downloading and processesing waveforms individually">waveformArm</a>&gt; <div>
+<div id="group">
+<a href="eventStation.html" title="Ingredients for selecting acceptable combinations of stations and events">eventStation</a> <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+<a href="eventChannel.html" title="Ingredients for selecting combinations of channels and events">eventChannel</a> <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+<a href="requestGenerator.html" title="Ingredients that generating requests to the seismogram servers">requestGenerator</a> <br />
+<a href="request.html" title="Ingredients that work based on the generated request">request</a> <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+<a href="seismogramSource.html" title="Specifies the server to ask for seismograms.">seismogramSource</a> <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+<a href="availableData.html" title="Ingredients for subsetting based on the availability of data">availableData</a> <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+<a href="seismogramProcess.html" title="All of the items that process seismograms">seismogramProcess</a> <i><a href="../../ingredients/abstractStructure.html#Any number of times">Any number of times</a> </i><br />
+</div>
+</div>
+&lt;/<a href="waveformArm.html" title="Operates on the networks and events returned by the network and event arms, downloading and processesing waveforms individually">waveformArm</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="waveformArmChoice">
+                                            <p>In <a href="waveformArmChoice.html">waveformArmChoice</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="waveformArm.html">waveformArm</a>
+</li>
+                            <li><a href="waveformVectorArm.html">waveformVectorArm</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

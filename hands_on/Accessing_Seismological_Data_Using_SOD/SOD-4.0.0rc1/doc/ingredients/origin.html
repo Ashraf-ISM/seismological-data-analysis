@@ -1,0 +1,202 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - origin</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="open">
+			eventArm
+    	</li>
+	</a>
+	               <ul>
+                	<a href="eventSource.html">
+		<li>
+			eventSource
+    	</li>
+	</a>
+                	<a href="origin.html">
+		<li id="selected">
+			origin
+    	</li>
+	</a>
+            </ul>
+	  	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="origin">origin</a>
+				</h3>
+					<p>
+			This collects all of the subsetters that make decisions on the contents of an event.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;removeEventDuplicate/&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<a href="origin.html" title="Ingredients for selecting events">origin</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="catalog.html" title="Matches events with a given catalog">catalog</a>&gt; <br />&lt;<a href="contributor.html" title="Matches events with a given contributor">contributor</a>&gt; <br />&lt;<a href="CSVEventPrinter.html" title="Prints out events into a comma-separated text file. If no filename is given, the csv is written to the console.">CSVEventPrinter</a>&gt; <br />&lt;<a href="eventArea.html" title="Matches events that occur within a specified area">eventArea</a>&gt; <br />&lt;<a href="eventAttrName.html" title=" Matches the event name">eventAttrName</a>&gt; <br />&lt;<a href="eventBoxArea.html" title="Accepts events that occur within a lat lon box ">eventBoxArea</a>&gt; <br />&lt;<a href="eventPolygonFile.html" title="Reads in a file with lat long points and accepts any event that falls inside the shape they create">eventPolygonFile</a>&gt; <br />&lt;<a href="externalOriginSubsetter.html" title="Use an Origin subsetter external to SOD">externalOriginSubsetter</a>&gt; <br />&lt;<a href="geographicalRegion.html" title=" Matches the geographic Flinn-Engdahl region number">geographicalRegion</a>&gt; <br />&lt;<a href="magnitudeRange.html" title=" Accepts a range of magnitudes">magnitudeRange</a>&gt; <br />&lt;<a href="networkTimeRange.html" title="Allows events that occured during the time range covered by active channels retrieved by the network arm.">networkTimeRange</a>/&gt;
+ <br />&lt;<a href="originAND.html" title="Matches all enclosed Origin subsetters">originAND</a>&gt; <br />&lt;<a href="originArrayAND.html" title="Enclosed subsetter matches all origins for an event">originArrayAND</a>&gt; <br />&lt;<a href="originArrayOR.html" title="Enclosed subsetter matches at least one origin for an event">originArrayOR</a>&gt; <br />&lt;<a href="originDepthRange.html" title="Matches events with depth within a defined range">originDepthRange</a>&gt; <br />&lt;<a href="originNOT.html" title="Matches the negated output of the enclosed Origin subsetter">originNOT</a>&gt; <br />&lt;<a href="originOR.html" title="Matches at least one enclosed Origin subsetter">originOR</a>&gt; <br />&lt;<a href="originPointAzimuth.html" title=" Azimuth range from a fixed point">originPointAzimuth</a>&gt; <br />&lt;<a href="originPointBackAzimuth.html" title=" Back azimuth range from a fixed point">originPointBackAzimuth</a>&gt; <br />&lt;<a href="originPointDistance.html" title="Distance range from a fixed point">originPointDistance</a>&gt; <br />&lt;<a href="originScript.html" title="Runs an script origin subsetter">originScript</a>&gt; <br />&lt;<a href="originTimeRange.html" title="Matches events whose time occurs within the given range">originTimeRange</a>&gt; <br />&lt;<a href="pointLinearDistanceMagnitude.html" title="Accepts events above a linear threshold of magnitude with distance">pointLinearDistanceMagnitude</a>&gt; <br />&lt;<a href="printlineEventProcess.html" title="Prints out each event on a new line">printlineEventProcess</a>&gt; <br />&lt;<a href="removeEventDuplicate.html" title="Accepts events that are dissimilar from already accepted events">removeEventDuplicate</a>&gt; <br />&lt;<a href="seismicRegion.html" title=" Matches the seismic Flinn-Engdahl region number">seismicRegion</a>&gt; <br />&lt;<a href="similarEvent.html" title="Accepts events that are similar to one in the included event source.">similarEvent</a>&gt; <br />&lt;<a href="youngerThan.html" title="The event must have occured more recently than now minus the given time interval">youngerThan</a>&gt; <br /></div> 
+<br />
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="availableDataPlus">
+                                            <p>In <a href="availableDataPlus.html">availableDataPlus</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="availableData.html">availableData</a>
+</li>
+                            <li><a href="eventChannel.html">eventChannel</a>
+</li>
+                            <li><a href="eventStation.html">eventStation</a>
+</li>
+                            <li><a href="request.html">request</a>
+</li>
+                            <li><a href="channel.html">channel</a>
+</li>
+                            <li><a href="origin.html">origin</a>
+</li>
+            </ul>
+                            </section>
+            <section name="eventArm">
+                                <p><a href="eventArm.html">eventArm</a>
+ contains this directly</p>
+                </section>
+            <section name="originAND">
+                                <p><a href="originAND.html">originAND</a>
+ contains this directly</p>
+                </section>
+            <section name="originArrayAND">
+                                <p><a href="originArrayAND.html">originArrayAND</a>
+ contains this directly</p>
+                </section>
+            <section name="originArrayOR">
+                                <p><a href="originArrayOR.html">originArrayOR</a>
+ contains this directly</p>
+                </section>
+            <section name="originNOT">
+                                <p><a href="originNOT.html">originNOT</a>
+ contains this directly</p>
+                </section>
+            <section name="originOR">
+                                <p><a href="originOR.html">originOR</a>
+ contains this directly</p>
+                </section>
+            </div>
+       			</div>
+    </body>
+</html>

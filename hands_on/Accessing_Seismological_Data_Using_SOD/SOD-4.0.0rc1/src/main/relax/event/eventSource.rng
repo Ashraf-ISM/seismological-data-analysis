@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" xmlns="http://relaxng.org/ns/structure/1.0" xmlns:xsd="http://http://www.w3.org/2001/XMLSchema">
+    <start combine="choice">
+        <ref name="eventSource"/>
+    </start>
+    <define name="eventSource">
+        <choice>
+            <xsd:annotation>
+                <summary>Ingredient to acquire events</summary>
+                <velocity>#eventArmPage()</velocity>
+            </xsd:annotation>
+            <ref name="fdsnEvent"/>
+            <ref name="backwardsEventSource"/>
+            <ref name="CSVEventSource"/>
+            <ref name="periodicFakeEventSource"/>
+            <ref name="nowFakeEventSource"/>
+            <ref name="delayedEventSource"/>
+        </choice>
+    </define>
+    <define name="networkTimeRange">
+        <element name="networkTimeRange">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary>Allows events that occured during the time range covered by active channels retrieved by the network arm.</summary>
+                </xsd:documentation>
+            </xsd:annotation>
+            <empty/>
+        </element>
+    </define>
+    <define name="quakeML">
+        <element name="quakeML">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary>Loads events from a QuakeML file or URL.</summary>
+                </xsd:documentation>
+            </xsd:annotation>
+            <interleave>
+                <optional>
+                    <element name="url">
+                        <xsd:annotation>
+                          <summary>A QuakeML URL</summary>
+                          <description>A url to a quakeml event source, either a remote web service or local file. Note this will
+                          only be queried once, and so is not usable for new events as in a "standing order".</description>
+                          <deprecated>This is deprecated in favor of the new fdsnEvent source.</deprecated>
+                         </xsd:annotation>
+                        <data type="string"/>
+                    </element>
+                </optional>
+            </interleave>
+        </element>
+    </define>
+                
+    <define name="fdsnEvent">
+        <element name="fdsnEvent">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary>Querys events from a FDSN Event web service or file.</summary>
+                    <description>The default is to query the USGS FDSN Event web service at earthquake.usgs.gov,
+                     the host
+                     parameter should only be needed to query a different server. The baseURL, fdsnwsPath and port
+                     parameters should only be used in the case of a server that does not follow the FDSN
+                     specification as to how the service URL should be formed. Most of the other parameters
+                     map directly to the same parameter in the old eventFinder source. The main exception, at
+                     least for queries to the IRIS DMC, is that the catalog and contributor names are not
+                     the same, and so you should refer to the web service documentation for the server you are using for details. For IRIS and USGS they are available at
+                     the USGS, <a href="http://earthquake.usgs.gov/fdsnws/event/1">http://earthquake.usgs.gov/fdsnws/event/1</a>,
+                     or IRIS, <a href="http://service.iris.edu/fdsnws/event/1">http://service.iris.edu/fdsnws/event/1</a>.
+                     For queries that should continue into the future, either
+                     specify the end time as &lt;endTime&gt;&lt;future/&gt;%lt/endTime&gt; or leave it out, which defaults to the same thing.
+                    </description>
+                    <example>
+                        <fdsnEvent>
+                            <originTimeRange>
+                                <startTime>
+                                    2015-01-01T00:00:00.000Z
+                                </startTime>
+                                <endTime>
+                                    2015-01-31T23:59:59.999Z
+                                </endTime>
+                            </originTimeRange>
+                            <magnitudeRange>
+                                <min>6.0</min>
+                            </magnitudeRange>
+                        </fdsnEvent>
+                    </example>
+                </xsd:documentation>
+            </xsd:annotation>
+            <interleave>
+            <optional>
+                <element name="name">
+                    <data type="string">
+                        <xsd:annotation>
+                            <summary>A unique name for this source, mainly used for logging purposes.</summary>
+                        </xsd:annotation>
+                    </data>
+                </element>
+            </optional>
+                <choice>
+                    <optional>
+                        <element name="baseurl">
+                            <xsd:annotation>
+                              <summary>A FDSN Event web service URL</summary>
+                              <description>A url to a FDSN event web service. Should only be used in
+                              the case of a service that doe not follow the FDSN specification.</description>
+                            </xsd:annotation>
+                            <data type="string"/>
+                        </element>
+                    </optional>
+                    <interleave>
+                        <optional>
+                            <element name="scheme">
+                                <data type="string"/>
+                            </element>
+                        </optional>
+                        <optional>
+                            <element name="host">
+                                <data type="string"/>
+                            </element>
+                        </optional>
+                        <optional>
+                            <element name="port">
+                                <data type="string"/>
+                            </element>
+                        </optional>
+                        <optional>
+                            <element name="fdsnwsPath">
+                                <xsd:annotation>
+                                    <summary>Initial path part of an FDSN Event web service URL</summary>
+                                    <description>The default is fdsnws. Should only be used in
+                                    the case of a service that doe not follow the FDSN specification.</description>
+                                </xsd:annotation>
+                                <data type="string"/>
+                            </element>
+                        </optional>
+                    </interleave>
+                </choice>
+                <optional>
+                    <choice>
+                       <ref name="globalArea"/>
+                       <ref name="boxArea"/>
+                       <ref name="pointDistance"/>
+                   </choice>
+               </optional>
+                <optional>
+                    <ref name="originDepthRange"/>
+                </optional>
+               <choice>
+                   <ref name="originTimeRange"/>
+                   <ref name="networkTimeRange"/>
+               </choice>
+                <optional>
+                    <ref name="magnitudeRange"/>
+                </optional>
+                <zeroOrMore>
+                    <ref name="catalog"/>
+                </zeroOrMore>
+                <zeroOrMore>
+                    <ref name="contributor"/>
+                </zeroOrMore>
+                <optional>
+                    <ref name="eventQueryIncrement"/>
+                </optional>
+                <optional>
+                    <ref name="eventRefreshInterval"/>
+                </optional>
+                <optional>
+                    <ref name="eventLag"/>
+                </optional>
+            </interleave>
+        </element>
+    </define>
+    <define name="backwardsEventSource">
+        <element name="backwardsEventSource">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary> Retrieve events from a wrapped EventSource in reverse time order. </summary>
+                    <description></description>
+                </xsd:documentation>
+            </xsd:annotation>
+
+            <interleave>
+              <optional>
+                <element name="name">
+                    <data type="string">
+                        <xsd:annotation>
+                            <summary>A unique name for this source.</summary>
+                        </xsd:annotation>
+                    </data>
+                </element>
+              </optional>
+              <element name="delay">
+                <ref name="timeInterval"/>
+              </element>
+              <ref name="eventSource"/>
+            </interleave>
+        </element>
+    </define>
+    <define name="CSVEventSource">
+        <element name="CSVEventSource">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary>Retrieve events from a Comma-Separated Values file</summary>
+                    <description>Events are stored in a text file where the first line indicates which fields are going
+                        to be used in creating the events for use in the SOD run. Each field, of course, is separated by
+                        a comma. From the second line on, each line represents an event, and the values are filled in
+                        the same order as the fields in the first line. For more information on how to use this, <a
+                            href="csvEvents.html">look here</a>. The filename can also be a URL.</description>
+                            
+                            <example>
+                                <CSVEventSource>
+                                    <filename>csvEvents.txt</filename>
+                                </CSVEventSource>
+                            </example>
+                            <example>
+                                <CSVEventSource>
+                                    <events>
+time, magnitude, latitude, longitude, depth
+2006-05-09T13:15:00.000Z, 7.0, -20.21, -173.90, 16
+2006-05-09T14:57:14.000Z, 5.5, -19.70, -172.53, 40
+2006-05-10T06:03:30.000Z, 5.2, -20.75, -173.10, 38
+                                    </events>
+                                </CSVEventSource>
+                            </example>
+                   </xsd:documentation>
+                
+            </xsd:annotation>
+            <choice>
+                <element name="filename">
+                    <data type="string">
+                    </data>
+                </element>
+                <element name="events">
+                    <data type="string">
+                    </data>
+                </element>
+            </choice>
+        </element>
+    </define>
+    <define name="periodicFakeEventSource">
+        <element name="periodicFakeEventSource">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary>Fake events on a repeating schedule</summary>
+                    <description>Fake events are generated starting at the startTime and at the step interval thereafter until.
+                    If numEvents is not provided, then events continue to be generated forever, otherwise the number given will be generated.</description>
+                </xsd:documentation>
+            </xsd:annotation>
+            <optional>
+                <element name="name">
+                    <data type="string">
+                        <xsd:annotation>
+                            <summary>A unique name for this source.</summary>
+                        </xsd:annotation>
+                    </data>
+                </element>
+            </optional>
+            <element name="startTime">
+            	<ref name="time"/>
+            </element>
+            <element name="interval">
+                <ref name="timeInterval"/>
+            </element>
+            <optional>
+            	<element name="numEvents">
+                	<data type="int"/>
+            	</element>
+            </optional>
+        </element>
+    </define>
+    <define name="nowFakeEventSource">
+        <element name="nowFakeEventSource">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary>Fake events from on a repeating schedule</summary>
+                    <description>Fake events are generated starting at the startTime and at the step interval thereafter until.
+                    If numEvents is not provided, then events continue to be generated forever, otherwise the number given will be generated.
+                    This is similar to PeridicFakeEventSource except that the event time is always the now at request time. This means
+                    that the interval between events may be less than the interval under high load conditions. This is useful cases where
+                    it is more important to
+                    be current than to proceed in uniform time steps.</description>
+                </xsd:documentation>
+            </xsd:annotation>
+            <optional>
+                <element name="name">
+                    <data type="string">
+                        <xsd:annotation>
+                            <summary>A unique name for this source.</summary>
+                        </xsd:annotation>
+                    </data>
+                </element>
+            </optional>
+            <element name="interval">
+                <ref name="timeInterval"/>
+            </element>
+            <optional>
+                <element name="numEvents">
+                    <data type="int"/>
+                </element>
+            </optional>
+        </element>
+    </define>
+    <define name="delayedEventSource">
+        <element name="delayedEventSource">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">
+                    <summary>Delays events from the enclosed source.</summary>
+                    <description>Events from the enclosed source are delayed if they are withing
+                    the given delay of now. This is useful for processing realtime events to allow for
+                    seismic wave propagation time and data latency.</description>
+                </xsd:documentation>
+            </xsd:annotation>
+            <optional>
+                <element name="name">
+                    <data type="string">
+                        <xsd:annotation>
+                            <summary>A unique name for this source.</summary>
+                        </xsd:annotation>
+                    </data>
+                </element>
+            </optional>
+            <element name="delay">
+                <ref name="timeInterval"/>
+            </element>
+            <ref name="eventSource"/>
+        </element>
+    </define>
+</grammar>

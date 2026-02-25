@@ -1,0 +1,64 @@
+package edu.sc.seis.sod.process.waveform;
+
+import org.w3c.dom.Element;
+
+import edu.sc.seis.seisFile.fdsnws.stationxml.Channel;
+import edu.sc.seis.sod.SodUtil;
+import edu.sc.seis.sod.hibernate.eventpair.MeasurementStorage;
+import edu.sc.seis.sod.measure.Measurement;
+import edu.sc.seis.sod.model.common.FissuresException;
+import edu.sc.seis.sod.model.event.CacheEvent;
+import edu.sc.seis.sod.model.seismogram.LocalSeismogramImpl;
+import edu.sc.seis.sod.model.seismogram.RequestFilter;
+import edu.sc.seis.sod.status.Fail;
+import edu.sc.seis.sod.status.Pass;
+
+
+public abstract class AbstractWaveformMeasure implements WaveformProcess {
+
+    protected String name;
+
+    public AbstractWaveformMeasure(Element config) {
+        name = SodUtil.loadText(config, "name", SodUtil.getSimpleName(getClass()));
+    }
+    
+    @Override
+    public WaveformResult accept(CacheEvent event,
+                                 Channel channel,
+                                 RequestFilter[] original,
+                                 RequestFilter[] available,
+                                 LocalSeismogramImpl[] seismograms,
+                                 MeasurementStorage cookieJar) throws Exception {
+        if (seismograms.length != 0) {
+            Measurement m = calculate(event, channel, original, available, seismograms, cookieJar);
+            cookieJar.addMeasurement(m.getName(), m.getValueJSON());
+            return new WaveformResult(seismograms, new Pass(this));
+        }
+        return new WaveformResult(seismograms, new Fail(this));
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    abstract Measurement calculate(CacheEvent event,
+                                   Channel channel,
+                                   RequestFilter[] original,
+                                   RequestFilter[] available,
+                                   LocalSeismogramImpl[] seismograms,
+                                   MeasurementStorage cookieJar) throws Exception;
+
+    protected static float[] toFloatArrayAsIfContinuous(LocalSeismogramImpl[] seis) throws FissuresException {
+        int npts = 0;
+        for (int i = 0; i < seis.length; i++) {
+            npts += seis[i].getNumPoints();
+        }
+        float[] data = new float[npts];
+        int pos = 0;
+        for (int i = 0; i < seis.length; i++) {
+            System.arraycopy(seis[i].get_as_floats(), 0, data, pos, seis[i].getNumPoints());
+            pos += seis[i].getNumPoints();
+        }
+        return data;
+    }
+}

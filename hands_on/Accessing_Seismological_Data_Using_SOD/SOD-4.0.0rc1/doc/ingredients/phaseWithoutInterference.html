@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - phaseWithoutInterference</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="phaseWithoutInterference">phaseWithoutInterference</a>
+				</h3>
+					<p>
+			Accepts an event-station pair if the given phase exists at the station and the interferingPhases
+                either do not exist, or are outside the given time window.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;phaseWithoutInterference&gt;
+  &lt;phaseName&gt;ttp&lt;/phaseName&gt;
+  &lt;beginOffset&gt;
+      &lt;unit&gt;SECOND&lt;/unit&gt;
+      &lt;value&gt;-60&lt;/value&gt;
+  &lt;/beginOffset&gt;
+  &lt;endOffset&gt;
+      &lt;unit&gt;SECOND&lt;/unit&gt;
+      &lt;value&gt;360&lt;/value&gt;
+  &lt;/endOffset&gt;
+  &lt;interferingPhase&gt;ttp&lt;/interferingPhase&gt;
+&lt;/phaseWithoutInterference&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="phaseWithoutInterference.html" title="Accepts an event-station pair if the given phase is not interfered with by other phases.">phaseWithoutInterference</a>&gt; <div>
+<div id="group">
+&lt;model&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><div>
+<a href="model.html" title="Velocity model used to calculate the arrival time">model</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+<div><b>1066a</b></div>
+<div><b>1066b</b></div>
+<div><b>ak135</b></div>
+<div><b>alfs</b></div>
+<div><b>herrin</b></div>
+<div><b>iasp91</b></div>
+<div><b>jb</b></div>
+<div><b>prem</b></div>
+<div><b>pwdk</b></div>
+<div><b>qdt</b></div>
+<div><b>sp6</b></div>
+</div> 
+<br /></div>
+&lt;/model&gt;<br />
+&lt;phaseName&gt;<b><a href="phaseName.html" title="The name of a seismic phase">phaseName</a></b>&lt;/phaseName&gt; <br />
+&lt;arrivalIndex&gt;<b><a href="../../ingredients/datatypes/IntegerDatatype.html">integer</a></b>&lt;/arrivalIndex&gt; <i><a href="../../ingredients/abstractStructure.html#optional">optional</a> </i><br />
+&lt;beginOffset&gt; <div>
+<a href="timeInterval.html" title="A length of time">timeInterval</a> <br />
+</div>
+&lt;/beginOffset&gt;<br />
+&lt;endOffset&gt; <div>
+<a href="timeInterval.html" title="A length of time">timeInterval</a> <br />
+</div>
+&lt;/endOffset&gt;<br />
+&lt;interferingPhase&gt;<b><a href="phaseName.html" title="The name of a seismic phase">phaseName</a></b>&lt;/interferingPhase&gt; <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><br />
+</div>
+</div>
+&lt;/<a href="phaseWithoutInterference.html" title="Accepts an event-station pair if the given phase is not interfered with by other phases.">phaseWithoutInterference</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="eventStation">
+                                            <p>In <a href="eventStation.html">eventStation</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="distanceRange.html">distanceRange</a>
+</li>
+                            <li><a href="printlineEventStation.html">printlineEventStation</a>
+</li>
+                            <li><a href="azimuthRange.html">azimuthRange</a>
+</li>
+                            <li><a href="backAzimuthRange.html">backAzimuthRange</a>
+</li>
+                            <li><a href="linearDistanceMagnitudeRange.html">linearDistanceMagnitudeRange</a>
+</li>
+                            <li><a href="eventStationAND.html">eventStationAND</a>
+</li>
+                            <li><a href="eventStationOR.html">eventStationOR</a>
+</li>
+                            <li><a href="eventStationNOT.html">eventStationNOT</a>
+</li>
+                            <li><a href="midPoint.html">midPoint</a>
+</li>
+                            <li><a href="removeStationDuplicate.html">removeStationDuplicate</a>
+</li>
+                            <li><a href="phaseExists.html">phaseExists</a>
+</li>
+                            <li><a href="phaseWithoutInterference.html">phaseWithoutInterference</a>
+</li>
+                            <li><a href="eventStationScript.html">eventStationScript</a>
+</li>
+                            <li><a href="externalEventStation.html">externalEventStationSubsetter</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

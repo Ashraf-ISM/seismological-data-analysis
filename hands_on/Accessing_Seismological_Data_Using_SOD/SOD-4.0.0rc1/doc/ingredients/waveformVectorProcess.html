@@ -1,0 +1,192 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - waveformVectorProcess</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="open">
+			waveform VectorArm
+    	</li>
+	</a>
+	               <ul>
+                	<a href="eventStation.html">
+		<li>
+			eventStation
+    	</li>
+	</a>
+                	<a href="eventVector.html">
+		<li>
+			eventVector
+    	</li>
+	</a>
+                	<a href="requestGenerator.html">
+		<li>
+			requestGenerator
+    	</li>
+	</a>
+                	<a href="vectorRequest.html">
+		<li>
+			vectorRequest
+    	</li>
+	</a>
+                	<a href="seismogramSource.html">
+		<li>
+			seismogramSource
+    	</li>
+	</a>
+                	<a href="vectorAvailableData.html">
+		<li>
+			vectorAvailableData
+    	</li>
+	</a>
+                	<a href="waveformVectorProcess.html">
+		<li>
+			waveform VectorProcess
+    	</li>
+	</a>
+            </ul>
+	  	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="waveformVectorProcess">waveformVectorProcess</a>
+				</h3>
+		            <p>
+            Tactics for processing vectors of waveforms
+            </p>
+			</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;threeComponentData/&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<a href="waveformVectorProcess.html" title="Tactics for processing vectors of waveforms">waveformVectorProcess</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="ANDWaveformProcessWrapper.html" title="Allows a waveform processor to be used in a waveformVector as an AND">ANDWaveformProcessWrapper</a>&gt; <br />&lt;<a href="externalVectorProcess.html" title="Use a WaveformVectorProcess external to SOD">externalWaveformVectorProcess</a>&gt; <br />&lt;<a href="iterDeconReceiverFunction.html" title="Calculates receiver functions.">iterDeconReceiverFunction</a>&gt; <br />&lt;<a href="legacyVectorExecute.html" title="Executes an external program">legacyVectorExecute</a>&gt; <br />&lt;<a href="ORWaveformProcessWrapper.html" title="Allows a waveform processor to be used in a waveformVector as an OR">ORWaveformProcessWrapper</a>&gt; <br />&lt;<a href="particleMotionPlot.html" >particleMotionPlot</a>&gt; <br />&lt;<a href="rotateGCP.html" title="Rotate the seismograms to Great Circle Path">rotateGCP</a>&gt; <br />&lt;<a href="sampleSyncronize.html" title="Shifts seismograms in the vector so samples are aligned.">sampleSyncronize</a>/&gt;
+ <br /><a href="seismogramProcess.html" title="All of the items that process seismograms">seismogramProcess</a> <br />
+&lt;<a href="threeComponentData.html" title="Checks for data in all three components">threeComponentData</a>/&gt;
+ <br />&lt;<a href="vectorImageProcess.html" >vectorImageProcess</a>&gt; <br />&lt;<a href="vectorScript.html" title="Runs a script waveform subsetter">vectorScript</a>&gt; <br />&lt;<a href="vectorTrim.html" title="Cuts all seismograms in the vector to their smallest overlapping pieces.">vectorTrim</a>/&gt;
+ <br />&lt;<a href="waveformVectorAlwaysSuccess.html" title="Executes a subprocessor, but always returns true.">waveformVectorAlwaysSuccess</a>&gt; <br />&lt;<a href="waveformVectorAND.html" title="Matches all included waveformVector processors">waveformVectorAND</a>&gt; <br />&lt;<a href="waveformVectorFork.html" title="Forks the processing for vector waveform data">waveformVectorFork</a>&gt; <br />&lt;<a href="waveformVectorNOT.html" title="Matches the negated output of the included waveformVector processor">waveformVectorNOT</a>&gt; <br />&lt;<a href="waveformVectorOR.html" title="Matches at least one of the included waveformVector processors">waveformVectorOR</a>&gt; <br /></div> 
+<br />
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="waveformVectorArm">
+                                <p><a href="waveformVectorArm.html">waveformVectorArm</a>
+ contains this directly</p>
+                </section>
+            </div>
+       			</div>
+    </body>
+</html>

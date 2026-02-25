@@ -1,0 +1,17 @@
+🔷 Problem Statement
+
+Use find_events and command-line pipes to retrieve SKS phase seismograms that satisfy the following criteria:
+
+Earthquake magnitude ≥ 7.0
+
+Channels: BHZ, BHE, BHN
+
+Seismogram begins 1 minute before first SKS arrival
+
+Seismogram ends 2 minutes after first SKS arrival
+
+Stations located within a latitude–longitude box circumscribing Greenland
+
+Start date: June of this year (if no data, use January of this year)
+
+Move retrieved data to a directory named SKSdata

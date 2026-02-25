@@ -1,4 +1,12 @@
-This is the test file which is created using the cmd vi.
-This is the vi editor.
-After write the content for saving the file just press the Shift+zz.
-
+Seismological Data Analysis - Practical File
+--------------------------------------------
+Line 1: Earthquakes generate seismic waves.
+Line 2: P-waves are primary waves and travel fastest.
+Line 3: S-waves are secondary waves and cannot travel through liquids.
+Line 4: Surface waves cause most structural damage.
+Line 5: Seismometers record ground motion.
+Line 6: Waveform data is often stored in miniSEED format.
+Line 7: SAC is widely used for waveform processing.
+Line 8: GMT is used for plotting geophysical data.
+Line 9: Linux is preferred for scientific computing.
+Line 10: Bash scripting helps automate data analysis.

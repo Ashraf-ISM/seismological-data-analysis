@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - choiceSource</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="choiceSource">choiceSource</a>
+				</h3>
+					<p>
+			 This type of seismogram source allows for a choice to be made between several
+                    seismogram sources based on characteristics of an event and channel. It goes through
+                    each of the choices in order, and if the subsetter inside of a choice matches,
+                    it uses it. If no choice matches, the seismogram source in the otherwise is used. The
+                    example gets data from the POND from half a year ago up until 8 weeks ago. For
+                    anything more recent, it gets data from the BUD. Other uses for this are to
+                    switch seismogram sources based on the preferred seismogram sources for a station, or to use
+                    the POND  (IRIS_PondDataCenter) to retrieve data if an event meets the POND criteria but use the
+                    IRIS mass store (IRIS_DataCenter) otherwise.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;choiceSource&gt;
+    &lt;choice&gt;
+        &lt;originTimeRange&gt;
+            &lt;startTime&gt;
+                &lt;earlier&gt;
+&lt;timeInterval&gt;
+  &lt;value&gt;26&lt;/value&gt;
+  &lt;unit&gt;WEEK&lt;/unit&gt;
+&lt;/timeInterval&gt;
+                &lt;/earlier&gt;
+            &lt;/startTime&gt;
+            &lt;endTime&gt;
+                &lt;earlier&gt;
+&lt;timeInterval&gt;
+  &lt;value&gt;8&lt;/value&gt;
+  &lt;unit&gt;WEEK&lt;/unit&gt;
+&lt;/timeInterval&gt;
+                &lt;/earlier&gt;
+            &lt;/endTime&gt;
+        &lt;/originTimeRange&gt;
+        &lt;fdsnDataSelect&gt;
+            &lt;name&gt;Local Caching server&lt;/name&gt;
+            &lt;host&gt;myserver.myuniversity.edu&lt;/host&gt;
+        &lt;/fdsnDataSelect&gt;
+    &lt;/choice&gt;
+    &lt;otherwise&gt;
+        &lt;fdsnDataSelect&gt;
+            &lt;name&gt;IRIS Server&lt;/name&gt;
+        &lt;/fdsnDataSelect&gt;
+    &lt;/otherwise&gt;
+&lt;/choiceSource&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="choiceSource.html" title="Allows a choice between seismogram sources based on an eventChannelSubsetter">choiceSource</a>&gt; <div>
+<div id="group">
+&lt;choice&gt; <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i><div>
+<div id="group">
+<a href="eventChannelPlus.html" >eventChannelPlus</a> <br />
+<a href="seismogramSource.html" title="Specifies the server to ask for seismograms.">seismogramSource</a> <br />
+</div>
+</div>
+&lt;/choice&gt;<br />
+&lt;otherwise&gt; <div>
+<a href="seismogramSource.html" title="Specifies the server to ask for seismograms.">seismogramSource</a> <br />
+</div>
+&lt;/otherwise&gt;<br />
+</div>
+</div>
+&lt;/<a href="choiceSource.html" title="Allows a choice between seismogram sources based on an eventChannelSubsetter">choiceSource</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="seismogramSource">
+                                            <p>In <a href="seismogramSource.html">seismogramSource</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="fdsnDataSelect.html">fdsnDataSelect</a>
+</li>
+                            <li><a href="choiceSource.html">choiceSource</a>
+</li>
+                            <li><a href="tryInOrder.html">tryInOrder</a>
+</li>
+                            <li><a href="winstonWaveServer.html">winstonWaveServer</a>
+</li>
+                            <li><a href="fixedDataCenter.html">fixedDataCenter</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

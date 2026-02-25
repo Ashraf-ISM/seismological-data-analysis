@@ -1,0 +1,264 @@
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - seismogramProcess</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="open">
+			waveformArm
+    	</li>
+	</a>
+	               <ul> 	<a href="eventStation.html">
+		<li>
+			eventStation
+    	</li>
+	</a>
+                	<a href="eventChannel.html">
+		<li>
+			eventChannel
+    	</li>
+	</a>
+                	<a href="requestGenerator.html">
+		<li>
+			requestGenerator
+    	</li>
+	</a>
+                	<a href="request.html">
+		<li>
+			request
+    	</li>
+	</a>
+                	<a href="seismogramSource.html">
+		<li>
+			seismogramSource
+    	</li>
+	</a>
+                	<a href="availableData.html">
+		<li>
+			availableData
+    	</li>
+	</a>
+                	<a href="seismogramProcess.html">
+		<li id="selected">
+			seismogramProcess
+    	</li>
+	</a>
+            </ul>
+	  	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="seismogramProcess">seismogramProcess</a>
+				</h3>
+					<p>
+			At this point in the waveform arm, data has been retrieved. Therefore, these items all work
+                    on the received data. Some of them like rMean and rTrend perform manipulations on the data. Others
+                    like sacWriter and seismogramImageProcess write out information based on the data. Some
+                    like fullDataCoverage and phaseSignalToNoise subset the items based on the data's
+                    properties. If several items are used, the data from each step feeds into the next. So if a
+                    seismogramImageProcessor follows a phaseCut the image drawn will be of the data after the cut. If
+                    you don't want a processor's work to effect later steps use the forkProcess to
+                    isolate it.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;printlineSeismogramProcess/&gt;
+</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			<a href="seismogramProcess.html" title="All of the items that process seismograms">seismogramProcess</a>  <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="asciiWriter.html" title="Writes ascii files from seismograms">asciiWriter</a>&gt; <br /><a href="availableDataPlus.html" >availableDataPlus</a> <br />
+&lt;<a href="collapseOverlaps.html" title="Collapses overlapping seismograms.">collapseOverlaps</a>/&gt;
+ <br />&lt;<a href="compoundPhaseSignalToNoise.html" title="Accepts or rejects seismograms based on their signal to noise ratio">compoundPhaseSignalToNoise</a>&gt; <br />&lt;<a href="compressionType.html" title="Passes a seismogram's data if it is compressed with the given types.">compressionType</a>&gt; <br />&lt;<a href="decimate.html" title="Decimates seismograms.">decimate</a>&gt; <br />&lt;<a href="differentiate.html" title="Takes the derivitive of the seismograms, changing displacement to velocity for example.">differentiate</a>/&gt;
+ <br />&lt;<a href="div.html" title="Divides each point in the seismogram by the given value">div</a>&gt; <br />&lt;<a href="externalWaveformProcess.html" title="Runs an externally defined Java processor">externalWaveformProcess</a>&gt; <br />&lt;<a href="filter.html" title="Apply a Butterworth filter">filter</a>&gt; <br />&lt;<a href="forkProcess.html" title="Forks the processing of seismograms">forkProcess</a>&gt; <br />&lt;<a href="fullDataCoverage.html" title="Only allows seismograms with data covering the entire original request through">fullDataCoverage</a>/&gt;
+ <br />&lt;<a href="gapFill.html" title="Joins multiple seismograms into a single seismogram by filling gaps">gapFill</a>&gt; <br />&lt;<a href="integrate.html" title="Integrates the seismograms, changing velocity to displacement for example.">integrate</a>/&gt;
+ <br />&lt;<a href="invertFlippedChannels.html" title="If a seismogram's actual orientation is flipped from the orientation of its code, the seismogram is inverted">invertFlippedChannels</a>&gt; <br />&lt;<a href="legacyExecute.html" title="Executes an external program.">legacyExecute</a>&gt; <br />&lt;<a href="localSeismogramStatus.html" title="Generate HTML status pages about the processed seismograms">localSeismogramTemplateGenerator</a>&gt; <br />&lt;<a href="mean.html" title="Calculates the mean of the seismogram's data and stores it in the cookie jar.">mean</a>&gt; <br />&lt;<a href="merge.html" title="Joins multiple seismograms into a single seismogram if they're contiguous">merge</a>/&gt;
+ <br />&lt;<a href="minMax.html" title="Calculates the minimum and maximum of the seismogram's data and stores it in the cookie jar.">minMax</a>&gt; <br />&lt;<a href="mseedWriter.html" title="Writes mseed files from seismograms">mseedWriter</a>&gt; <br />&lt;<a href="mul.html" title="Multiplies each point in the seismogram by the given value">mul</a>&gt; <br />&lt;<a href="noDataGaps.html" title="Only allows seismograms with gapless data through">noDataGaps</a>/&gt;
+ <br />&lt;<a href="oregonDSPFFT.html" title="Calculates the FFT of the seismogram's data using the OregonDSP package and stores it in the cookie jar.">rms</a>&gt; <br />&lt;<a href="oregonDSPFilter.html" title="Apply a filter using the OregonDSP library">oregonDSPFilter</a>&gt; <br />&lt;<a href="phaseCut.html" title="Cuts seismograms relative to predicted phase arrival times">phaseCut</a>&gt; <br />&lt;<a href="phaseSignalToNoise.html" title="Accepts or rejects seismograms based on their signal to noise ratio">phaseSignalToNoise</a>&gt; <br />&lt;<a href="printlineSeismogramProcess.html" title="Prints a line to std out for each seismogram processed">printlineSeismogramProcess</a>&gt; <br />&lt;<a href="recordSectionDisplayGenerator.html" title="Generates the recordsection display for each event">recordSectionDisplayGenerator</a>&gt; <br />&lt;<a href="requestCut.html" title="Cuts seismograms to the requested window">requestCut</a>/&gt;
+ <br />&lt;<a href="responseGain.html" title="Response Gain Correction">responseGain</a>/&gt;
+ <br />&lt;<a href="rMean.html" title="Remove the mean">rMean</a>/&gt;
+ <br />&lt;<a href="rms.html" title="Calculates the rms of the seismogram's data and stores it in the cookie jar.">rms</a>&gt; <br />&lt;<a href="rTrend.html" title="Remove the trend">rTrend</a>/&gt;
+ <br />&lt;<a href="sacWriter.html" title="Writes sac files from seismograms">sacWriter</a>&gt; <br />&lt;<a href="seismogramAlwaysSuccess.html" title="Executes a subprocessor, but always returns true">alwaysSuccess</a>&gt; <br />&lt;<a href="seismogramAND.html" title="Matches all included seismogram processors">seismogramAND</a>&gt; <br />&lt;<a href="seismogramImageProcess.html" title="Make images of the processed seismograms">seismogramImageProcess</a>&gt; <br />&lt;<a href="seismogramNOT.html" title="Matches the negated output of the included seismogram processor">seismogramNOT</a>&gt; <br />&lt;<a href="seismogramOR.html" title="Matches at least one of the included seismogram processors">seismogramOR</a>&gt; <br />&lt;<a href="seismogramSampling.html" title="Matches if the sampling rate of the seismogram is within the range">seismogramSampling</a>&gt; <br />&lt;<a href="seismogramScript.html" title="Runs a script waveform subsetter">seismogramScript</a>&gt; <br />&lt;<a href="someDataCoverage.html" title="Only allows seismograms with data overlapping the original request through">someDataCoverage</a>/&gt;
+ <br />&lt;<a href="stddev.html" title="Calculates the standard deviation of the seismogram's data and stores it in the cookie jar.">stddev</a>&gt; <br />&lt;<a href="taper.html" title="Apply a taper">taper</a>&gt; <br />&lt;<a href="transferResponse.html" title="Applies an instrumentation correction as in the transfer command in SAC">transferResponse</a>&gt; <br />&lt;<a href="wavWriter.html" title="Writes wav sound files from seismograms">wavWriter</a>&gt; <br /></div> 
+<br />
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="ANDWaveformProcessWrapper">
+                                <p><a href="ANDWaveformProcessWrapper.html">ANDWaveformProcessWrapper</a>
+ contains this directly</p>
+                </section>
+            <section name="ORWaveformProcessWrapper">
+                                <p><a href="ORWaveformProcessWrapper.html">ORWaveformProcessWrapper</a>
+ contains this directly</p>
+                </section>
+            <section name="forkProcess">
+                                <p><a href="forkProcess.html">forkProcess</a>
+ contains this directly</p>
+                </section>
+            <section name="invertFlippedChannels">
+                                <p><a href="invertFlippedChannels.html">invertFlippedChannels</a>
+ contains this directly</p>
+                </section>
+            <section name="waveformArm">
+                                <p><a href="waveformArm.html">waveformArm</a>
+ contains this directly</p>
+                </section>
+            <section name="waveformVectorProcess">
+                                            <p>In <a href="waveformVectorProcess.html">waveformVectorProcess</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="threeComponentData.html">threeComponentData</a>
+</li>
+                            <li><a href="ANDWaveformProcessWrapper.html">ANDWaveformProcessWrapper</a>
+</li>
+                            <li><a href="ORWaveformProcessWrapper.html">ORWaveformProcessWrapper</a>
+</li>
+                            <li><a href="legacyVectorExecute.html">legacyVectorExecute</a>
+</li>
+                            <li><a href="waveformVectorFork.html">waveformVectorFork</a>
+</li>
+                            <li><a href="waveformVectorAND.html">waveformVectorAND</a>
+</li>
+                            <li><a href="waveformVectorOR.html">waveformVectorOR</a>
+</li>
+                            <li><a href="waveformVectorNOT.html">waveformVectorNOT</a>
+</li>
+                            <li><a href="waveformVectorAlwaysSuccess.html">waveformVectorAlwaysSuccess</a>
+</li>
+                            <li><a href="seismogramProcess.html">seismogramProcess</a>
+</li>
+                            <li><a href="externalVectorProcess.html">externalWaveformVectorProcess</a>
+</li>
+                            <li><a href="vectorImageProcess.html">vectorImageProcess</a>
+</li>
+                            <li><a href="particleMotionPlot.html">particleMotionPlot</a>
+</li>
+                            <li><a href="sampleSyncronize.html">sampleSyncronize</a>
+</li>
+                            <li><a href="rotateGCP.html">rotateGCP</a>
+</li>
+                            <li><a href="vectorTrim.html">vectorTrim</a>
+</li>
+                            <li><a href="vectorScript.html">vectorScript</a>
+</li>
+                            <li><a href="iterDeconReceiverFunction.html">iterDeconReceiverFunction</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    		<head>
+		<title>SOD - networkAND</title>
+<link type="text/css" rel="stylesheet" media="screen" href="../styles/main.css">
+<link type="text/css" rel="stylesheet" media="print" href="../styles/print.css">
+<script type="text/javascript">
+     function decode(domain, user){
+       return("mail"+"to:"+user.replace("*rem*","")+"@"+domain);
+     }
+</script>
+	</head>
+	<body>
+		<div id="header">
+	<a href="http://www.seis.sc.edu/SOD/">
+		<img class="left" src="../images/sod_logo.gif">
+	</a>
+	<a href="http://www.seis.sc.edu/">
+		<img class="right" src="../images/seislogo.gif">
+	</a>
+</div>
+		<div id="menu">
+	<ul>
+	<a href="../index.html">
+		<li>
+			Home
+    	</li>
+	</a>
+	<a href="../gettingstarted.html">
+		<li>
+			Getting Started
+    	</li>
+	</a>
+	<a href="../download.html">
+		<li>
+			Download
+    	</li>
+	</a>
+	<a href="https://github.com/crotwell/sod/wiki">
+		<li>
+			Wiki
+    	</li>
+	</a>
+	<a href="../documentation/index.html">
+		<li class="closed">
+			Documentation
+    	</li>
+	</a>
+		<a href="../tools/index.html">
+		<li class="closed">
+			Tools
+    	</li>
+	</a>
+		<a href="../ingredients/index.html">
+		<li class="open">
+			Ingredient Listing
+    	</li>
+	</a>
+			<ul id="ingred">
+            	<a href="properties.html">
+		<li>
+			properties
+    	</li>
+	</a>
+	<a href="eventArm.html">
+		<li class="closed">
+			eventArm
+    	</li>
+	</a>
+	   	<a href="networkArm.html">
+		<li class="closed">
+			networkArm
+    	</li>
+	</a>
+	   	<a href="waveformArm.html">
+		<li class="closed">
+			waveformArm
+    	</li>
+	</a>
+	   	<a href="waveformVectorArm.html">
+		<li class="closed">
+			waveform VectorArm
+    	</li>
+	</a>
+	   	</ul>
+	<li>
+<!-- Google CSE Search Box Begins -->
+<div>
+<script>
+  (function() {
+    var cx = '011831161591731826207:vosgevg88qu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+<!-- Google CSE Search Box Ends -->
+</li>
+
+	</ul>
+</div>
+		<div id="content">
+			<div class="section">
+				<h3>
+					<a name="networkAND">networkAND</a>
+				</h3>
+					<p>
+			The output is the logical AND of the outputs of all included
+                        Network subsetters. This means that it will evaluate to true only if all the
+                        enclosed Network subsetters evaluate to true. The subsetters after the first
+                        false outputted are not evaluated.
+			</p>
+        	</div>
+					<div class="section">
+				<h3>
+					<a name="Example">Example</a>
+				</h3>
+		<pre>&lt;networkAND&gt;
+    &lt;networkOwner&gt;Scripps Institution of Oceanography&lt;/networkOwner&gt;
+    &lt;networkEffectiveTimeOverlap&gt;
+        &lt;startTime&gt;20020701T00:00:00.001Z&lt;/startTime&gt;
+        &lt;endTime&gt;20021030T00:00:00.001Z&lt;/endTime&gt;
+    &lt;/networkEffectiveTimeOverlap&gt;
+&lt;/networkAND&gt;</pre>
+    </div>
+        
+			<div class="section">
+				<h3>
+					<a name="This consists of">This consists of</a>
+				</h3>
+			<div id="contained">
+				<p>
+			&lt;<a href="networkAND.html" title="Matches all enclosed Network subsetters">networkAND</a>&gt; <div>
+<a href="network.html" title="Ingredients for selecting networks">network</a> <i><a href="../../ingredients/abstractStructure.html#At least once">At least once</a> </i> <i><a class="choice" href="../../ingredients/abstractStructure.html#choice">choice</a></i> 
+<div id="choice">
+&lt;<a href="code.html" title="Matches a given network code">networkCode</a>&gt; <br />&lt;<a href="externalNetworkSubsetter.html" title="Use a Network subsetter external to SOD">externalNetworkSubsetter</a>&gt; <br />&lt;<a href="networkAND.html" title="Matches all enclosed Network subsetters">networkAND</a>&gt; <br />&lt;<a href="networkEffectiveTimeOverlap.html" title="Matches if the network exists during given time range.">networkEffectiveTimeOverlap</a>&gt; <br />&lt;<a href="networkName.html" title=" Matches the name of a network">networkName</a>&gt; <br />&lt;<a href="networkNOT.html" title="Matches the negated output of the enclosed Network subsetter">networkNOT</a>&gt; <br />&lt;<a href="networkOR.html" title="Matches at least one enclosed Network subsetter">networkOR</a>&gt; <br />&lt;<a href="networkScript.html" title="Runs an script network subsetter">networkScript</a>&gt; <br />&lt;<a href="owner.html" title="Matches the owner of a network">networkOwner</a>&gt; <br />&lt;<a href="printlineNetworkProcess.html" title="Prints every successful network to the console or to the specified file">printlineNetworkProcess</a>&gt; <br />&lt;<a href="temporaryNetwork.html" title="Matches networks starting with X, Y and Z">temporaryNetwork</a>/&gt;
+ <br /></div> 
+<br /></div>
+&lt;/<a href="networkAND.html" title="Matches all enclosed Network subsetters">networkAND</a>&gt;<br />
+
+				</p>
+			</div>
+        </div>
+		
+        
+			<div class="section">
+				<h3>
+					<a name="Places this can be found">Places this can be found</a>
+				</h3>
+                        <section name="network">
+                                            <p>In <a href="network.html">network</a>
+ there is a choice between all of the following</p>
+                                <ul>
+                    <li><a href="code.html">networkCode</a>
+</li>
+                            <li><a href="networkName.html">networkName</a>
+</li>
+                            <li><a href="owner.html">networkOwner</a>
+</li>
+                            <li><a href="networkEffectiveTimeOverlap.html">networkEffectiveTimeOverlap</a>
+</li>
+                            <li><a href="networkAND.html">networkAND</a>
+</li>
+                            <li><a href="networkOR.html">networkOR</a>
+</li>
+                            <li><a href="networkNOT.html">networkNOT</a>
+</li>
+                            <li><a href="externalNetworkSubsetter.html">externalNetworkSubsetter</a>
+</li>
+                            <li><a href="temporaryNetwork.html">temporaryNetwork</a>
+</li>
+                            <li><a href="printlineNetworkProcess.html">printlineNetworkProcess</a>
+</li>
+                            <li><a href="networkScript.html">networkScript</a>
+</li>
+            </ul>
+                            </section>
+            </div>
+       			</div>
+    </body>
+</html>
